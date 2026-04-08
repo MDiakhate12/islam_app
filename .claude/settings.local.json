@@ -6,7 +6,10 @@
       "Read(//Users/mdiakhate.externe/.nvm/versions/node/**)",
       "Bash(/Users/mdiakhate.externe/.nvm/versions/node/v24.14.1/bin/npm install:*)",
       "Bash(export PATH=\"/Users/mdiakhate.externe/.nvm/versions/node/v24.14.1/bin:$PATH\")",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

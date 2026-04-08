@@ -54,7 +54,11 @@ const SECTIONS: Section[] = [
     id: 'religion-unique',
     title: "L'Islam, unique religion agréée par Allah",
     groups: [
-      { main: [{ s: 3, v: 19 }] },
+      {
+        main: [{ s: 3, v: 19 }],
+        contextBefore: [{ s: 3, v: 18 }],
+        contextAfter: [{ s: 3, v: 20 }],
+      },
       { main: [{ s: 3, v: 85 }] },
     ],
   },

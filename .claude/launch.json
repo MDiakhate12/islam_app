@@ -4,8 +4,8 @@
     {
       "name": "islam-app",
       "runtimeExecutable": "/Users/mdiakhate.externe/.nvm/versions/node/v24.14.1/bin/node",
-      "runtimeArgs": ["node_modules/.bin/next", "dev"],
-      "port": 3000
+      "runtimeArgs": ["node_modules/.bin/next", "dev", "-p", "3001"],
+      "port": 3001
     }
   ]
 }
