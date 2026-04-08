@@ -55,13 +55,12 @@ const SECTIONS: Section[] = [
     title: "L'Islam, unique religion agréée par Allah",
     groups: [
       {
-        main: [{ s: 3, v: 19 }],
+        main: [{ s: 3, v: 19 }, { s: 3, v: 20 }],
         contextBefore: [{ s: 3, v: 18 }],
-        contextAfter: [{ s: 3, v: 20 }],
       },
       {
-        main: [{ s: 3, v: 85 }],
-        contextBefore: [{ s: 3, v: 83 }, { s: 3, v: 84 }],
+        main: [{ s: 3, v: 84 }, { s: 3, v: 85 }],
+        contextBefore: [{ s: 3, v: 83 }],
         contextAfter: [
           { s: 3, v: 86 }, { s: 3, v: 87 }, { s: 3, v: 88 },
           { s: 3, v: 89 }, { s: 3, v: 90 }, { s: 3, v: 91 }, { s: 3, v: 92 },
@@ -88,7 +87,11 @@ const SECTIONS: Section[] = [
         contextBefore: [{ s: 3, v: 64 }, { s: 3, v: 65 }, { s: 3, v: 66 }],
         contextAfter: [{ s: 3, v: 68 }],
       },
-      { main: [{ s: 4, v: 125 }] },
+      { main: [{ s: 3, v: 95 }] },
+      {
+        main: [{ s: 4, v: 125 }],
+        contextBefore: [{ s: 4, v: 124 }],
+      },
     ],
   },
   {
@@ -137,7 +140,7 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: 'hawariyyun',
+    id: 'Jesus et les apôtres (hawariyyun)',
     title: "Les Ḥawariyyūn — Les disciples d'Isa se proclament Muslims",
     groups: [
       {
@@ -169,13 +172,19 @@ const SECTIONS: Section[] = [
     title: 'Muhammad ﷺ — Sceau des prophètes, Muslim parmi les Muslims',
     groups: [
       {
-        main: [{ s: 6, v: 163 }],
-        contextBefore: [{ s: 6, v: 162 }],
+        main: [{ s: 6, v: 161 }, { s: 6, v: 162 }, { s: 6, v: 163 }],
+        contextBefore: [{ s: 6, v: 159 }, { s: 6, v: 160 }],
+        contextAfter: [{ s: 6, v: 164 }, { s: 6, v: 165 }],
       },
       {
         main: [{ s: 39, v: 12 }],
         contextBefore: [{ s: 39, v: 11 }],
         contextAfter: [{ s: 39, v: 13 }],
+      },
+      {
+        main: [{ s: 4, v: 65 }],
+        contextBefore: [{ s: 4, v: 64 }],
+        contextAfter: [{ s: 4, v: 66 }, { s: 4, v: 67 }, { s: 4, v: 68 }, { s: 4, v: 69 }, { s: 4, v: 70 }],
       },
     ],
   },
@@ -193,8 +202,17 @@ const SECTIONS: Section[] = [
     title: 'La soumission — voie universelle vers le salut',
     groups: [
       {
-        main: [{ s: 2, v: 112 }],
-        contextBefore: [{ s: 2, v: 109 }, { s: 2, v: 110 }, { s: 2, v: 111 }],
+        main: [{ s: 3, v: 102 }],
+        contextBefore: [
+          { s: 3, v: 92 }, { s: 3, v: 93 }, { s: 3, v: 94 }, { s: 3, v: 95 },
+          { s: 3, v: 96 }, { s: 3, v: 97 }, { s: 3, v: 98 }, { s: 3, v: 99 },
+          { s: 3, v: 100 }, { s: 3, v: 101 },
+        ],
+        contextAfter: [{ s: 3, v: 103 }, { s: 3, v: 104 }, { s: 3, v: 105 }],
+      },
+      {
+        main: [{ s: 2, v: 111 }, { s: 2, v: 112 }],
+        contextBefore: [{ s: 2, v: 109 }, { s: 2, v: 110 }],
         contextAfter: [{ s: 2, v: 113 }],
       },
       {
