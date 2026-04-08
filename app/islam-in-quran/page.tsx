@@ -74,7 +74,11 @@ const SECTIONS: Section[] = [
         contextBefore: [{ s: 2, v: 128 }, { s: 2, v: 129 }, { s: 2, v: 130 }],
         contextAfter: [{ s: 2, v: 133 }],
       },
-      { main: [{ s: 3, v: 67 }] },
+      {
+        main: [{ s: 3, v: 67 }],
+        contextBefore: [{ s: 3, v: 64 }, { s: 3, v: 65 }, { s: 3, v: 66 }],
+        contextAfter: [{ s: 3, v: 68 }],
+      },
     ],
   },
   {
