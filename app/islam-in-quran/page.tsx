@@ -67,7 +67,11 @@ const SECTIONS: Section[] = [
         ],
       },
       { main: [{ s: 5, v: 3 }] },
-      { main: [{ s: 22, v: 34 }] },
+      {
+        main: [{ s: 22, v: 34 }],
+        contextBefore: [{ s: 22, v: 31 }, { s: 22, v: 32 }, { s: 22, v: 33 }],
+        contextAfter: [{ s: 22, v: 35 }],
+      },
     ],
   },
   {
@@ -88,6 +92,13 @@ const SECTIONS: Section[] = [
         contextAfter: [{ s: 3, v: 68 }],
       },
       { main: [{ s: 3, v: 95 }] },
+      {
+        main: [{ s: 16, v: 120 }],
+        contextAfter: [
+          { s: 16, v: 121 }, { s: 16, v: 122 }, { s: 16, v: 123 },
+          { s: 16, v: 124 }, { s: 16, v: 125 },
+        ],
+      },
       {
         main: [{ s: 4, v: 125 }],
         contextBefore: [{ s: 4, v: 124 }],
@@ -136,12 +147,22 @@ const SECTIONS: Section[] = [
         contextAfter: [{ s: 10, v: 85 }, { s: 10, v: 86 }],
       },
       { main: [{ s: 5, v: 44 }] },
-      { main: [{ s: 7, v: 126 }] },
+      {
+        main: [{ s: 7, v: 126 }],
+        contextBefore: [
+          { s: 7, v: 103 }, { s: 7, v: 104 }, { s: 7, v: 105 }, { s: 7, v: 106 },
+          { s: 7, v: 107 }, { s: 7, v: 108 }, { s: 7, v: 109 }, { s: 7, v: 110 },
+          { s: 7, v: 111 }, { s: 7, v: 112 }, { s: 7, v: 113 }, { s: 7, v: 114 },
+          { s: 7, v: 115 }, { s: 7, v: 116 }, { s: 7, v: 117 }, { s: 7, v: 118 },
+          { s: 7, v: 119 }, { s: 7, v: 120 }, { s: 7, v: 121 }, { s: 7, v: 122 },
+          { s: 7, v: 123 }, { s: 7, v: 124 }, { s: 7, v: 125 },
+        ],
+      },
     ],
   },
   {
     id: 'Jesus et les apôtres (hawariyyun)',
-    title: "Les Ḥawariyyūn — Les disciples d'Isa se proclament Muslims",
+    title: "Les Ḥawariyyūn — Les disciples de Jesus ('Issa Ibn Maryam) se proclament Muslims",
     groups: [
       {
         main: [{ s: 3, v: 52 }],
@@ -152,17 +173,19 @@ const SECTIONS: Section[] = [
   },
   {
     id: 'saba',
-    title: 'La Reine de Saba — De la grandeur royale à la soumission à Allah',
+    title: 'Sulayman et la Reine de Saba — Deux soumissions, un seul Islam',
     groups: [
+      {
+        main: [{ s: 27, v: 42 }],
+        contextBefore: [
+          { s: 27, v: 38 }, { s: 27, v: 39 }, { s: 27, v: 40 }, { s: 27, v: 41 },
+        ],
+      },
       {
         main: [{ s: 27, v: 44 }],
         contextBefore: [
-          { s: 27, v: 29 },
-          { s: 27, v: 30 },
-          { s: 27, v: 31 },
-          { s: 27, v: 32 },
-          { s: 27, v: 42 },
-          { s: 27, v: 43 },
+          { s: 27, v: 29 }, { s: 27, v: 30 }, { s: 27, v: 31 },
+          { s: 27, v: 32 }, { s: 27, v: 43 },
         ],
       },
     ],
@@ -186,6 +209,40 @@ const SECTIONS: Section[] = [
         contextBefore: [{ s: 4, v: 64 }],
         contextAfter: [{ s: 4, v: 66 }, { s: 4, v: 67 }, { s: 4, v: 68 }, { s: 4, v: 69 }, { s: 4, v: 70 }],
       },
+      {
+        main: [{ s: 6, v: 14 }],
+        contextBefore: [{ s: 6, v: 12 }, { s: 6, v: 13 }],
+        contextAfter: [
+          { s: 6, v: 15 }, { s: 6, v: 16 }, { s: 6, v: 17 }, { s: 6, v: 18 },
+          { s: 6, v: 19 }, { s: 6, v: 20 }, { s: 6, v: 21 },
+        ],
+      },
+      {
+        main: [{ s: 27, v: 81 }],
+        contextBefore: [
+          { s: 27, v: 76 }, { s: 27, v: 77 }, { s: 27, v: 78 },
+          { s: 27, v: 79 }, { s: 27, v: 80 },
+        ],
+        contextAfter: [{ s: 27, v: 82 }],
+      },
+      {
+        main: [{ s: 22, v: 54 }],
+        contextBefore: [
+          { s: 22, v: 49 }, { s: 22, v: 50 }, { s: 22, v: 51 },
+          { s: 22, v: 52 }, { s: 22, v: 53 },
+        ],
+        contextAfter: [{ s: 22, v: 55 }, { s: 22, v: 56 }, { s: 22, v: 57 }],
+      },
+      {
+        main: [{ s: 21, v: 108 }],
+        contextBefore: [{ s: 21, v: 105 }, { s: 21, v: 106 }, { s: 21, v: 107 }],
+        contextAfter: [{ s: 21, v: 109 }, { s: 21, v: 110 }, { s: 21, v: 111 }, { s: 21, v: 112 }],
+      },
+      {
+        main: [{ s: 11, v: 14 }],
+        contextBefore: [{ s: 11, v: 12 }, { s: 11, v: 13 }],
+        contextAfter: [{ s: 11, v: 15 }, { s: 11, v: 16 }, { s: 11, v: 17 }],
+      },
     ],
   },
   {
@@ -194,7 +251,16 @@ const SECTIONS: Section[] = [
     groups: [
       { main: [{ s: 42, v: 13 }] },
       { main: [{ s: 2, v: 136 }] },
-      { main: [{ s: 29, v: 46 }] },
+      {
+        main: [{ s: 29, v: 46 }],
+        contextBefore: [{ s: 29, v: 45 }],
+        contextAfter: [{ s: 29, v: 47 }, { s: 29, v: 48 }, { s: 29, v: 49 }],
+      },
+      {
+        main: [{ s: 28, v: 53 }],
+        contextBefore: [{ s: 28, v: 51 }, { s: 28, v: 52 }],
+        contextAfter: [{ s: 28, v: 54 }, { s: 28, v: 55 }, { s: 28, v: 56 }],
+      },
     ],
   },
   {
@@ -224,6 +290,34 @@ const SECTIONS: Section[] = [
         main: [{ s: 41, v: 33 }],
         contextBefore: [{ s: 41, v: 30 }, { s: 41, v: 31 }, { s: 41, v: 32 }],
         contextAfter: [{ s: 41, v: 34 }, { s: 41, v: 35 }, { s: 41, v: 36 }],
+      },
+      {
+        main: [{ s: 16, v: 81 }],
+        contextBefore: [{ s: 16, v: 78 }, { s: 16, v: 79 }, { s: 16, v: 80 }],
+        contextAfter: [{ s: 16, v: 82 }, { s: 16, v: 83 }],
+      },
+      {
+        main: [{ s: 16, v: 87 }],
+        contextBefore: [{ s: 16, v: 84 }, { s: 16, v: 85 }, { s: 16, v: 86 }],
+        contextAfter: [{ s: 16, v: 88 }, { s: 16, v: 89 }, { s: 16, v: 90 }, { s: 16, v: 91 }],
+      },
+      {
+        main: [{ s: 15, v: 2 }],
+        contextBefore: [{ s: 15, v: 1 }],
+        contextAfter: [{ s: 15, v: 3 }],
+      },
+      {
+        main: [{ s: 33, v: 31 }],
+        contextBefore: [{ s: 33, v: 28 }, { s: 33, v: 29 }, { s: 33, v: 30 }],
+      },
+      {
+        main: [{ s: 30, v: 53 }],
+        contextBefore: [{ s: 30, v: 52 }],
+      },
+      {
+        main: [{ s: 39, v: 54 }],
+        contextBefore: [{ s: 39, v: 52 }, { s: 39, v: 53 }],
+        contextAfter: [{ s: 39, v: 55 }],
       },
     ],
   },
