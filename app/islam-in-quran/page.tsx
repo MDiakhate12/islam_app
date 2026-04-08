@@ -67,6 +67,8 @@ const SECTIONS: Section[] = [
           { s: 3, v: 89 }, { s: 3, v: 90 }, { s: 3, v: 91 }, { s: 3, v: 92 },
         ],
       },
+      { main: [{ s: 5, v: 3 }] },
+      { main: [{ s: 22, v: 34 }] },
     ],
   },
   {
@@ -79,13 +81,14 @@ const SECTIONS: Section[] = [
           { s: 2, v: 132 },
         ],
         contextBefore: [{ s: 2, v: 128 }, { s: 2, v: 129 }, { s: 2, v: 130 }],
-        contextAfter: [{ s: 2, v: 133 }],
+        contextAfter: [{ s: 2, v: 133 }, { s: 2, v: 134 }],
       },
       {
         main: [{ s: 3, v: 67 }],
         contextBefore: [{ s: 3, v: 64 }, { s: 3, v: 65 }, { s: 3, v: 66 }],
         contextAfter: [{ s: 3, v: 68 }],
       },
+      { main: [{ s: 4, v: 125 }] },
     ],
   },
   {
@@ -129,6 +132,8 @@ const SECTIONS: Section[] = [
         contextBefore: [{ s: 10, v: 83 }],
         contextAfter: [{ s: 10, v: 85 }, { s: 10, v: 86 }],
       },
+      { main: [{ s: 5, v: 44 }] },
+      { main: [{ s: 7, v: 126 }] },
     ],
   },
   {
@@ -139,6 +144,7 @@ const SECTIONS: Section[] = [
         main: [{ s: 3, v: 52 }],
         contextAfter: [{ s: 3, v: 53 }],
       },
+      { main: [{ s: 5, v: 111 }] },
     ],
   },
   {
@@ -179,6 +185,28 @@ const SECTIONS: Section[] = [
     groups: [
       { main: [{ s: 42, v: 13 }] },
       { main: [{ s: 2, v: 136 }] },
+      { main: [{ s: 29, v: 46 }] },
+    ],
+  },
+  {
+    id: 'soumission-voie',
+    title: 'La soumission — voie universelle vers le salut',
+    groups: [
+      {
+        main: [{ s: 2, v: 112 }],
+        contextBefore: [{ s: 2, v: 109 }, { s: 2, v: 110 }, { s: 2, v: 111 }],
+        contextAfter: [{ s: 2, v: 113 }],
+      },
+      {
+        main: [{ s: 31, v: 22 }],
+        contextBefore: [{ s: 31, v: 21 }],
+        contextAfter: [{ s: 31, v: 23 }, { s: 31, v: 24 }, { s: 31, v: 25 }, { s: 31, v: 26 }],
+      },
+      {
+        main: [{ s: 41, v: 33 }],
+        contextBefore: [{ s: 41, v: 30 }, { s: 41, v: 31 }, { s: 41, v: 32 }],
+        contextAfter: [{ s: 41, v: 34 }, { s: 41, v: 35 }, { s: 41, v: 36 }],
+      },
     ],
   },
 ]
