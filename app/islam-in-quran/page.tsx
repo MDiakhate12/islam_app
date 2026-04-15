@@ -751,6 +751,21 @@ export default async function IslamPage() {
                 {s.title.split('—')[0].trim()}
               </a>
             ))}
+            <a
+              href="/amour-allah"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(232,80,122,0.35)',
+                color: '#E8507A',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ♥ L&apos;Amour d&apos;Allah →
+            </a>
           </div>
         </header>
 
