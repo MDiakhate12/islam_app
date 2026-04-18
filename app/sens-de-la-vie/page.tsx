@@ -90,9 +90,8 @@ const SECTIONS: Section[] = [
         contextAfter: [{ s: 53, v: 32 }],
       },
       {
-        main: [{ s: 45, v: 22 }],
-        contextBefore: [{ s: 45, v: 21 }],
-        contextAfter: [{ s: 45, v: 23 }],
+        main: [{ s: 45, v: 21 }, { s: 45, v: 22 }],
+        contextBefore: [{ s: 45, v: 23 }],
       },
     ],
   },
@@ -107,6 +106,20 @@ const SECTIONS: Section[] = [
     ],
   },
   {
+    id: 'signes-creation-yunus',
+    title: "Les signes dans la création — pour les gens qui savent et qui craignent",
+    groups: [
+      {
+        main: [{ s: 10, v: 3 }, { s: 10, v: 4 }],
+        contextBefore: [{ s: 10, v: 2 }, { s: 10, v: 5 }, { s: 10, v: 6 }],
+      },
+      {
+        main: [{ s: 10, v: 6 }, { s: 10, v: 7 }, { s: 10, v: 8 }, { s: 10, v: 9 }, { s: 10, v: 10 }],
+        contextBefore: [{ s: 10, v: 5 }, { s: 10, v: 11 }],
+      },
+    ],
+  },
+  {
     id: 'creation-pas-vaine',
     title: "La création n'est pas vaine — مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بَٰطِلٗا",
     groups: [
@@ -115,9 +128,28 @@ const SECTIONS: Section[] = [
         contextAfter: [{ s: 3, v: 192 }, { s: 3, v: 193 }, { s: 3, v: 194 }],
       },
       {
-        main: [{ s: 38, v: 27 }],
+        main: [{ s: 38, v: 27 }, { s: 38, v: 28 }],
         contextBefore: [{ s: 38, v: 26 }],
-        contextAfter: [{ s: 38, v: 28 }],
+      },
+      {
+        main: [{ s: 44, v: 38 }, { s: 44, v: 39 }],
+        contextAfter: [{ s: 44, v: 40 }, { s: 44, v: 41 }, { s: 44, v: 42 }],
+      },
+      {
+        main: [{ s: 46, v: 3 }],
+        contextBefore: [{ s: 46, v: 1 }, { s: 46, v: 2 }],
+        contextAfter: [{ s: 46, v: 4 }, { s: 46, v: 5 }, { s: 46, v: 6 }],
+      },
+    ],
+  },
+  {
+    id: 'crees-de-rien',
+    title: "Ni créés de rien, ni créateurs eux-mêmes — أَمۡ خُلِقُواْ مِنۡ غَيۡرِ شَيۡءٍ",
+    groups: [
+      {
+        main: [{ s: 52, v: 35 }, { s: 52, v: 36 }],
+        contextBefore: [{ s: 52, v: 33 }, { s: 52, v: 34 }],
+        contextAfter: [{ s: 52, v: 37 }],
       },
     ],
   },
