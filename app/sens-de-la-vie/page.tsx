@@ -487,6 +487,20 @@ export default async function SensDelaViePage() {
             >
               ♥ L&apos;Amour d&apos;Allah
             </a>
+            <a
+              href="/isa-ibn-maryam"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(96,165,250,0.35)',
+                color: '#60A5FA',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ✶ Isa ibn Maryam →
+            </a>
           </div>
 
           <p
