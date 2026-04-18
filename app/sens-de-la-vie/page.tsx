@@ -50,9 +50,58 @@ interface Section {
 /* ─── Curated sections ───────────────────────────────────────────────── */
 
 const SECTIONS: Section[] = [
+
+    /* ── Bloc III : La création n'est pas vaine ─────────────────────────── */
+
+    {
+      id: 'creation-pas-vaine',
+      title: "La création n'est pas vaine — مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بَٰطِلٗا",
+      groups: [
+        {
+          main: [{ s: 3, v: 190 }, { s: 3, v: 191 }],
+          contextAfter: [{ s: 3, v: 192 }, { s: 3, v: 193 }, { s: 3, v: 194 }],
+        },
+        {
+          main: [{ s: 44, v: 38 }, { s: 44, v: 39 }],
+          contextAfter: [{ s: 44, v: 40 }, { s: 44, v: 41 }, { s: 44, v: 42 }],
+        },
+        {
+          main: [{ s: 38, v: 27 }],
+        },
+        {
+          main: [{ s: 46, v: 3 }],
+          contextBefore: [{ s: 46, v: 1 }, { s: 46, v: 2 }],
+          contextAfter: [{ s: 46, v: 4 }, { s: 46, v: 5 }, { s: 46, v: 6 }],
+        },
+      ],
+    },
+    {
+      id: 'crees-de-rien',
+      title: "Ni créés de rien, ni créateurs eux-mêmes — أَمۡ خُلِقُواْ مِنۡ غَيۡرِ شَيۡءٍ",
+      groups: [
+        {
+          main: [{ s: 52, v: 35 }, { s: 52, v: 36 }],
+          contextBefore: [{ s: 52, v: 33 }, { s: 52, v: 34 }],
+          contextAfter: [{ s: 52, v: 37 }],
+        },
+      ],
+    },
+
+    {
+      id: 'signes-creation-yunus',
+      title: "Les signes dans la création — pour les gens qui savent et qui craignent",
+      groups: [
+        {
+          main: [{ s: 10, v: 5 }, { s: 10, v: 6 }, { s: 10, v: 7 }, { s: 10, v: 8 }, { s: 10, v: 9 }],
+          contextBefore: [{ s: 10, v: 3 }, { s: 10, v: 4 }],
+        },
+      ],
+    },  
+  /* ── Bloc II : La finalité de la création ───────────────────────────── */
+
   {
     id: 'finalite-creation',
-    title: "La finalité suprême — Je n'ai créé que pour qu'ils M'adorent",
+    title: "La finalité suprême — Pour que nous l'adorons",
     groups: [
       {
         main: [{ s: 51, v: 56 }],
@@ -61,8 +110,31 @@ const SECTIONS: Section[] = [
     ],
   },
   {
+    id: 'misericorde',
+    title: "C'est pour Sa miséricorde qu'Il les a créés — Pour nous faire miséricorde",
+    groups: [
+      {
+        main: [{ s: 11, v: 119 }],
+        contextBefore: [{ s: 11, v: 118 }],
+      },
+    ],
+  },
+  {
+    id: 'connaitre-puissance',
+    title: "Pour qu'on connaisse Allah — Pour que vous sachiez qu'Allah est Omnipotent et Omniscient",
+    groups: [
+      {
+        main: [{ s: 65, v: 12 }],
+        contextBefore: [{ s: 65, v: 11 }],
+      },
+    ],
+  },
+
+  /* ── Bloc IV : La vie comme épreuve ─────────────────────────────────── */
+
+  {
     id: 'vie-mort-epreuve',
-    title: "La mort et la vie — une épreuve pour révéler le meilleur en nous",
+    title: "La mort et la vie — Pour révéler le meilleur parmi nous",
     groups: [
       {
         main: [{ s: 67, v: 1 }, { s: 67, v: 2 }],
@@ -72,7 +144,7 @@ const SECTIONS: Section[] = [
   },
   {
     id: 'homme-epreuve',
-    title: "L'homme créé pour être éprouvé et guidé",
+    title: "Pour être éprouvé et guidé — L'homme créé pour être éprouvé et guidé",
     groups: [
       {
         main: [{ s: 76, v: 2 }, { s: 76, v: 3 }],
@@ -80,125 +152,45 @@ const SECTIONS: Section[] = [
       },
     ],
   },
+  /* ── Bloc V : La rétribution et la justice divine ───────────────────── */
+
   {
     id: 'retribuer-actes',
-    title: "Pour rétribuer chaque âme selon ses actes",
+    title: "Pour rétribuer chaque âme selon ses actes — Le bien et le mal ne sont pas égaux",
     groups: [
       {
-        main: [{ s: 53, v: 31 }],
-        contextBefore: [{ s: 53, v: 29 }, { s: 53, v: 30 }],
-        contextAfter: [{ s: 53, v: 32 }],
+        main: [{ s: 75, v: 36 }],
+        contextAfter: [{ s: 75, v: 37 }, { s: 75, v: 38 }, { s: 75, v: 39 }, { s: 75, v: 40 }],
+      },
+      {
+        main: [{ s: 68, v: 35 }, { s: 68, v: 36 }],
+        contextBefore: [{ s: 68, v: 33 }, { s: 68, v: 34 }],
       },
       {
         main: [{ s: 45, v: 21 }, { s: 45, v: 22 }],
-        contextBefore: [{ s: 45, v: 23 }],
-      },
-    ],
-  },
-  {
-    id: 'connaitre-puissance',
-    title: "Pour que vous sachiez qu'Allah est Omnipotent et Omniscient",
-    groups: [
-      {
-        main: [{ s: 65, v: 12 }],
-        contextBefore: [{ s: 65, v: 11 }],
-      },
-    ],
-  },
-  {
-    id: 'signes-creation-yunus',
-    title: "Les signes dans la création — pour les gens qui savent et qui craignent",
-    groups: [
-      {
-        main: [{ s: 10, v: 3 }, { s: 10, v: 4 }],
-        contextBefore: [{ s: 10, v: 2 }, { s: 10, v: 5 }, { s: 10, v: 6 }],
-      },
-      {
-        main: [{ s: 10, v: 6 }, { s: 10, v: 7 }, { s: 10, v: 8 }, { s: 10, v: 9 }, { s: 10, v: 10 }],
-        contextBefore: [{ s: 10, v: 5 }, { s: 10, v: 11 }],
-      },
-    ],
-  },
-  {
-    id: 'creation-pas-vaine',
-    title: "La création n'est pas vaine — مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بَٰطِلٗا",
-    groups: [
-      {
-        main: [{ s: 3, v: 190 }, { s: 3, v: 191 }],
-        contextAfter: [{ s: 3, v: 192 }, { s: 3, v: 193 }, { s: 3, v: 194 }],
+        contextBefore: [{ s: 45, v: 20 }],
+        contextAfter: [{ s: 45, v: 24 }],
       },
       {
         main: [{ s: 38, v: 27 }, { s: 38, v: 28 }],
         contextBefore: [{ s: 38, v: 26 }],
       },
       {
-        main: [{ s: 44, v: 38 }, { s: 44, v: 39 }],
-        contextAfter: [{ s: 44, v: 40 }, { s: 44, v: 41 }, { s: 44, v: 42 }],
+        main: [{ s: 40, v: 58 }],
+        contextBefore: [{ s: 40, v: 57 }],
+        contextAfter: [{ s: 40, v: 59 }],
       },
       {
-        main: [{ s: 46, v: 3 }],
-        contextBefore: [{ s: 46, v: 1 }, { s: 46, v: 2 }],
-        contextAfter: [{ s: 46, v: 4 }, { s: 46, v: 5 }, { s: 46, v: 6 }],
+        main: [{ s: 53, v: 31 }],
+        contextBefore: [{ s: 53, v: 29 }, { s: 53, v: 30 }],
+        contextAfter: [{ s: 53, v: 32 }],
       },
-    ],
-  },
-  {
-    id: 'crees-de-rien',
-    title: "Ni créés de rien, ni créateurs eux-mêmes — أَمۡ خُلِقُواْ مِنۡ غَيۡرِ شَيۡءٍ",
-    groups: [
       {
-        main: [{ s: 52, v: 35 }, { s: 52, v: 36 }],
-        contextBefore: [{ s: 52, v: 33 }, { s: 52, v: 34 }],
-        contextAfter: [{ s: 52, v: 37 }],
+        main: [{ s: 99, v: 7 }, { s: 99, v: 8 }],
+        contextBefore: [{ s: 99, v: 6 }],
       },
     ],
-  },
-  {
-    id: 'khalifah',
-    title: "L'homme — Son vicaire sur terre",
-    groups: [
-      {
-        main: [{ s: 2, v: 30 }],
-        contextAfter: [{ s: 2, v: 31 }, { s: 2, v: 32 }, { s: 2, v: 33 }],
-      },
-    ],
-  },
-  {
-    id: 'creation-homme',
-    title: "La création de l'homme — argile, descendance et souffle divin",
-    groups: [
-      {
-        main: [{ s: 32, v: 7 }, { s: 32, v: 8 }, { s: 32, v: 9 }],
-        contextBefore: [{ s: 32, v: 6 }],
-        contextAfter: [{ s: 32, v: 10 }],
-      },
-    ],
-  },
-  {
-    id: 'misericorde',
-    title: "C'est pour Sa miséricorde qu'Il les a créés — وَلِذَٰلِكَ خَلَقَهُمۡ",
-    groups: [
-      {
-        main: [{ s: 11, v: 119 }],
-        contextBefore: [{ s: 11, v: 118 }],
-      },
-    ],
-  },
-  {
-    id: 'rahman-creation',
-    title: "Le Tout-Miséricordieux — Il a créé l'homme et lui a enseigné l'expression",
-    groups: [
-      {
-        main: [{ s: 55, v: 3 }, { s: 55, v: 4 }],
-        contextBefore: [{ s: 55, v: 1 }, { s: 55, v: 2 }],
-        contextAfter: [
-          { s: 55, v: 5 }, { s: 55, v: 6 }, { s: 55, v: 7 },
-          { s: 55, v: 8 }, { s: 55, v: 9 }, { s: 55, v: 10 },
-          { s: 55, v: 11 }, { s: 55, v: 12 }, { s: 55, v: 13 },
-        ],
-      },
-    ],
-  },
+  }
 ]
 
 /* ─── Data ───────────────────────────────────────────────────────────── */

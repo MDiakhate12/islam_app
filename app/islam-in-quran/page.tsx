@@ -357,6 +357,21 @@ const SECTIONS: Section[] = [
       },
     ],
   },
+  {
+    id: 'conclusion-prophetes',
+    title: "Suis leur direction — Tous ces prophètes se sont soumis, leurs œuvres eussent été vaines autrement",
+    groups: [
+      {
+        main: [
+          { s: 6, v: 82 }, { s: 6, v: 83 },
+          { s: 6, v: 84 }, { s: 6, v: 85 }, { s: 6, v: 86 }, { s: 6, v: 87 }, 
+          { s: 6, v: 88 }, { s: 6, v: 89 }, { s: 6, v: 90 }],
+        contextBefore: [
+          
+        ],
+      },
+    ],
+  },
 ]
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
