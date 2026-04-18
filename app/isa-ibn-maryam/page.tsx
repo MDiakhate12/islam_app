@@ -109,6 +109,10 @@ const SECTIONS: Section[] = [
       {
         main: [{ s: 5, v: 110 }],
       },
+      {
+        main: [{ s: 2, v: 87 }],
+        contextAfter: [{ s: 2, v: 88 }],
+      },
     ],
   },
   {
@@ -130,6 +134,20 @@ const SECTIONS: Section[] = [
         main: [{ s: 61, v: 6 }],
         contextBefore: [{ s: 61, v: 5 }],
         contextAfter: [{ s: 61, v: 7 }, { s: 61, v: 8 }],
+      },
+    ],
+  },
+  {
+    id: 'pacte-prophetes',
+    title: "Le pacte des prophètes — la même religion prescrite à tous",
+    groups: [
+      {
+        main: [{ s: 33, v: 7 }],
+        contextAfter: [{ s: 33, v: 8 }],
+      },
+      {
+        main: [{ s: 42, v: 13 }],
+        contextAfter: [{ s: 42, v: 14 }],
       },
     ],
   },
@@ -184,11 +202,47 @@ const SECTIONS: Section[] = [
   },
   {
     id: 'trinite-rejetee',
-    title: "La Trinité rejetée — Allah n'est pas le troisième d'une trinité",
+    title: "La Trinité et la filiation rejetées — Allah n'est pas le troisième d'une trinité",
     groups: [
+      {
+        main: [{ s: 5, v: 17 }],
+        contextAfter: [{ s: 5, v: 18 }],
+      },
       {
         main: [{ s: 5, v: 72 }, { s: 5, v: 73 }],
         contextAfter: [{ s: 5, v: 74 }, { s: 5, v: 75 }],
+      },
+      {
+        main: [{ s: 9, v: 30 }, { s: 9, v: 31 }],
+        contextAfter: [{ s: 9, v: 32 }],
+      },
+      {
+        main: [{ s: 5, v: 77 }],
+        contextBefore: [{ s: 5, v: 76 }],
+        contextAfter: [{ s: 5, v: 78 }, { s: 5, v: 79 }],
+      },
+    ],
+  },
+  {
+    id: 'cieux-eclatent',
+    title: "Les cieux sur le point d'éclater — Ils prêtent un fils au Tout-Miséricordieux",
+    groups: [
+      {
+        main: [{ s: 19, v: 88 }, { s: 19, v: 89 }, { s: 19, v: 90 }, { s: 19, v: 91 }, { s: 19, v: 92 }, { s: 19, v: 93 }],
+        contextAfter: [{ s: 19, v: 94 }, { s: 19, v: 95 }],
+      },
+    ],
+  },
+  {
+    id: 'allah-pas-engendre',
+    title: "Allah n'a pas engendré — Il n'a pas de fils, pas de compagne",
+    groups: [
+      {
+        main: [{ s: 112, v: 1 }, { s: 112, v: 2 }, { s: 112, v: 3 }, { s: 112, v: 4 }],
+      },
+      {
+        main: [{ s: 6, v: 101 }],
+        contextAfter: [{ s: 6, v: 102 }, { s: 6, v: 103 }],
       },
     ],
   },
@@ -205,6 +259,7 @@ const SECTIONS: Section[] = [
       },
       {
         main: [{ s: 3, v: 55 }],
+        contextBefore: [{ s: 3, v: 54 }],
         contextAfter: [{ s: 3, v: 56 }, { s: 3, v: 57 }],
       },
     ],
@@ -220,7 +275,25 @@ const SECTIONS: Section[] = [
     ],
   },
 
-  /* ── Bloc V : Le Jour du Jugement ────────────────────────────────────── */
+  /* ── Bloc V : La déviation de ses suiveurs ──────────────────────────── */
+
+  {
+    id: 'deviation-suiveurs',
+    title: "La déviation de ses suiveurs — ils ont oublié et inventé",
+    groups: [
+      {
+        main: [{ s: 5, v: 14 }],
+        contextBefore: [{ s: 5, v: 13 }],
+        contextAfter: [{ s: 5, v: 15 }, { s: 5, v: 16 }],
+      },
+      {
+        main: [{ s: 57, v: 27 }],
+        contextBefore: [{ s: 57, v: 26 }],
+      },
+    ],
+  },
+
+  /* ── Bloc VI : Le Jour du Jugement ───────────────────────────────────── */
 
   {
     id: 'jugement',
