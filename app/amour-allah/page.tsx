@@ -586,7 +586,7 @@ export default async function AmourAllahPage() {
           />
 
           {/* Lien retour */}
-          <div style={{ marginBottom: '2rem' }}>
+          <div style={{ marginBottom: '2rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a
               href="/islam-in-quran"
               style={{
@@ -601,6 +601,21 @@ export default async function AmourAllahPage() {
               className="nav-link"
             >
               ← L&apos;Islam, religion de tous les Prophètes
+            </a>
+            <a
+              href="/sens-de-la-vie"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(16,185,129,0.35)',
+                color: '#10B981',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ✦ Le sens de la vie →
             </a>
           </div>
 

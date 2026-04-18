@@ -766,6 +766,21 @@ export default async function IslamPage() {
             >
               ♥ L&apos;Amour d&apos;Allah →
             </a>
+            <a
+              href="/sens-de-la-vie"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(16,185,129,0.35)',
+                color: '#10B981',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ✦ Le sens de la vie →
+            </a>
           </div>
         </header>
 
