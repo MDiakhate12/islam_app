@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خَيْرُكُمْ — Les Meilleurs d'entre Vous</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --parchment: #f8f3e8;
+      --parchment-dark: #ede5d0;
+      --gold: #c8973a;
+      --gold-light: #e8b96a;
+      --gold-pale: #f5e8ca;
+      --teal: #2a5c5a;
+      --teal-light: #3d7a77;
+      --red: #8b2a1a;
+      --border: #c8b896;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--parchment); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; min-height: 100vh; }
+
+    /* HERO */
+    .hero { background: var(--teal); color: var(--parchment); text-align: center; padding: 70px 20px 60px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(200,151,58,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(200,151,58,0.10) 0%, transparent 60%); pointer-events: none; }
+    .hero-bismillah { font-family: 'Amiri', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--gold-light); letter-spacing: 0.04em; margin-bottom: 28px; opacity: 0.9; }
+    .hero-title-ar { font-family: 'Amiri', serif; font-size: clamp(3rem, 8vw, 6rem); color: #fff; line-height: 1.2; margin-bottom: 12px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .hero-title-fr { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 3vw, 1.6rem); color: var(--gold-light); font-style: italic; font-weight: 300; letter-spacing: 0.06em; margin-bottom: 30px; }
+    .hero-desc { font-size: clamp(0.95rem, 2vw, 1.1rem); color: rgba(248,243,232,0.75); max-width: 580px; margin: 0 auto 36px; font-weight: 300; line-height: 1.6; }
+    .hero-ornament { color: var(--gold); font-size: 2rem; letter-spacing: 0.3em; opacity: 0.6; }
+    .hero-count { margin-top: 16px; font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(248,243,232,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* NAV */
+    .nav-wrap { position: sticky; top: 0; z-index: 100; background: var(--teal); border-bottom: 2px solid var(--gold); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-inner { display: flex; align-items: center; gap: 0; min-width: max-content; padding: 0 12px; }
+    .nav-btn { padding: 9px 11px; font-family: 'Lato', sans-serif; font-size: 0.73rem; font-weight: 400; letter-spacing: 0.04em; color: rgba(248,243,232,0.7); background: none; border: none; cursor: pointer; white-space: nowrap; transition: color 0.2s, background 0.2s; border-bottom: 3px solid transparent; text-transform: uppercase; }
+    .nav-btn:hover, .nav-btn.active { color: var(--gold-light); border-bottom-color: var(--gold); background: rgba(255,255,255,0.05); }
+    .nav-label { font-family: 'Lato', sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); padding: 9px 14px 9px 12px; white-space: nowrap; border-right: 1px solid rgba(200,151,58,0.3); margin-right: 4px; flex-shrink: 0; }
+
+    /* LAYOUT */
+    .main-layout { display: grid; grid-template-columns: 240px 1fr; max-width: 1280px; margin: 0 auto; min-height: calc(100vh - 200px); }
+
+    /* SIDEBAR */
+    .sidebar { background: var(--parchment-dark); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 44px; height: calc(100vh - 44px); overflow-y: auto; }
+    .sidebar-title { font-family: 'Lato', sans-serif; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); padding: 0 16px 12px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+    .sidebar-item { display: block; padding: 8px 16px; font-size: 0.85rem; color: #4a3a20; cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; text-decoration: none; line-height: 1.3; }
+    .sidebar-item:hover { background: rgba(200,151,58,0.1); border-left-color: var(--gold-light); color: var(--teal); }
+    .sidebar-item.active { background: rgba(42,92,90,0.08); border-left-color: var(--teal); color: var(--teal); font-weight: 600; }
+    .sidebar-item .num { font-family: 'Lato', sans-serif; font-size: 0.7rem; color: var(--gold); margin-right: 5px; font-weight: 700; }
+    .sidebar-item .ar-mini { display: block; font-family: 'Amiri', serif; font-size: 0.82rem; color: #7a6040; margin-top: 1px; text-align: right; direction: rtl; }
+
+    /* CONTENT */
+    .content-area { padding: 0; }
+
+    /* HADITH SECTION */
+    .hadith-section { padding: 44px 48px; border-bottom: 1px solid var(--border); position: relative; }
+    .hadith-section:last-child { border-bottom: none; }
+    .hadith-section::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--gold), var(--teal)); opacity: 0; transition: opacity 0.3s; }
+    .hadith-section:hover::before { opacity: 1; }
+    .hadith-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
+    .hadith-title-row { display: flex; gap: 14px; align-items: flex-start; flex: 1; min-width: 0; }
+    .hadith-num-badge { background: var(--teal); color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(42,92,90,0.3); }
+    .hadith-meta { flex: 1; }
+    .hadith-topic { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--teal); margin-bottom: 3px; }
+    .hadith-narrator { font-size: 0.88rem; color: #7a6040; font-style: italic; }
+    .hadith-narrator span { font-style: normal; font-family: 'Amiri', serif; font-size: 0.98rem; color: var(--ink); }
+    .ref-badges { display: flex; flex-wrap: wrap; gap: 5px; align-items: flex-start; }
+    .ref-badge { padding: 3px 9px; background: var(--gold-pale); border: 1px solid var(--gold); border-radius: 20px; font-family: 'Lato', sans-serif; font-size: 0.7rem; color: #7a5020; white-space: nowrap; }
+    .ref-badge.sahih { background: #e8f0e8; border-color: #5a8a5a; color: #2a5a2a; }
+    .ref-badge.hasan { background: #e8eef5; border-color: #5a7a9a; color: #2a4a6a; }
+
+    /* ARABIC BLOCK */
+    .arabic-block { background: #fdfaf3; border: 1px solid var(--border); border-radius: 8px; padding: 24px 28px; margin: 20px 0; position: relative; box-shadow: inset 0 1px 3px rgba(0,0,0,0.04); }
+    .arabic-block::before { content: '❝'; position: absolute; top: -12px; right: 20px; font-size: 2rem; color: var(--gold); background: linear-gradient(180deg, #f8f3e8, transparent); padding: 0 6px; line-height: 1; }
+    .isnad-text { font-family: 'Amiri', serif; font-size: 1.05rem; color: #7a6040; direction: rtl; text-align: right; line-height: 2; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed var(--border); }
+    .matn-text { font-family: 'Amiri', serif; font-size: 1.4rem; color: var(--ink); direction: rtl; text-align: right; line-height: 2.1; }
+    .matn-highlight { color: var(--teal); font-weight: 700; font-size: 1.5rem; }
+    .isnad-label, .matn-label { font-family: 'Lato', sans-serif; font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 7px; display: block; }
+
+    /* TRANSLATION */
+    .translation-block { background: var(--parchment-dark); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 16px 22px; margin: 18px 0; font-size: 1.05rem; font-style: italic; color: #3a2a10; line-height: 1.8; }
+    .translation-block .highlight-fr { font-weight: 600; font-style: normal; color: var(--teal); }
+
+    /* ISNAD CHAIN */
+    .isnad-chain { margin: 18px 0; }
+    .isnad-chain-title { font-family: 'Lato', sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 10px; }
+    .chain-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; direction: rtl; }
+    .chain-person { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 4px 9px; font-family: 'Amiri', serif; font-size: 0.9rem; color: var(--ink); white-space: nowrap; }
+    .chain-person.prophet { background: var(--teal); color: var(--gold-light); border-color: var(--teal); font-weight: 700; }
+    .chain-person.sahabi { background: var(--gold-pale); border-color: var(--gold); color: #5a3a10; }
+    .chain-arrow { color: var(--border); font-size: 0.85rem; }
+
+    /* GRADE */
+    .grade-row { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-family: 'Lato', sans-serif; font-size: 0.78rem; flex-wrap: wrap; }
+    .grade-label { color: #7a6040; }
+    .grade-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .grade-dot.sahih { background: #4a8a4a; }
+    .grade-dot.hasan { background: #4a6a9a; }
+    .grade-text.sahih { color: #2a6a2a; font-weight: 700; }
+    .grade-text.hasan { color: #2a4a8a; font-weight: 700; }
+    .source-link { margin-left: auto; font-size: 0.74rem; color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--teal-light); transition: color 0.2s; }
+    .source-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* DIVIDER */
+    .section-divider { text-align: center; margin: 2px 0 0; color: var(--border); font-size: 1.1rem; letter-spacing: 0.5em; }
+
+    /* FOOTER */
+    .footer { background: var(--teal); color: rgba(248,243,232,0.65); text-align: center; padding: 32px 20px; font-size: 0.88rem; font-family: 'Lato', sans-serif; font-weight: 300; }
+    .footer strong { color: var(--gold-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) { .main-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .hadith-section { padding: 30px 18px; } .arabic-block { padding: 18px; } }
+    @media (max-width: 600px) { .hadith-header { flex-direction: column; } .chain-flow { direction: ltr; } }
+
+    /* SCROLLBAR */
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: var(--parchment-dark); }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .nav-wrap::-webkit-scrollbar { height: 3px; }
+    .nav-wrap::-webkit-scrollbar-thumb { background: var(--gold); }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <h1 class="hero-title-ar">خَيْرُكُمْ</h1>
+  <p class="hero-title-fr">Les Meilleurs d'entre Vous</p>
+  <p class="hero-desc">Collection de hadiths authentiques dans lesquels le Prophète ﷺ a décrit les qualités des meilleurs de sa communauté — textes arabes vocalisés, chaînes de transmission (isnads) et traductions fidèles.</p>
+  <div class="hero-ornament">❧ ✦ ❧</div>
+  <p class="hero-count">28 hadiths · Sources : Bukhārī · Muslim · Tirmidhī · Ibn Mājah · Aḥmad</p>
+</header>
+
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <span class="nav-label">Aller à</span>
+    <button class="nav-btn active" onclick="goTo(1)">01·Caractère</button>
+    <button class="nav-btn" onclick="goTo(2)">02·Famille</button>
+    <button class="nav-btn" onclick="goTo(3)">03·Coran</button>
+    <button class="nav-btn" onclick="goTo(4)">04·Dettes</button>
+    <button class="nav-btn" onclick="goTo(5)">05·Bien espéré</button>
+    <button class="nav-btn" onclick="goTo(6)">06·Longévité</button>
+    <button class="nav-btn" onclick="goTo(7)">07·Utilité</button>
+    <button class="nav-btn" onclick="goTo(8)">08·Génération</button>
+    <button class="nav-btn" onclick="goTo(9)">09·Jihad</button>
+    <button class="nav-btn" onclick="goTo(10)">10·Dettes (détail)</button>
+    <button class="nav-btn" onclick="goTo(11)">11·Islam</button>
+    <button class="nav-btn" onclick="goTo(12)">12·Foi</button>
+    <button class="nav-btn" onclick="goTo(13)">13·Douceur</button>
+    <button class="nav-btn" onclick="goTo(14)">14·Voisins</button>
+    <button class="nav-btn" onclick="goTo(15)">15·Salut</button>
+    <button class="nav-btn" onclick="goTo(16)">16·Prière de nuit</button>
+    <button class="nav-btn" onclick="goTo(17)">17·Jihad (2)</button>
+    <button class="nav-btn" onclick="goTo(18)">18·Pudeur</button>
+    <button class="nav-btn" onclick="goTo(19)">19·Affranchissement</button>
+    <button class="nav-btn" onclick="goTo(20)">20·Richesse</button>
+    <button class="nav-btn" onclick="goTo(21)">21·Guidance</button>
+    <button class="nav-btn" onclick="goTo(22)">22·Dhikr</button>
+    <button class="nav-btn" onclick="goTo(23)">23·Charité</button>
+    <button class="nav-btn" onclick="goTo(24)">24·Témoins</button>
+    <button class="nav-btn" onclick="goTo(25)">25·Piété</button>
+    <button class="nav-btn" onclick="goTo(26)">26·Cœur pur</button>
+    <button class="nav-btn" onclick="goTo(27)">27·Constance</button>
+    <button class="nav-btn" onclick="goTo(28)">28·Véracité</button>
+  </div>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">Index des 28 Hadiths</div>
+    <a class="sidebar-item active" href="#h1"><span class="num">01</span>Le Meilleur par le Caractère<span class="ar-mini">أَحْسَنُكُمْ أَخْلَاقًا</span></a>
+    <a class="sidebar-item" href="#h2"><span class="num">02</span>Le Meilleur envers sa Famille<span class="ar-mini">خَيْرُكُمْ لِأَهْلِهِ</span></a>
+    <a class="sidebar-item" href="#h3"><span class="num">03</span>Le Meilleur par le Coran<span class="ar-mini">تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</span></a>
+    <a class="sidebar-item" href="#h4"><span class="num">04</span>Le Meilleur dans les Dettes<span class="ar-mini">أَحْسَنُكُمْ قَضَاءً</span></a>
+    <a class="sidebar-item" href="#h5"><span class="num">05</span>Celui dont on espère le bien<span class="ar-mini">يُرْجَى خَيْرُهُ</span></a>
+    <a class="sidebar-item" href="#h6"><span class="num">06</span>Longue vie et bonnes œuvres<span class="ar-mini">طَالَ عُمْرُهُ وَحَسُنَ عَمَلُهُ</span></a>
+    <a class="sidebar-item" href="#h7"><span class="num">07</span>Le Plus utile aux Autres<span class="ar-mini">أَنْفَعُهُمْ لِلنَّاسِ</span></a>
+    <a class="sidebar-item" href="#h8"><span class="num">08</span>La Meilleure Génération<span class="ar-mini">خَيْرُكُمْ قَرْنِي</span></a>
+    <a class="sidebar-item" href="#h9"><span class="num">09</span>Le Meilleur dans le Jihad<span class="ar-mini">ذِرْوَةُ سَنَامِهِ الْجِهَادُ</span></a>
+    <a class="sidebar-item" href="#h10"><span class="num">10</span>Les Dettes (version détaillée)<span class="ar-mini">لِصَاحِبِ الْحَقِّ مَقَالٌ</span></a>
+    <a class="sidebar-item" href="#h11"><span class="num">11</span>Le Meilleur Islam<span class="ar-mini">مَنْ سَلِمَ الْمُسْلِمُونَ</span></a>
+    <a class="sidebar-item" href="#h12"><span class="num">12</span>Le Plus Complet en Foi<span class="ar-mini">أَكْمَلُ الْمُؤْمِنِينَ</span></a>
+    <a class="sidebar-item" href="#h13"><span class="num">13</span>La Douceur<span class="ar-mini">الرِّفْقُ لَا يَكُونُ إِلَّا زَانَهُ</span></a>
+    <a class="sidebar-item" href="#h14"><span class="num">14</span>Le Meilleur Voisin<span class="ar-mini">خَيْرُهُمْ لِجَارِهِ</span></a>
+    <a class="sidebar-item" href="#h15"><span class="num">15</span>Répandre le Salut<span class="ar-mini">أَفْشُوا السَّلَامَ</span></a>
+    <a class="sidebar-item" href="#h16"><span class="num">16</span>La Prière de Nuit<span class="ar-mini">صَلَاةُ اللَّيْلِ</span></a>
+    <a class="sidebar-item" href="#h17"><span class="num">17</span>Le Meilleur (Jihad bis)<span class="ar-mini">مُؤْمِنٌ يُجَاهِدُ</span></a>
+    <a class="sidebar-item" href="#h18"><span class="num">18</span>La Pudeur<span class="ar-mini">الْحَيَاءُ لَا يَأْتِي إِلَّا بِخَيْرٍ</span></a>
+    <a class="sidebar-item" href="#h19"><span class="num">19</span>L'Acte le plus méritoire<span class="ar-mini">إِيمَانٌ بِاللَّهِ وَجِهَادٌ</span></a>
+    <a class="sidebar-item" href="#h20"><span class="num">20</span>La Meilleure Richesse<span class="ar-mini">خَيْرُ الْمَالِ</span></a>
+    <a class="sidebar-item" href="#h21"><span class="num">21</span>Le Meilleur dans la Guidance<span class="ar-mini">أَنْ يَهْدِيَ اللَّهُ بِكَ</span></a>
+    <a class="sidebar-item" href="#h22"><span class="num">22</span>Le Meilleur Dhikr<span class="ar-mini">أَفْضَلُ الذِّكْرِ</span></a>
+    <a class="sidebar-item" href="#h23"><span class="num">23</span>La Meilleure Charité<span class="ar-mini">أَفْضَلُ الصَّدَقَةِ</span></a>
+    <a class="sidebar-item" href="#h24"><span class="num">24</span>Le Meilleur Témoin<span class="ar-mini">خَيْرُ الشُّهَدَاءِ</span></a>
+    <a class="sidebar-item" href="#h25"><span class="num">25</span>Le Plus Pieux<span class="ar-mini">أَفْضَلُ النَّاسِ أَتْقَاهُمْ</span></a>
+    <a class="sidebar-item" href="#h26"><span class="num">26</span>Cœur pur et langue véridique<span class="ar-mini">الْقَلْبُ الْمَخْمُومُ</span></a>
+    <a class="sidebar-item" href="#h27"><span class="num">27</span>La Constance dans les œuvres<span class="ar-mini">أَدْوَمُهَا وَإِنْ قَلَّ</span></a>
+    <a class="sidebar-item" href="#h28"><span class="num">28</span>La Véracité<span class="ar-mini">الصِّدْقُ يَهْدِي إِلَى الْبِرِّ</span></a>
+  </aside>
+
+  <main class="content-area">
+
+    <!-- H1 -->
+    <section class="hadith-section" id="h1">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur par le Caractère</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 3559</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 2321</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Chaîne de transmission</span>
+        <div class="isnad-text">حَدَّثَنَا عَبْدَانُ، عَنْ أَبِي حَمْزَةَ، عَنِ الأَعْمَشِ، عَنْ أَبِي وَائِلٍ، عَنْ مَسْرُوقٍ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">لَمْ يَكُنِ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فَاحِشًا وَلَا مُتَفَحِّشًا، وَكَانَ يَقُولُ: <span class="matn-highlight">«إِنَّ مِنْ خِيَارِكُمْ أَحْسَنَكُمْ أَخْلَاقًا»</span></div>
+      </div>
+      <div class="translation-block">« Le Prophète ﷺ n'était ni grossier ni vulgaire, et il avait coutume de dire : <span class="highlight-fr">« Parmi les meilleurs d'entre vous, il y a ceux qui ont le plus beau caractère. »</span> »</div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">عَبْدُ اللَّهِ بْنُ عَمْرٍو</div><span class="chain-arrow">←</span>
+          <div class="chain-person">مَسْرُوق</div><span class="chain-arrow">←</span>
+          <div class="chain-person">أَبُو وَائِل</div><span class="chain-arrow">←</span>
+          <div class="chain-person">الأَعْمَش</div><span class="chain-arrow">←</span>
+          <div class="chain-person">أَبُو حَمْزَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">عَبْدَان</div><span class="chain-arrow">←</span>
+          <div class="chain-person">البُخَارِي</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:3559" target="_blank">↗ sunnah.com/bukhari:3559</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H2 -->
+    <section class="hadith-section" id="h2">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur envers sa Famille</div>
+            <div class="hadith-narrator">Rapporté par <span>عَائِشَةُ رَضِيَ اللَّهُ عَنْهَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Jāmiʿ at-Tirmidhī 3895</span>
+          <span class="ref-badge sahih">Sunan Ibn Mājah 1977</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Chaîne de transmission</span>
+        <div class="isnad-text">حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، قَالَ: حَدَّثَنَا مُحَمَّدُ بْنُ يُوسُفَ، قَالَ: حَدَّثَنَا سُفْيَانُ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ، وَأَنَا خَيْرُكُمْ لِأَهْلِي»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur d'entre vous est celui qui est le meilleur envers sa famille, et moi je suis le meilleur d'entre vous envers ma famille. »</span></div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">عَائِشَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">عُرْوَة بن الزُّبَيْر</div><span class="chain-arrow">←</span>
+          <div class="chain-person">هِشَام بن عُرْوَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">سُفْيَان الثَّوْرِي</div><span class="chain-arrow">←</span>
+          <div class="chain-person">مُحَمَّد بن يُوسُف</div><span class="chain-arrow">←</span>
+          <div class="chain-person">التِّرْمِذِي</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — selon at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:3895" target="_blank">↗ sunnah.com/tirmidhi:3895</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H3 -->
+    <section class="hadith-section" id="h3">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٣</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur par le Coran</div>
+            <div class="hadith-narrator">Rapporté par <span>عُثْمَانُ بْنُ عَفَّانَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 5027</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Chaîne de transmission</span>
+        <div class="isnad-text">حَدَّثَنَا حَجَّاجُ بْنُ مِنْهَالٍ، حَدَّثَنَا شُعْبَةُ، قَالَ: أَخْبَرَنِي عَلْقَمَةُ بْنُ مَرْثَدٍ، سَمِعْتُ سَعْدَ بْنَ عُبَيْدَةَ، عَنْ أَبِي عَبْدِ الرَّحْمَنِ السُّلَمِيِّ، عَنْ عُثْمَانَ رَضِيَ اللَّهُ عَنْهُ، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur d'entre vous est celui qui apprend le Coran et l'enseigne. »</span></div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">عُثْمَان بن عَفَّان</div><span class="chain-arrow">←</span>
+          <div class="chain-person">أَبُو عَبْد الرَّحْمَن السُّلَمِي</div><span class="chain-arrow">←</span>
+          <div class="chain-person">سَعْد بن عُبَيْدَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">عَلْقَمَة بن مَرْثَد</div><span class="chain-arrow">←</span>
+          <div class="chain-person">شُعْبَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">حَجَّاج بن مِنْهَال</div><span class="chain-arrow">←</span>
+          <div class="chain-person">البُخَارِي</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Bukhārī</span><a class="source-link" href="https://sunnah.com/bukhari:5027" target="_blank">↗ sunnah.com/bukhari:5027</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H4 -->
+    <section class="hadith-section" id="h4">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٤</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur dans le Paiement des Dettes</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 2305</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 1601</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«إِنَّ خِيَارَكُمْ أَحْسَنُكُمْ قَضَاءً»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Les meilleurs d'entre vous sont ceux qui s'acquittent le mieux de leurs dettes. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:2305" target="_blank">↗ sunnah.com/bukhari:2305</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H5 -->
+    <section class="hadith-section" id="h5">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٥</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Celui dont on Espère le Bien</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">Jāmiʿ at-Tirmidhī 2263</span><span class="ref-badge hasan">Ḥasan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُ النَّاسِ مَنْ يُرْجَى خَيْرُهُ وَيُؤْمَنُ شَرُّهُ، وَشَرُّ النَّاسِ مَنْ لَا يُرْجَى خَيْرُهُ وَلَا يُؤْمَنُ شَرُّهُ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur des gens est celui dont on espère le bien et dont on est à l'abri du mal. Et le pire des gens est celui dont on n'espère aucun bien et dont on ne se sent pas à l'abri du mal. »</span></div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan — at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:2263" target="_blank">↗ sunnah.com/tirmidhi:2263</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H6 -->
+    <section class="hadith-section" id="h6">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٦</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Longue Vie et Bonnes Œuvres</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ بُسْرٍ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">Jāmiʿ at-Tirmidhī 2329</span><span class="ref-badge hasan">Ḥasan Ṣaḥīḥ</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَبْدِ اللَّهِ بْنِ بُسْرٍ رَضِيَ اللَّهُ عَنْهُ، قَالَ: جَاءَ أَعْرَابِيَّانِ إِلَى رَسُولِ اللَّهِ ﷺ، فَقَالَ أَحَدُهُمَا:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">يَا رَسُولَ اللَّهِ، أَيُّ النَّاسِ خَيْرٌ؟ قَالَ: <span class="matn-highlight">«طُوبَى لِمَنْ طَالَ عُمُرُهُ وَحَسُنَ عَمَلُهُ»</span></div>
+      </div>
+      <div class="translation-block">Deux Bédouins vinrent au Prophète ﷺ, l'un demanda : "Ô Messager d'Allah, qui est le meilleur des gens ?" Il répondit : <span class="highlight-fr">« Heureux celui dont la vie est longue et dont les œuvres sont belles. »</span></div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan Ṣaḥīḥ — at-Tirmidhī · chaîne authentique (al-Albānī)</span><a class="source-link" href="https://sunnah.com/tirmidhi:2329" target="_blank">↗ sunnah.com/tirmidhi:2329</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H7 -->
+    <section class="hadith-section" id="h7">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٧</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Plus Utile aux Autres</div>
+            <div class="hadith-narrator">Rapporté par <span>جَابِر بن عَبْد الله رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">al-Muʿjam al-Awsaṭ (Ṭabarānī)</span><span class="ref-badge hasan">Ḥasan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ جَابِرِ بْنِ عَبْدِ اللَّهِ رَضِيَ اللَّهُ عَنْهُمَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur des gens est le plus utile aux autres. »</span></div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan — jugé tel par al-Albānī et d'autres savants</span></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H8 -->
+    <section class="hadith-section" id="h8">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٨</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Meilleure Génération</div>
+            <div class="hadith-narrator">Rapporté par <span>عِمْرَانُ بْنُ حُصَيْنٍ رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 3651</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 2533</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عِمْرَانَ بْنِ حُصَيْنٍ رَضِيَ اللَّهُ عَنْهُمَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُكُمْ قَرْنِي، ثُمَّ الَّذِينَ يَلُونَهُمْ، ثُمَّ الَّذِينَ يَلُونَهُمْ»</span> — قَالَ عِمْرَانُ: فَمَا أَدْرِي أَقَالَ النَّبِيُّ ﷺ مَرَّتَيْنِ أَوْ ثَلَاثًا — «ثُمَّ يَكُونُ بَعْدَهُمْ قَوْمٌ يَشْهَدُونَ وَلَا يُسْتَشْهَدُونَ، وَيَخُونُونَ وَلَا يُؤْتَمَنُونَ، وَيَنْذُرُونَ وَلَا يُوفُونَ، وَيَظْهَرُ فِيهِمُ السِّمَنُ»</div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Les meilleurs d'entre vous sont ma génération, puis ceux qui les suivent, puis ceux qui les suivent. »</span> — ʿImrān dit : "Je ne sais pas s'il a dit cela deux ou trois fois." — "Puis viendront des gens qui témoigneront sans qu'on le leur demande, trahiront sans être dignes de confiance, feront des vœux sans les tenir, et l'embonpoint se répandra parmi eux."</div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:3651" target="_blank">↗ sunnah.com/bukhari:3651</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H9 -->
+    <section class="hadith-section" id="h9">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٩</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur dans le Jihad</div>
+            <div class="hadith-narrator">Rapporté par <span>مُعَاذُ بْنُ جَبَلٍ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Jāmiʿ at-Tirmidhī 2616</span><span class="ref-badge sahih">Ṣaḥīḥ</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ مُعَاذِ بْنِ جَبَلٍ رَضِيَ اللَّهُ عَنْهُ، قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">«رَأْسُ الأَمْرِ الإِسْلَامُ، وَعَمُودُهُ الصَّلَاةُ، <span class="matn-highlight">وَذِرْوَةُ سَنَامِهِ الْجِهَادُ فِي سَبِيلِ اللَّهِ»</span></div>
+      </div>
+      <div class="translation-block">« Le sommet de cette affaire est l'islam, son pilier est la prière, <span class="highlight-fr">et son point le plus élevé est le jihad dans le sentier d'Allah. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:2616" target="_blank">↗ sunnah.com/tirmidhi:2616</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H10 -->
+    <section class="hadith-section" id="h10">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٠</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur dans le Paiement — Version détaillée</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 2305</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 1601</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Contexte et transmission</span>
+        <div class="isnad-text">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ: أَنَّ رَجُلًا أَتَى النَّبِيَّ ﷺ يَتَقَاضَاهُ، فَأَغْلَظَ لَهُ، فَهَمَّ بِهِ أَصْحَابُهُ، فَقَالَ النَّبِيُّ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">«دَعُوهُ، فَإِنَّ لِصَاحِبِ الْحَقِّ مَقَالًا» ثُمَّ قَالَ: <span class="matn-highlight">«إِنَّ خَيْرَكُمْ — أَوْ: إِنَّ خِيَارَكُمْ — أَحْسَنُكُمْ قَضَاءً»</span></div>
+      </div>
+      <div class="translation-block">Un homme vint au Prophète ﷺ réclamer une dette et lui parla durement. Les Compagnons voulurent intervenir, mais il dit : <em>« Laissez-le, car le détenteur d'un droit a le droit de parler. »</em> Puis il ajouta : <span class="highlight-fr">« Les meilleurs d'entre vous sont ceux qui s'acquittent le mieux de leurs dettes. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:2305" target="_blank">↗ sunnah.com/bukhari:2305</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H11 -->
+    <section class="hadith-section" id="h11">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١١</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur Islam</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو مُوسَى الأَشْعَرِيُّ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 11</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 42</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Chaîne de transmission</span>
+        <div class="isnad-text">حَدَّثَنَا سَعِيدُ بْنُ يَحْيَى بْنِ سَعِيدٍ الْقُرَشِيُّ، قَالَ: حَدَّثَنَا أَبِي، قَالَ: حَدَّثَنَا أَبُو بُرْدَةَ بْنُ عَبْدِ اللَّهِ بْنِ أَبِي بُرْدَةَ، عَنْ أَبِي بُرْدَةَ، عَنْ أَبِي مُوسَى رَضِيَ اللَّهُ عَنْهُ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">قَالُوا: يَا رَسُولَ اللَّهِ، أَيُّ الإِسْلَامِ أَفْضَلُ؟ قَالَ: <span class="matn-highlight">«مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ»</span></div>
+      </div>
+      <div class="translation-block">Ils dirent : "Ô Messager d'Allah, quel Islam est le meilleur ?" Il répondit : <span class="highlight-fr">« Celui dont les musulmans sont à l'abri de sa langue et de sa main. »</span></div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">أَبُو مُوسَى الأَشْعَرِي</div><span class="chain-arrow">←</span>
+          <div class="chain-person">أَبُو بُرْدَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">أَبُو بُرْدَة بن عَبْد الله</div><span class="chain-arrow">←</span>
+          <div class="chain-person">يَحْيَى بن سَعِيد</div><span class="chain-arrow">←</span>
+          <div class="chain-person">سَعِيد بن يَحْيَى</div><span class="chain-arrow">←</span>
+          <div class="chain-person">البُخَارِي</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:11" target="_blank">↗ sunnah.com/bukhari:11</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H12 -->
+    <section class="hadith-section" id="h12">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٢</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Croyant le Plus Complet en Foi</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Jāmiʿ at-Tirmidhī 1162</span><span class="ref-badge sahih">Ḥasan Ṣaḥīḥ</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا، وَخِيَارُكُمْ خِيَارُكُمْ لِنِسَائِهِمْ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Les croyants les plus accomplis dans la foi sont ceux qui ont le plus beau caractère ; et les meilleurs d'entre vous sont ceux qui sont les meilleurs envers leurs épouses. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ḥasan Ṣaḥīḥ — at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:1162" target="_blank">↗ sunnah.com/tirmidhi:1162</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H13 -->
+    <section class="hadith-section" id="h13">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٣</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Douceur embellit toute chose</div>
+            <div class="hadith-narrator">Rapporté par <span>عَائِشَةُ رَضِيَ اللَّهُ عَنْهَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Ṣaḥīḥ Muslim 2594</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«إِنَّ الرِّفْقَ لَا يَكُونُ فِي شَيْءٍ إِلَّا زَانَهُ، وَلَا يُنْزَعُ مِنْ شَيْءٍ إِلَّا شَانَهُ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« La douceur n'est présente dans une chose sans l'embellir, et elle n'est retirée d'une chose sans la défigurer. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Muslim</span><a class="source-link" href="https://sunnah.com/muslim:2594" target="_blank">↗ sunnah.com/muslim:2594</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H14 -->
+    <section class="hadith-section" id="h14">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٤</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur Voisin et Compagnon</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">Jāmiʿ at-Tirmidhī 1944</span><span class="ref-badge hasan">Ḥasan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنِ ابْنِ عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُ الأَصْحَابِ عِنْدَ اللَّهِ خَيْرُهُمْ لِصَاحِبِهِ، وَخَيْرُ الْجِيرَانِ عِنْدَ اللَّهِ خَيْرُهُمْ لِجَارِهِ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Les meilleurs compagnons auprès d'Allah sont ceux qui sont les meilleurs envers leurs compagnons, et les meilleurs voisins auprès d'Allah sont ceux qui sont les meilleurs envers leurs voisins. »</span></div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan — at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:1944" target="_blank">↗ sunnah.com/tirmidhi:1944</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H15 -->
+    <section class="hadith-section" id="h15">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٥</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Répandre le Salut entre les croyants</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Ṣaḥīḥ Muslim 54</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا: أَنَّ رَجُلًا سَأَلَ النَّبِيَّ ﷺ: أَيُّ الإِسْلَامِ خَيْرٌ؟ قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«تُطْعِمُ الطَّعَامَ، وَتَقْرَأُ السَّلَامَ عَلَى مَنْ عَرَفْتَ وَمَنْ لَمْ تَعْرِفْ»</span></div>
+      </div>
+      <div class="translation-block">Un homme interrogea le Prophète ﷺ : "Quel Islam est le meilleur ?" Il répondit : <span class="highlight-fr">« Que tu nourrisses les gens, et que tu salues celui que tu connais et celui que tu ne connais pas. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Muslim</span><a class="source-link" href="https://sunnah.com/muslim:54" target="_blank">↗ sunnah.com/muslim:54</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H16 -->
+    <section class="hadith-section" id="h16">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٦</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Meilleure Prière après l'Obligatoire</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Ṣaḥīḥ Muslim 1163</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَفْضَلُ الصِّيَامِ بَعْدَ رَمَضَانَ شَهْرُ اللَّهِ الْمُحَرَّمُ، وَأَفْضَلُ الصَّلَاةِ بَعْدَ الْفَرِيضَةِ صَلَاةُ اللَّيْلِ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur jeûne après Ramadan est celui du mois sacré de Muharram, et la meilleure prière après l'obligatoire est la prière de nuit. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Muslim</span><a class="source-link" href="https://sunnah.com/muslim:1163a" target="_blank">↗ sunnah.com/muslim:1163a</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H17 -->
+    <section class="hadith-section" id="h17">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٧</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur des Gens dans le Jihad</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو سَعِيدٍ الْخُدْرِيُّ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 2786</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 1888</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي سَعِيدٍ الْخُدْرِيِّ رَضِيَ اللَّهُ عَنْهُ، قِيلَ: يَا رَسُولَ اللَّهِ، أَيُّ النَّاسِ أَفْضَلُ؟ قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«مُؤْمِنٌ يُجَاهِدُ فِي سَبِيلِ اللَّهِ بِنَفْسِهِ وَمَالِهِ»</span> قِيلَ: ثُمَّ مَنْ؟ قَالَ: «مُؤْمِنٌ فِي شِعْبٍ مِنَ الشِّعَابِ يَتَّقِي اللَّهَ وَيَدَعُ النَّاسَ مِنْ شَرِّهِ»</div>
+      </div>
+      <div class="translation-block">On demanda : "Ô Messager d'Allah, qui est le meilleur des gens ?" Il répondit : <span class="highlight-fr">« Un croyant qui combat dans le sentier d'Allah avec sa personne et ses biens. »</span> On dit : "Puis qui ?" Il répondit : "Un croyant dans une vallée isolée qui craint Allah et épargne aux gens son mal."</div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:2786" target="_blank">↗ sunnah.com/bukhari:2786</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H18 -->
+    <section class="hadith-section" id="h18">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٨</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Pudeur n'apporte que du Bien</div>
+            <div class="hadith-narrator">Rapporté par <span>عِمْرَانُ بْنُ حُصَيْنٍ رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 6117</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 37</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عِمْرَانَ بْنِ حُصَيْنٍ رَضِيَ اللَّهُ عَنْهُمَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«الْحَيَاءُ لَا يَأْتِي إِلَّا بِخَيْرٍ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« La pudeur ne produit que du bien. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:6117" target="_blank">↗ sunnah.com/bukhari:6117</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H19 -->
+    <section class="hadith-section" id="h19">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">١٩</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Les Meilleures Œuvres et le Meilleur Affranchissement</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو ذَرٍّ الْغِفَارِيُّ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 2518</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 84</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي ذَرٍّ رَضِيَ اللَّهُ عَنْهُ، قَالَ: قُلْتُ: يَا رَسُولَ اللَّهِ، أَيُّ الأَعْمَالِ أَفْضَلُ؟ قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text">«إِيمَانٌ بِاللَّهِ وَجِهَادٌ فِي سَبِيلِهِ» قُلْتُ: <span class="matn-highlight">فَأَيُّ الرِّقَابِ أَفْضَلُ؟ قَالَ: «أَنْفَسُهَا عِنْدَ أَهْلِهَا وَأَغْلَاهَا ثَمَنًا»</span></div>
+      </div>
+      <div class="translation-block">Je dis : "Ô Messager d'Allah, quelles œuvres sont les meilleures ?" Il répondit : "La foi en Allah et le combat dans Son sentier." Je dis : <span class="highlight-fr">"Et quel esclave est le meilleur à affranchir ?" Il répondit : "Celui qui est le plus précieux pour son maître et le plus coûteux."</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:2518" target="_blank">↗ sunnah.com/bukhari:2518</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H20 -->
+    <section class="hadith-section" id="h20">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٠</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Meilleure Richesse</div>
+            <div class="hadith-narrator">Rapporté dans plusieurs Sunan</div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">Musnad Aḥmad · Sunan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«خَيْرُ الْمَالِ عَيْنٌ سَاهِرَةٌ لِعَيْنٍ نَائِمَةٍ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur des biens est un œil qui veille au profit d'un œil qui dort »</span> — c'est-à-dire : un troupeau ou une richesse qui fructifie pendant que son propriétaire se repose.</div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Rapporté dans les Sunan — sens établi</span></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H21 -->
+    <section class="hadith-section" id="h21">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢١</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur dans la Guidance</div>
+            <div class="hadith-narrator">Rapporté par <span>سَهْلُ بْنُ سَعْدٍ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 3701</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 2406</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ سَهْلِ بْنِ سَعْدٍ رَضِيَ اللَّهُ عَنْهُ: أَنَّ النَّبِيَّ ﷺ قَالَ لِعَلِيٍّ رَضِيَ اللَّهُ عَنْهُ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«فَوَاللَّهِ لَأَنْ يَهْدِيَ اللَّهُ بِكَ رَجُلًا وَاحِدًا خَيْرٌ لَكَ مِنْ حُمْرِ النَّعَمِ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Par Allah, qu'Allah guide par toi un seul homme est meilleur pour toi que les chameaux roux »</span> — les biens les plus précieux chez les Arabes.</div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:3701" target="_blank">↗ sunnah.com/bukhari:3701</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H22 -->
+    <section class="hadith-section" id="h22">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٢</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur Dhikr</div>
+            <div class="hadith-narrator">Rapporté par <span>جَابِرُ بْنُ عَبْدِ اللَّهِ رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Jāmiʿ at-Tirmidhī 3383</span><span class="ref-badge sahih">Ḥasan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ جَابِرٍ رَضِيَ اللَّهُ عَنْهُمَا، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَفْضَلُ الذِّكْرِ لَا إِلَهَ إِلَّا اللَّهُ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le meilleur des rappels est : "Il n'y a de divinité digne d'adoration qu'Allah." »</span></div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan — at-Tirmidhī</span><a class="source-link" href="https://sunnah.com/tirmidhi:3383" target="_blank">↗ sunnah.com/tirmidhi:3383</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H23 -->
+    <section class="hadith-section" id="h23">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٣</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Meilleure Aumône</div>
+            <div class="hadith-narrator">Rapporté par <span>أَبُو هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 1419</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 1032</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، قَالَ: جَاءَ رَجُلٌ إِلَى النَّبِيِّ ﷺ فَقَالَ: يَا رَسُولَ اللَّهِ، أَيُّ الصَّدَقَةِ أَفْضَلُ؟ قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَنْ تَصَدَّقَ وَأَنْتَ صَحِيحٌ شَحِيحٌ، تَخْشَى الْفَقْرَ وَتَأْمُلُ الْغِنَى»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« La meilleure aumône est celle que tu donnes alors que tu es en bonne santé, attaché à tes biens, craignant la pauvreté et espérant la richesse. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:1419" target="_blank">↗ sunnah.com/bukhari:1419</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H24 -->
+    <section class="hadith-section" id="h24">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٤</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Meilleur des Témoins</div>
+            <div class="hadith-narrator">Rapporté par <span>زَيْدُ بْنُ خَالِدٍ الْجُهَنِيُّ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Ṣaḥīḥ Muslim 1719</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ زَيْدِ بْنِ خَالِدٍ الْجُهَنِيِّ رَضِيَ اللَّهُ عَنْهُ، عَنِ النَّبِيِّ ﷺ، قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَلَا أُخْبِرُكُمْ بِخَيْرِ الشُّهَدَاءِ؟ الَّذِي يَأْتِي بِشَهَادَتِهِ قَبْلَ أَنْ يُسْأَلَهَا»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Ne vous informerais-je pas du meilleur des témoins ? Celui qui apporte son témoignage avant même qu'on le lui demande. »</span></div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Muslim</span><a class="source-link" href="https://sunnah.com/muslim:1719" target="_blank">↗ sunnah.com/muslim:1719</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H25 -->
+    <section class="hadith-section" id="h25">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٥</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Le Plus Pieux est le Meilleur</div>
+            <div class="hadith-narrator">Appuyé par le Coran (49:13) et de nombreux hadiths</div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge sahih">Al-Qurʾān 49:13</span><span class="ref-badge sahih">Bukhārī · Muslim</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">الآية الكريمة — Verset coranique</span>
+        <div class="isnad-text">قَالَ اللَّهُ تَعَالَى:</div>
+        <span class="matn-label">النَّص — Texte</span>
+        <div class="matn-text"><span class="matn-highlight">﴿إِنَّ أَكْرَمَكُمْ عِنْدَ اللَّهِ أَتْقَاكُمْ﴾</span> [الحجرات: ١٣]</div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Le plus noble d'entre vous auprès d'Allah est le plus pieux. »</span> (Sourate al-Ḥujurāt, v. 13)</div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Source :</span><span class="grade-text sahih">Coran — Ṣaḥīḥ al-Bukhārī 3374 (lors du Discours d'Adieu)</span><a class="source-link" href="https://sunnah.com/bukhari:3374" target="_blank">↗ sunnah.com/bukhari:3374</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H26 -->
+    <section class="hadith-section" id="h26">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٦</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Cœur Pur et Langue Véridique</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges"><span class="ref-badge hasan">Sunan Ibn Mājah 4216</span><span class="ref-badge hasan">Ḥasan</span></div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو رَضِيَ اللَّهُ عَنْهُمَا، قَالَ: قِيلَ لِرَسُولِ اللَّهِ ﷺ: أَيُّ النَّاسِ أَفْضَلُ؟ قَالَ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«كُلُّ مَخْمُومِ الْقَلْبِ صَدُوقِ اللِّسَانِ»</span> قَالُوا: صَدُوقُ اللِّسَانِ نَعْرِفُهُ، فَمَا مَخْمُومُ الْقَلْبِ؟ قَالَ: «هُوَ التَّقِيُّ النَّقِيُّ، لَا إِثْمَ فِيهِ وَلَا بَغْيَ وَلَا غِلَّ وَلَا حَسَدَ»</div>
+      </div>
+      <div class="translation-block">On demanda au Prophète ﷺ : "Qui est le meilleur des gens ?" Il dit : <span class="highlight-fr">« Tout homme au cœur pur et à la langue véridique. »</span> Ils dirent : "La langue véridique, nous connaissons — mais qu'est-ce qu'un cœur pur ?" Il répondit : "Celui qui est pieux et innocent, sans péché, ni oppression, ni rancœur, ni envie."</div>
+      <div class="grade-row"><div class="grade-dot hasan"></div><span class="grade-label">Degré :</span><span class="grade-text hasan">Ḥasan — Ibn Mājah · al-Bazzār</span><a class="source-link" href="https://sunnah.com/ibnmajah:4216" target="_blank">↗ sunnah.com/ibnmajah:4216</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H27 -->
+    <section class="hadith-section" id="h27">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٧</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">Les Œuvres Constantes, même si Peu Nombreuses</div>
+            <div class="hadith-narrator">Rapporté par <span>عَائِشَةُ رَضِيَ اللَّهُ عَنْهَا</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 6464</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 783</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا، قَالَتْ: قَالَ رَسُولُ اللَّهِ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Les œuvres les plus aimées d'Allah sont celles qui sont les plus constantes, même si elles sont peu nombreuses. »</span></div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">عَائِشَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">عُرْوَة بن الزُّبَيْر</div><span class="chain-arrow">←</span>
+          <div class="chain-person">هِشَام بن عُرْوَة</div><span class="chain-arrow">←</span>
+          <div class="chain-person">البُخَارِي / مُسْلِم</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:6464" target="_blank">↗ sunnah.com/bukhari:6464</a></div>
+      <div class="section-divider">· · ·</div>
+    </section>
+
+    <!-- H28 -->
+    <section class="hadith-section" id="h28">
+      <div class="hadith-header">
+        <div class="hadith-title-row">
+          <div class="hadith-num-badge">٢٨</div>
+          <div class="hadith-meta">
+            <div class="hadith-topic">La Véracité mène à la Piété</div>
+            <div class="hadith-narrator">Rapporté par <span>عَبْدُ اللَّهِ بْنُ مَسْعُودٍ رَضِيَ اللَّهُ عَنْهُ</span></div>
+          </div>
+        </div>
+        <div class="ref-badges">
+          <span class="ref-badge sahih">Ṣaḥīḥ al-Bukhārī 6094</span>
+          <span class="ref-badge sahih">Ṣaḥīḥ Muslim 2607</span>
+        </div>
+      </div>
+      <div class="arabic-block">
+        <span class="isnad-label">السَّنَد — Transmission</span>
+        <div class="isnad-text">عَنْ عَبْدِ اللَّهِ بْنِ مَسْعُودٍ رَضِيَ اللَّهُ عَنْهُ، قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ:</div>
+        <span class="matn-label">الْمَتْن — Texte du hadith</span>
+        <div class="matn-text"><span class="matn-highlight">«عَلَيْكُمْ بِالصِّدْقِ، فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ، وَإِنَّ الْبِرَّ يَهْدِي إِلَى الْجَنَّةِ، وَمَا يَزَالُ الرَّجُلُ يَصْدُقُ وَيَتَحَرَّى الصِّدْقَ حَتَّى يُكْتَبَ عِنْدَ اللَّهِ صِدِّيقًا»</span></div>
+      </div>
+      <div class="translation-block"><span class="highlight-fr">« Attachez-vous à la véracité, car la véracité guide vers la piété, et la piété guide vers le Paradis. L'homme ne cesse d'être véridique et de rechercher la vérité jusqu'à ce qu'il soit inscrit auprès d'Allah comme Ṣiddīq (grand véridique). »</span></div>
+      <div class="isnad-chain">
+        <div class="isnad-chain-title">Chaîne des transmetteurs</div>
+        <div class="chain-flow">
+          <div class="chain-person prophet">النَّبِيُّ ﷺ</div><span class="chain-arrow">←</span>
+          <div class="chain-person sahabi">عَبْدُ اللَّهِ بن مَسْعُود</div><span class="chain-arrow">←</span>
+          <div class="chain-person">عَلْقَمَة بن قَيْس</div><span class="chain-arrow">←</span>
+          <div class="chain-person">إِبْرَاهِيم النَّخَعِي</div><span class="chain-arrow">←</span>
+          <div class="chain-person">مَنْصُور بن الْمُعْتَمِر</div><span class="chain-arrow">←</span>
+          <div class="chain-person">البُخَارِي / مُسْلِم</div>
+        </div>
+      </div>
+      <div class="grade-row"><div class="grade-dot sahih"></div><span class="grade-label">Degré :</span><span class="grade-text sahih">Ṣaḥīḥ — Mutafaqun ʿAlayh</span><a class="source-link" href="https://sunnah.com/bukhari:6094" target="_blank">↗ sunnah.com/bukhari:6094</a></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <p style="margin-bottom:8px"><strong>خَيْرُكُمْ</strong> — 28 hadiths authentiques sur les vertus de la communauté musulmane</p>
+  <p style="font-size:0.8rem;opacity:0.7">Sources : Ṣaḥīḥ al-Bukhārī · Ṣaḥīḥ Muslim · Jāmiʿ at-Tirmidhī · Sunan Ibn Mājah · Musnad Aḥmad &nbsp;|&nbsp; Références vérifiées sur <strong>sunnah.com</strong></p>
+</footer>
+
+<script>
+  function goTo(n) {
+    const el = document.getElementById('h' + n);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+  }
+  const sections = document.querySelectorAll('.hadith-section');
+  const sideItems = document.querySelectorAll('.sidebar-item');
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const n = parseInt(id.replace('h', ''));
+        sideItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#' + id));
+        navBtns.forEach((b, i) => b.classList.toggle('active', i === n - 1));
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
