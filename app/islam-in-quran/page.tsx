@@ -583,10 +583,12 @@ function VerseGroupCard({
               borderTop: '1px solid rgba(201,168,76,0.06)',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.75rem',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
             }}
           >
-            <PassageAudioButton verses={allRefs} />
+            <PassageAudioButton verses={group.main.map(r => ({ s: r.s, v: r.v }))} label="Versets" />
+            <PassageAudioButton verses={allRefs} label="Passage complet" />
           </div>
         )
       })()}
@@ -830,15 +832,9 @@ export default async function IslamPage() {
         </header>
 
         <div
-          className="main-grid"
+          className="main-grid main-grid-stretched"
           style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '0 1.5rem 5rem',
-            display: 'grid',
-            gridTemplateColumns: '220px 1fr',
-            gap: '2.5rem',
-            alignItems: 'start',
+            gridTemplateColumns: SECTIONS.length > 0 ? '263px 1fr' : '1fr',
           }}
         >
           {/* ── Sidebar ── */}

@@ -117,7 +117,7 @@ export function VerseAudioButton({
 
 /* ─── PassageAudioButton — sequential playback ────────────────────────── */
 
-export function PassageAudioButton({ verses }: { verses: VerseRef[] }) {
+export function PassageAudioButton({ verses, label = 'Écouter le passage' }: { verses: VerseRef[]; label?: string }) {
   const [state, setState] = useState<State>('idle')
   const [currentIdx, setCurrentIdx] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -218,7 +218,7 @@ export function PassageAudioButton({ verses }: { verses: VerseRef[] }) {
       ) : (
         <>
           <PlayIcon />
-          Écouter le passage
+          {label}
         </>
       )}
     </button>
