@@ -10,7 +10,27 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "WebFetch(domain:cdn.jsdelivr.net)"
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add card input label select textarea badge dialog table separator toast form)",
+      "Bash(npx shadcn@latest add card input label select textarea badge dialog table separator sonner form --overwrite)",
+      "Bash(mkdir -p \"/Users/mdiakhate.externe/application_facturation/src/app/api/clients/[id]\")",
+      "Bash(mkdir -p \"/Users/mdiakhate.externe/application_facturation/src/app/api/invoices/[id]\")",
+      "Bash(mkdir -p \"/Users/mdiakhate.externe/application_facturation/src/app/api/invoices/[id]/pdf\")",
+      "Bash(mkdir -p \"/Users/mdiakhate.externe/application_facturation/src/app/api/invoices/[id]/send\")",
+      "Bash(npm run:*)",
+      "Bash(lsof -ti:3000)",
+      "Bash(lsof -ti:3002)",
+      "Read(//tmp/**)",
+      "Bash(curl -s http://localhost:3002/ -L -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s http://localhost:3002/api/company -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s http://localhost:3002/api/clients -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s http://localhost:3002/api/company)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s http://localhost:3002/api/invoices/next-number)",
+      "Bash(python3)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
     ]
   }
 }

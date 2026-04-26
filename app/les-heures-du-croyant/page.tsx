@@ -10,9 +10,9 @@ const amiri = Amiri({
 })
 
 export const metadata: Metadata = {
-  title: 'Le sens de la vie — Pourquoi Allah nous a créés',
+  title: "Les heures du croyant — L'adoration à travers les temps du jour",
   description:
-    "Parcours des versets coraniques sur le sens de la vie et de la création — pourquoi Allah a créé les cieux, la terre, l'homme et la mort.",
+    "Parcours des versets coraniques sur les moments consacrés à Allah — l'aube, le matin et le soir, la nuit, le tahajjud et le sahar.",
 }
 
 /* ─── Types ──────────────────────────────────────────────────────────── */
@@ -51,146 +51,225 @@ interface Section {
 
 const SECTIONS: Section[] = [
 
-    /* ── Bloc III : La création n'est pas vaine ─────────────────────────── */
-
-    {
-      id: 'creation-pas-vaine',
-      title: "La création n'est pas vaine — مَا خَلَقۡنَا ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بَٰطِلٗا",
-      groups: [
-        {
-          main: [{ s: 3, v: 190 }, { s: 3, v: 191 }],
-          contextAfter: [{ s: 3, v: 192 }, { s: 3, v: 193 }, { s: 3, v: 194 }],
-        },
-        {
-          main: [{ s: 44, v: 38 }, { s: 44, v: 39 }],
-          contextAfter: [{ s: 44, v: 40 }, { s: 44, v: 41 }, { s: 44, v: 42 }],
-        },
-        {
-          main: [{ s: 38, v: 27 }],
-        },
-        {
-          main: [{ s: 46, v: 3 }],
-          contextBefore: [{ s: 46, v: 1 }, { s: 46, v: 2 }],
-          contextAfter: [{ s: 46, v: 4 }, { s: 46, v: 5 }, { s: 46, v: 6 }],
-        },
-      ],
-    },
-    {
-      id: 'crees-de-rien',
-      title: "Ni créés de rien, ni créateurs eux-mêmes — أَمۡ خُلِقُواْ مِنۡ غَيۡرِ شَيۡءٍ",
-      groups: [
-        {
-          main: [{ s: 52, v: 35 }, { s: 52, v: 36 }],
-          contextBefore: [{ s: 52, v: 33 }, { s: 52, v: 34 }],
-          contextAfter: [{ s: 52, v: 37 }],
-        },
-      ],
-    },
-
-    {
-      id: 'signes-creation-yunus',
-      title: "Les signes dans la création — pour les gens qui savent et qui craignent",
-      groups: [
-        {
-          main: [{ s: 10, v: 5 }, { s: 10, v: 6 }, { s: 10, v: 7 }, { s: 10, v: 8 }, { s: 10, v: 9 }],
-          contextBefore: [{ s: 10, v: 3 }, { s: 10, v: 4 }],
-        },
-      ],
-    },  
-  /* ── Bloc II : La finalité de la création ───────────────────────────── */
+  /* ── Bloc I : L'aube — الفجر ────────────────────────────────────────── */
 
   {
-    id: 'finalite-creation',
-    title: "La finalité suprême — Pour que nous l'adorons",
+    id: 'quran-fajr',
+    title: "قُرۡءَانَ ٱلۡفَجۡرِ كَانَ مَشۡهُودٗا — La récitation à l'aube est attestée",
     groups: [
       {
-        main: [{ s: 51, v: 56 }],
-        contextAfter: [{ s: 51, v: 57 }, { s: 51, v: 58 }],
+        main: [{ s: 17, v: 78 }, { s: 17, v: 79 }],
+        contextAfter: [{ s: 17, v: 80 }],
       },
     ],
   },
   {
-    id: 'misericorde',
-    title: "C'est pour Sa miséricorde qu'Il les a créés — Pour nous faire miséricorde",
+    id: 'tasbih-avant-soleil',
+    title: "سَبِّحۡ قَبۡلَ طُلُوعِ ٱلشَّمۡسِ — Glorifie avant le lever du soleil",
     groups: [
       {
-        main: [{ s: 11, v: 119 }],
-        contextBefore: [{ s: 11, v: 118 }],
+        main: [{ s: 50, v: 39 }, { s: 50, v: 40 }],
+        contextBefore: [{ s: 50, v: 37 }, { s: 50, v: 38 }],
       },
-    ],
-  },
-  {
-    id: 'connaitre-puissance',
-    title: "Pour qu'on connaisse Allah — Pour que vous sachiez qu'Allah est Omnipotent et Omniscient",
-    groups: [
       {
-        main: [{ s: 65, v: 12 }],
-        contextBefore: [{ s: 65, v: 11 }],
+        main: [{ s: 20, v: 130 }],
+        contextBefore: [{ s: 20, v: 128 }, { s: 20, v: 129 }],
+      },
+      {
+        main: [{ s: 52, v: 48 }, { s: 52, v: 49 }],
+        contextBefore: [{ s: 52, v: 47 }],
       },
     ],
   },
 
-  /* ── Bloc IV : La vie comme épreuve ─────────────────────────────────── */
+  /* ── Bloc II : Matin et soir — بكرة وأصيلا ─────────────────────────── */
 
   {
-    id: 'vie-mort-epreuve',
-    title: "La mort et la vie — Pour révéler le meilleur parmi nous",
+    id: 'cinq-moments',
+    title: "فَسُبۡحَٰنَ ٱللَّهِ حِينَ تُمۡسُونَ — Les cinq moments du tasbih en deux versets",
     groups: [
       {
-        main: [{ s: 67, v: 1 }, { s: 67, v: 2 }],
-        contextAfter: [{ s: 67, v: 3 }, { s: 67, v: 4 }, { s: 67, v: 5 }],
+        main: [{ s: 30, v: 17 }, { s: 30, v: 18 }],
+        contextBefore: [{ s: 30, v: 15 }, { s: 30, v: 16 }],
+        contextAfter: [{ s: 30, v: 19 }],
       },
     ],
   },
   {
-    id: 'homme-epreuve',
-    title: "Pour être éprouvé et guidé — L'homme créé pour être éprouvé et guidé",
+    id: 'dhikr-kathir',
+    title: "ٱذۡكُرُواْ ٱللَّهَ ذِكۡرٗا كَثِيرٗا — Rappelez-vous d'Allah abondamment",
     groups: [
       {
-        main: [{ s: 76, v: 2 }, { s: 76, v: 3 }],
-        contextBefore: [{ s: 76, v: 1 }],
+        main: [{ s: 33, v: 41 }, { s: 33, v: 42 }],
+        contextAfter: [{ s: 33, v: 43 }, { s: 33, v: 44 }],
       },
     ],
   },
-  /* ── Bloc V : La rétribution et la justice divine ───────────────────── */
-
   {
-    id: 'retribuer-actes',
-    title: "Pour rétribuer chaque âme selon ses actes — Le bien et le mal ne sont pas égaux",
+    id: 'bukra-asil',
+    title: "بُكۡرَةٗ وَأَصِيلٗا — Au matin et au soir",
     groups: [
       {
-        main: [{ s: 75, v: 36 }],
-        contextAfter: [{ s: 75, v: 37 }, { s: 75, v: 38 }, { s: 75, v: 39 }, { s: 75, v: 40 }],
+        main: [{ s: 76, v: 25 }, { s: 76, v: 26 }],
+        contextBefore: [{ s: 76, v: 23 }, { s: 76, v: 24 }],
       },
       {
-        main: [{ s: 68, v: 35 }, { s: 68, v: 36 }],
-        contextBefore: [{ s: 68, v: 33 }, { s: 68, v: 34 }],
+        main: [{ s: 48, v: 9 }],
+        contextBefore: [{ s: 48, v: 8 }],
       },
       {
-        main: [{ s: 45, v: 21 }, { s: 45, v: 22 }],
-        contextBefore: [{ s: 45, v: 20 }],
-        contextAfter: [{ s: 45, v: 24 }],
+        main: [{ s: 40, v: 55 }],
+        contextBefore: [{ s: 40, v: 54 }],
+        contextAfter: [{ s: 40, v: 56 }],
       },
       {
-        main: [{ s: 38, v: 27 }, { s: 38, v: 28 }],
-        contextBefore: [{ s: 38, v: 26 }],
+        main: [{ s: 19, v: 11 }],
+        contextBefore: [{ s: 19, v: 9 }, { s: 19, v: 10 }],
+        contextAfter: [{ s: 19, v: 12 }, { s: 19, v: 13 }],
       },
       {
-        main: [{ s: 40, v: 58 }],
-        contextBefore: [{ s: 40, v: 57 }],
-        contextAfter: [{ s: 40, v: 59 }],
-      },
-      {
-        main: [{ s: 53, v: 31 }],
-        contextBefore: [{ s: 53, v: 29 }, { s: 53, v: 30 }],
-        contextAfter: [{ s: 53, v: 32 }],
-      },
-      {
-        main: [{ s: 99, v: 7 }, { s: 99, v: 8 }],
-        contextBefore: [{ s: 99, v: 6 }],
+        main: [{ s: 38, v: 18 }],
+        contextBefore: [{ s: 38, v: 17 }],
+        contextAfter: [{ s: 38, v: 19 }, { s: 38, v: 20 }],
       },
     ],
-  }
+  },
+  {
+    id: 'ghuduw-asal',
+    title: "بِٱلۡغُدُوِّ وَٱلۡأٓصَالِ — Dans l'humilité du matin et du soir",
+    groups: [
+      {
+        main: [{ s: 7, v: 205 }],
+        contextAfter: [{ s: 7, v: 206 }],
+      },
+      {
+        main: [{ s: 24, v: 36 }, { s: 24, v: 37 }],
+        contextBefore: [{ s: 24, v: 35 }],
+        contextAfter: [{ s: 24, v: 38 }],
+      },
+      {
+        main: [{ s: 13, v: 15 }],
+        contextBefore: [{ s: 13, v: 13 }, { s: 13, v: 14 }],
+        contextAfter: [{ s: 13, v: 16 }],
+      },
+    ],
+  },
+  {
+    id: 'ghada-ashiy',
+    title: "يَدۡعُونَ رَبَّهُم بِٱلۡغَدَوٰةِ وَٱلۡعَشِيِّ — Reste avec ceux qui invoquent matin et soir",
+    groups: [
+      {
+        main: [{ s: 18, v: 28 }],
+        contextBefore: [{ s: 18, v: 27 }],
+        contextAfter: [{ s: 18, v: 29 }],
+      },
+      {
+        main: [{ s: 6, v: 52 }],
+        contextBefore: [{ s: 6, v: 50 }, { s: 6, v: 51 }],
+        contextAfter: [{ s: 6, v: 53 }],
+      },
+    ],
+  },
+
+  /* ── Bloc III : Les deux bouts du jour — طرفي النهار ────────────────── */
+
+  {
+    id: 'tarafay-nahar',
+    title: "طَرَفَيِ ٱلنَّهَارِ — La prière aux deux bouts du jour efface les fautes",
+    groups: [
+      {
+        main: [{ s: 11, v: 114 }],
+        contextBefore: [{ s: 11, v: 112 }, { s: 11, v: 113 }],
+        contextAfter: [{ s: 11, v: 115 }],
+      },
+    ],
+  },
+  {
+    id: 'salawat-mawquta',
+    title: "كِتَٰبٗا مَّوۡقُوتٗا — La prière est prescrite à des heures fixes",
+    groups: [
+      {
+        main: [{ s: 4, v: 103 }],
+        contextBefore: [{ s: 4, v: 102 }],
+      },
+      {
+        main: [{ s: 2, v: 238 }],
+        contextAfter: [{ s: 2, v: 239 }],
+      },
+    ],
+  },
+
+  /* ── Bloc IV : La nuit — آناء الليل ─────────────────────────────────── */
+
+  {
+    id: 'tajafa-junub',
+    title: "تَتَجَافَىٰ جُنُوبُهُمۡ عَنِ ٱلۡمَضَاجِعِ — Leurs flancs s'arrachent des couches",
+    groups: [
+      {
+        main: [{ s: 32, v: 15 }, { s: 32, v: 16 }, { s: 32, v: 17 }],
+        contextAfter: [{ s: 32, v: 18 }],
+      },
+    ],
+  },
+  {
+    id: 'yabeetun',
+    title: "يَبِيتُونَ لِرَبِّهِمۡ سُجَّدٗا وَقِيَٰمٗا — Ils passent la nuit prosternés et debout",
+    groups: [
+      {
+        main: [{ s: 25, v: 64 }],
+        contextBefore: [{ s: 25, v: 63 }],
+        contextAfter: [{ s: 25, v: 65 }, { s: 25, v: 66 }, { s: 25, v: 67 }],
+      },
+    ],
+  },
+  {
+    id: 'qanit-layl',
+    title: "قَانِتٌ ءَانَآءَ ٱلَّيۡلِ — L'homme dévoué aux heures de la nuit",
+    groups: [
+      {
+        main: [{ s: 39, v: 9 }],
+        contextAfter: [{ s: 39, v: 10 }],
+      },
+    ],
+  },
+
+  /* ── Bloc V : Le qiyam al-layl — قيام الليل ─────────────────────────── */
+
+  {
+    id: 'qumil-layl',
+    title: "قُمِ ٱلَّيۡلَ إِلَّا قَلِيلٗا — Lève-toi la nuit",
+    groups: [
+      {
+        main: [
+          { s: 73, v: 1 }, { s: 73, v: 2 }, { s: 73, v: 3 }, { s: 73, v: 4 },
+        ],
+        contextAfter: [
+          { s: 73, v: 5 }, { s: 73, v: 6 }, { s: 73, v: 7 }, { s: 73, v: 8 },
+        ],
+      },
+      {
+        main: [{ s: 73, v: 20 }],
+      },
+    ],
+  },
+
+  /* ── Bloc VI : Le sahar — بالأسحار ──────────────────────────────────── */
+
+  {
+    id: 'istighfar-sahar',
+    title: "وَبِٱلۡأَسۡحَارِ هُمۡ يَسۡتَغۡفِرُونَ — À l'heure de l'aube, ils demandent pardon",
+    groups: [
+      {
+        main: [{ s: 51, v: 17 }, { s: 51, v: 18 }],
+        contextBefore: [{ s: 51, v: 15 }, { s: 51, v: 16 }],
+        contextAfter: [{ s: 51, v: 19 }, { s: 51, v: 20 }],
+      },
+      {
+        main: [{ s: 3, v: 17 }],
+        contextBefore: [{ s: 3, v: 15 }, { s: 3, v: 16 }],
+      },
+    ],
+  },
 ]
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
@@ -218,10 +297,10 @@ function getVerse(
 
 /* ─── Sub-components ─────────────────────────────────────────────────── */
 
-const ACCENT = '#10B981'
-const ACCENT_DIM = 'rgba(16,185,129,0.15)'
-const ACCENT_FAINT = 'rgba(16,185,129,0.08)'
-const ACCENT_BORDER = 'rgba(16,185,129,0.1)'
+const ACCENT = '#F59E0B'
+const ACCENT_DIM = 'rgba(245,158,11,0.15)'
+const ACCENT_FAINT = 'rgba(245,158,11,0.06)'
+const ACCENT_BORDER = 'rgba(245,158,11,0.1)'
 
 function VerseBlock({
   surah,
@@ -259,7 +338,7 @@ function VerseBlock({
               fontSize: '0.68rem',
               fontFamily: 'monospace',
               color: ACCENT,
-              background: ACCENT_DIM,
+              background: 'rgba(245,158,11,0.12)',
               padding: '2px 10px',
               borderRadius: '999px',
               letterSpacing: '0.06em',
@@ -334,10 +413,16 @@ function VerseGroupCard({
         }}
       >
         {mainVerses.map(({ verse, surah }) => (
-          <VerseBlock key={`${surah.id}-${verse.id}`} surah={surah} verse={verse} isMain amiriClass={amiriClass} />
+          <VerseBlock
+            key={`${surah.id}-${verse.id}`}
+            surah={surah}
+            verse={verse}
+            isMain
+            amiriClass={amiriClass}
+          />
         ))}
         {mainVerses.length > 1 && (
-          <div style={{ padding: '0.5rem 1.25rem', borderTop: `1px solid ${ACCENT_FAINT}` }}>
+          <div style={{ padding: '0.5rem 1.25rem', borderTop: `1px solid rgba(245,158,11,0.06)` }}>
             <PassageAudioButton verses={group.main.map(r => ({ s: r.s, v: r.v }))} />
           </div>
         )}
@@ -364,7 +449,13 @@ function VerseGroupCard({
       }}
     >
       {mainVerses.map(({ verse, surah }) => (
-        <VerseBlock key={`main-${surah.id}-${verse.id}`} surah={surah} verse={verse} isMain amiriClass={amiriClass} />
+        <VerseBlock
+          key={`main-${surah.id}-${verse.id}`}
+          surah={surah}
+          verse={verse}
+          isMain
+          amiriClass={amiriClass}
+        />
       ))}
 
       {(() => {
@@ -377,7 +468,7 @@ function VerseGroupCard({
           <div
             style={{
               padding: '0.5rem 1.25rem',
-              borderTop: `1px solid ${ACCENT_FAINT}`,
+              borderTop: `1px solid rgba(245,158,11,0.06)`,
               display: 'flex',
               alignItems: 'center',
               gap: '0.75rem',
@@ -388,7 +479,7 @@ function VerseGroupCard({
         )
       })()}
 
-      <details style={{ borderTop: `1px solid rgba(16,185,129,0.08)` }}>
+      <details style={{ borderTop: `1px solid rgba(245,158,11,0.08)` }}>
         <summary
           style={{
             cursor: 'pointer',
@@ -410,13 +501,22 @@ function VerseGroupCard({
 
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
           {contextBeforeVerses.map(({ verse, surah }) => (
-            <VerseBlock key={`ctx-b-${surah.id}-${verse.id}`} surah={surah} verse={verse} isMain={false} amiriClass={amiriClass} />
+            <VerseBlock
+              key={`ctx-b-${surah.id}-${verse.id}`}
+              surah={surah} verse={verse} isMain={false} amiriClass={amiriClass}
+            />
           ))}
           {mainVerses.map(({ verse, surah }) => (
-            <VerseBlock key={`ctx-m-${surah.id}-${verse.id}`} surah={surah} verse={verse} isMain amiriClass={amiriClass} />
+            <VerseBlock
+              key={`ctx-m-${surah.id}-${verse.id}`}
+              surah={surah} verse={verse} isMain amiriClass={amiriClass}
+            />
           ))}
           {contextAfterVerses.map(({ verse, surah }) => (
-            <VerseBlock key={`ctx-a-${surah.id}-${verse.id}`} surah={surah} verse={verse} isMain={false} amiriClass={amiriClass} />
+            <VerseBlock
+              key={`ctx-a-${surah.id}-${verse.id}`}
+              surah={surah} verse={verse} isMain={false} amiriClass={amiriClass}
+            />
           ))}
         </div>
       </details>
@@ -426,7 +526,7 @@ function VerseGroupCard({
 
 /* ─── Page ───────────────────────────────────────────────────────────── */
 
-export default async function SensDelaViePage() {
+export default async function LesHeuresDuCroyantPage() {
   const quran = await fetchQuran()
 
   return (
@@ -437,7 +537,7 @@ export default async function SensDelaViePage() {
         details[open] > summary { color: ${ACCENT}; }
         details[open] > summary::before { content: '▲ '; font-size: 0.6rem; }
         details:not([open]) > summary::before { content: '▼ '; font-size: 0.6rem; }
-        .nav-link-green:hover { color: ${ACCENT} !important; background: ${ACCENT_FAINT} !important; }
+        .nav-link:hover { color: ${ACCENT} !important; background: rgba(245,158,11,0.06) !important; }
         @media (max-width: 1024px) {
           .sidebar { display: none !important; }
           .main-grid { grid-template-columns: 1fr !important; }
@@ -466,54 +566,38 @@ export default async function SensDelaViePage() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: `radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16,185,129,0.08) 0%, transparent 70%)`,
+              background:
+                'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.07) 0%, transparent 70%)',
               pointerEvents: 'none',
             }}
           />
 
-          {/* Liens retour */}
-          <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+          {/* Navigation */}
+          <div style={{ marginBottom: '2rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a
               href="/islam-in-quran"
-              style={{ fontSize: '0.72rem', color: '#475569', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.08)', padding: '4px 12px', borderRadius: '999px' }}
-              className="nav-link-green"
+              style={{ fontSize: '0.72rem', color: '#475569', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.08)', padding: '4px 12px', borderRadius: '999px', transition: 'all 0.2s' }}
+              className="nav-link"
             >
               ← L&apos;Islam, religion de tous les Prophètes
             </a>
             <a
               href="/amour-allah"
-              style={{ fontSize: '0.72rem', color: '#475569', textDecoration: 'none', border: '1px solid rgba(232,80,122,0.2)', padding: '4px 12px', borderRadius: '999px' }}
-              className="nav-link-green"
+              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(232,80,122,0.35)', color: '#E8507A', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
             >
               ♥ L&apos;Amour d&apos;Allah
             </a>
             <a
-              href="/isa-ibn-maryam"
-              style={{
-                fontSize: '0.72rem',
-                padding: '4px 12px',
-                borderRadius: '999px',
-                border: '1px solid rgba(96,165,250,0.35)',
-                color: '#60A5FA',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-              }}
+              href="/sens-de-la-vie"
+              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(16,185,129,0.35)', color: '#10B981', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
             >
-              ✶ Isa ibn Maryam →
+              ✦ Le sens de la vie
             </a>
             <a
-              href="/les-heures-du-croyant"
-              style={{
-                fontSize: '0.72rem',
-                padding: '4px 12px',
-                borderRadius: '999px',
-                border: '1px solid rgba(245,158,11,0.35)',
-                color: '#F59E0B',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-              }}
+              href="/isa-ibn-maryam"
+              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(96,165,250,0.35)', color: '#60A5FA', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
             >
-              ☀ Les heures du croyant →
+              ✶ Isa ibn Maryam
             </a>
           </div>
 
@@ -522,20 +606,20 @@ export default async function SensDelaViePage() {
             dir="rtl"
             style={{ fontSize: '1.5rem', color: ACCENT, marginBottom: '1.25rem', letterSpacing: '0.05em' }}
           >
-            وَمَا خَلَقۡتُ ٱلۡجِنَّ وَٱلۡإِنسَ إِلَّا لِيَعۡبُدُونِ
+            وَٱذۡكُرِ ٱسۡمَ رَبِّكَ بُكۡرَةٗ وَأَصِيلٗا
           </p>
           <h1
             className="hero-title"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2, marginBottom: '1rem', color: '#F8FAFC' }}
           >
-            Le sens de la vie{' '}
-            <span style={{ color: ACCENT }}>selon le Coran</span>
+            Les heures{' '}
+            <span style={{ color: ACCENT }}>du croyant</span>
           </h1>
           <p
-            style={{ color: '#94A3B8', fontSize: '1rem', maxWidth: '38rem', margin: '0 auto', lineHeight: 1.7 }}
+            style={{ color: '#94A3B8', fontSize: '1rem', maxWidth: '40rem', margin: '0 auto', lineHeight: 1.7 }}
           >
-            Pourquoi Allah a-t-Il créé les cieux, la terre, l&apos;homme, la mort et la vie ?
-            Les réponses du Coran.
+            De l&apos;aube au sahar — les moments que le Coran consacre au dhikr,
+            à la prière, au tasbih et à l&apos;istighfar.
           </p>
 
           <div
@@ -549,12 +633,13 @@ export default async function SensDelaViePage() {
                   fontSize: '0.72rem',
                   padding: '4px 12px',
                   borderRadius: '999px',
-                  border: `1px solid rgba(16,185,129,0.25)`,
+                  border: '1px solid rgba(245,158,11,0.25)',
                   color: '#94A3B8',
                   textDecoration: 'none',
+                  transition: 'all 0.2s',
                   whiteSpace: 'nowrap',
                 }}
-                className="nav-link-green"
+                className="nav-link"
               >
                 {s.title.split('—')[0].trim()}
               </a>
@@ -579,25 +664,23 @@ export default async function SensDelaViePage() {
             className="sidebar"
             style={{ position: 'sticky', top: '2rem', display: 'flex', flexDirection: 'column', gap: '2px' }}
           >
-            <p
-              style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#475569', marginBottom: '0.75rem', paddingLeft: '0.5rem' }}
-            >
+            <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#475569', marginBottom: '0.75rem', paddingLeft: '0.5rem' }}>
               Navigation
             </p>
             {SECTIONS.map(s => {
-              const [theme, subtitle] = s.title.split('—')
+              const [arabic, french] = s.title.split('—')
               return (
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="nav-link-green"
-                  style={{ display: 'block', padding: '0.45rem 0.75rem', borderRadius: '8px', textDecoration: 'none', color: '#64748B', fontSize: '0.78rem', lineHeight: 1.4 }}
+                  className="nav-link"
+                  style={{ display: 'block', padding: '0.45rem 0.75rem', borderRadius: '8px', textDecoration: 'none', color: '#64748B', fontSize: '0.78rem', lineHeight: 1.4, transition: 'all 0.2s' }}
                 >
-                  <span style={{ color: ACCENT, fontWeight: 600 }}>{theme.trim()}</span>
-                  {subtitle && (
+                  <span style={{ color: ACCENT, fontWeight: 600 }}>{french ? french.trim() : arabic.trim()}</span>
+                  {french && (
                     <>
                       <br />
-                      <span style={{ fontSize: '0.68rem', color: '#475569' }}>{subtitle.trim()}</span>
+                      <span style={{ fontSize: '0.68rem', color: '#475569', fontFamily: 'serif' }}>{arabic.trim()}</span>
                     </>
                   )}
                 </a>
@@ -620,8 +703,8 @@ export default async function SensDelaViePage() {
                       width: '2rem',
                       height: '2rem',
                       borderRadius: '50%',
-                      background: ACCENT_DIM,
-                      border: `1px solid rgba(16,185,129,0.3)`,
+                      background: 'rgba(245,158,11,0.12)',
+                      border: '1px solid rgba(245,158,11,0.3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -648,9 +731,7 @@ export default async function SensDelaViePage() {
                   </h2>
                 </div>
 
-                <div
-                  style={{ borderLeft: `1px solid rgba(16,185,129,0.12)`, paddingLeft: '1.5rem', marginLeft: '1rem' }}
-                >
+                <div style={{ borderLeft: `1px solid rgba(245,158,11,0.12)`, paddingLeft: '1.5rem', marginLeft: '1rem' }}>
                   {section.groups.map((group, gIdx) => (
                     <VerseGroupCard key={gIdx} group={group} quran={quran} amiriClass={amiri.className} />
                   ))}
@@ -663,7 +744,7 @@ export default async function SensDelaViePage() {
               style={{
                 textAlign: 'center',
                 padding: '3rem 1rem',
-                borderTop: `1px solid rgba(16,185,129,0.12)`,
+                borderTop: `1px solid rgba(245,158,11,0.12)`,
                 marginTop: '2rem',
               }}
             >
@@ -672,16 +753,13 @@ export default async function SensDelaViePage() {
                 dir="rtl"
                 style={{ fontSize: '1.6rem', color: ACCENT, marginBottom: '1rem', lineHeight: 2 }}
               >
-                أَفَحَسِبۡتُمۡ أَنَّمَا خَلَقۡنَٰكُمۡ عَبَثٗا وَأَنَّكُمۡ إِلَيۡنَا لَا تُرۡجَعُونَ
+                أَلَا بِذِكۡرِ ٱللَّهِ تَطۡمَئِنُّ ٱلۡقُلُوبُ
               </p>
               <p style={{ color: '#64748B', fontSize: '0.875rem', fontStyle: 'italic' }}>
-                « Pensiez-vous que Nous vous avions créés sans but,
-                et que vous ne seriez pas ramenés vers Nous ? »
+                « Certes, c&apos;est par le rappel d&apos;Allah que les cœurs se tranquillisent. »
               </p>
-              <p
-                style={{ marginTop: '0.5rem', fontSize: '0.7rem', color: ACCENT, fontFamily: 'monospace', letterSpacing: '0.06em' }}
-              >
-                Al-Mu&apos;minun 23:115
+              <p style={{ marginTop: '0.5rem', fontSize: '0.7rem', color: ACCENT, fontFamily: 'monospace', letterSpacing: '0.06em' }}>
+                Ar-Raʿd 13:28
               </p>
             </div>
           </main>
