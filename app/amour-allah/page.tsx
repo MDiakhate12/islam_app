@@ -302,6 +302,7 @@ function VerseBlock({
 }) {
   return (
     <div
+      data-verse-id={`${surah.id}-${verse.id}`}
       style={{
         borderLeft: isMain ? '3px solid #E8507A' : '3px solid rgba(232,80,122,0.15)',
         background: isMain ? 'rgba(232,80,122,0.05)' : 'transparent',
@@ -548,6 +549,8 @@ export default async function AmourAllahPage() {
     <>
       <style>{`
         details > summary { list-style: none; }
+        @keyframes versePlay { from { background: rgba(232,80,122,0.35); } to { background: rgba(232,80,122,0.18); } }
+        [data-verse-playing="true"] { animation: versePlay 0.5s ease-out forwards !important; border-left-color: #E8507A !important; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] > summary { color: #E8507A; }
         details[open] > summary::before { content: '▲ '; font-size: 0.6rem; }

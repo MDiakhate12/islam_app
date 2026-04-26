@@ -412,6 +412,7 @@ function VerseBlock({
 }) {
   return (
     <div
+      data-verse-id={`${surah.id}-${verse.id}`}
       style={{
         borderLeft: isMain ? '3px solid #C9A84C' : '3px solid rgba(201,168,76,0.15)',
         background: isMain ? 'rgba(201,168,76,0.05)' : 'transparent',
@@ -662,6 +663,8 @@ export default async function IslamPage() {
       <style>{`
         @keyframes islamSpin { to { transform: rotate(360deg); } }
         details > summary { list-style: none; }
+        @keyframes versePlay { from { background: rgba(201,168,76,0.35); } to { background: rgba(201,168,76,0.18); } }
+        [data-verse-playing="true"] { animation: versePlay 0.5s ease-out forwards !important; border-left-color: #C9A84C !important; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] > summary { color: #C9A84C; }
         details[open] > summary::before { content: '▲ '; font-size: 0.6rem; }

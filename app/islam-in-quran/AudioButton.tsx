@@ -15,6 +15,22 @@ function verseUrl(s: number, v: number) {
 type State = 'idle' | 'loading' | 'playing'
 export type VerseRef = { s: number; v: number }
 
+/* ─── Verse highlight helpers ─────────────────────────────────────────── */
+
+function clearPlayingVerse() {
+  if (typeof document === 'undefined') return
+  document.querySelectorAll('[data-verse-playing]').forEach(el =>
+    el.removeAttribute('data-verse-playing'),
+  )
+}
+
+function markPlayingVerse(s: number, v: number) {
+  clearPlayingVerse()
+  document
+    .querySelector(`[data-verse-id="${s}-${v}"]`)
+    ?.setAttribute('data-verse-playing', 'true')
+}
+
 /* ─── Shared icons ────────────────────────────────────────────────────── */
 
 function PlayIcon() {
@@ -66,6 +82,7 @@ export function VerseAudioButton({
   useEffect(() => {
     return () => {
       audioRef.current?.pause()
+      clearPlayingVerse()
     }
   }, [])
 
@@ -74,18 +91,20 @@ export function VerseAudioButton({
       audioRef.current?.pause()
       if (audioRef.current) audioRef.current.currentTime = 0
       setState('idle')
+      clearPlayingVerse()
       return
     }
 
     if (!audioRef.current) {
       audioRef.current = new Audio(verseUrl(surahId, verseId))
       audioRef.current.onplaying = () => setState('playing')
-      audioRef.current.onended = () => setState('idle')
-      audioRef.current.onerror = () => setState('idle')
+      audioRef.current.onended = () => { setState('idle'); clearPlayingVerse() }
+      audioRef.current.onerror = () => { setState('idle'); clearPlayingVerse() }
     }
 
     setState('loading')
-    audioRef.current.play().catch(() => setState('idle'))
+    markPlayingVerse(surahId, verseId)
+    audioRef.current.play().catch(() => { setState('idle'); clearPlayingVerse() })
   }
 
   const isActive = state !== 'idle'
@@ -128,6 +147,7 @@ export function PassageAudioButton({ verses, label = 'Écouter le passage' }: { 
     return () => {
       activeRef.current = false
       audioRef.current?.pause()
+      clearPlayingVerse()
     }
   }, [])
 
@@ -139,6 +159,7 @@ export function PassageAudioButton({ verses, label = 'Écouter le passage' }: { 
     setState('idle')
     setCurrentIdx(0)
     idxRef.current = 0
+    clearPlayingVerse()
   }
 
   const playFrom = (idx: number) => {
@@ -146,10 +167,12 @@ export function PassageAudioButton({ verses, label = 'Écouter le passage' }: { 
       setState('idle')
       setCurrentIdx(0)
       idxRef.current = 0
+      clearPlayingVerse()
       return
     }
 
     const { s, v } = verses[idx]
+    markPlayingVerse(s, v)
     audioRef.current?.pause()
     const audio = new Audio(verseUrl(s, v))
     audioRef.current = audio

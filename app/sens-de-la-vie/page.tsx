@@ -236,6 +236,7 @@ function VerseBlock({
 }) {
   return (
     <div
+      data-verse-id={`${surah.id}-${verse.id}`}
       style={{
         borderLeft: isMain ? `3px solid ${ACCENT}` : `3px solid ${ACCENT_DIM}`,
         background: isMain ? ACCENT_FAINT : 'transparent',
@@ -435,6 +436,8 @@ export default async function SensDelaViePage() {
     <>
       <style>{`
         details > summary { list-style: none; }
+        @keyframes versePlay { from { background: rgba(16,185,129,0.35); } to { background: rgba(16,185,129,0.18); } }
+        [data-verse-playing="true"] { animation: versePlay 0.5s ease-out forwards !important; border-left-color: #10B981 !important; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] > summary { color: ${ACCENT}; }
         details[open] > summary::before { content: '▲ '; font-size: 0.6rem; }
