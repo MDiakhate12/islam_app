@@ -702,6 +702,21 @@ export default async function IsaIbnMaryamPage() {
             >
               ☀ Les heures du croyant →
             </a>
+            <a
+              href="/parents-dans-le-coran"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(192,132,252,0.35)',
+                color: '#C084FC',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ◆ Les parents dans le Coran →
+            </a>
           </div>
 
           <p
