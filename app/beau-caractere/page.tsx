@@ -10,9 +10,9 @@ const amiri = Amiri({
 })
 
 export const metadata: Metadata = {
-  title: "Les heures du croyant — L'adoration à travers les temps du jour",
+  title: "L'excellence du caractère dans le Coran — Husn al-Khuluq",
   description:
-    "Parcours des versets coraniques sur les moments consacrés à Allah — l'aube, le matin et le soir, la nuit, le tahajjud et le sahar.",
+    "Parcours des versets coraniques sur la douceur, la bonne parole, le pardon, l'humilité, repousser le mal par le bien et tous les beaux caractères qu'Allah nous ordonne d'avoir.",
 }
 
 /* ─── Types ──────────────────────────────────────────────────────────── */
@@ -51,222 +51,234 @@ interface Section {
 
 const SECTIONS: Section[] = [
 
-  /* ── Bloc I : L'aube — الفجر ────────────────────────────────────────── */
+  /* ── Bloc I : Le modèle ──────────────────────────────────────────────── */
 
   {
-    id: 'quran-fajr',
-    title: "قُرۡءَانَ ٱلۡفَجۡرِ كَانَ مَشۡهُودٗا — La récitation à l'aube est attestée",
+    id: 'khuluq-azim',
+    title: "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ — Tu es d'une moralité sublime",
     groups: [
       {
-        main: [{ s: 17, v: 78 }, { s: 17, v: 79 }],
-        contextAfter: [{ s: 17, v: 80 }],
-      },
-    ],
-  },
-  {
-    id: 'tasbih-avant-soleil',
-    title: "سَبِّحۡ قَبۡلَ طُلُوعِ ٱلشَّمۡسِ — Glorifie avant le lever du soleil",
-    groups: [
-      {
-        main: [{ s: 50, v: 39 }, { s: 50, v: 40 }],
-        contextBefore: [{ s: 50, v: 37 }, { s: 50, v: 38 }],
+        main: [{ s: 68, v: 4 }],
+        contextBefore: [{ s: 68, v: 1 }, { s: 68, v: 2 }, { s: 68, v: 3 }],
+        contextAfter: [{ s: 68, v: 5 }, { s: 68, v: 6 }],
       },
       {
-        main: [{ s: 20, v: 130 }],
-        contextBefore: [{ s: 20, v: 128 }, { s: 20, v: 129 }],
+        main: [{ s: 9, v: 128 }],
+        contextBefore: [{ s: 9, v: 127 }],
+        contextAfter: [{ s: 9, v: 129 }],
       },
       {
-        main: [{ s: 52, v: 48 }, { s: 52, v: 49 }],
-        contextBefore: [{ s: 52, v: 47 }],
+        main: [{ s: 3, v: 159 }],
+        contextBefore: [{ s: 3, v: 157 }, { s: 3, v: 158 }],
+        contextAfter: [{ s: 3, v: 160 }],
       },
     ],
   },
 
-  /* ── Bloc II : Matin et soir — بكرة وأصيلا ─────────────────────────── */
+  /* ── Bloc II : La bonne parole ───────────────────────────────────────── */
 
   {
-    id: 'cinq-moments',
-    title: "فَسُبۡحَٰنَ ٱللَّهِ حِينَ تُمۡسُونَ — Les cinq moments du tasbih en deux versets",
+    id: 'kalima-tayyiba',
+    title: "كَلِمَةٗ طَيِّبَةٗ كَشَجَرَةٍ طَيِّبَةٍ — La bonne parole est comme un bel arbre",
     groups: [
       {
-        main: [{ s: 30, v: 17 }, { s: 30, v: 18 }],
-        contextBefore: [{ s: 30, v: 15 }, { s: 30, v: 16 }],
-        contextAfter: [{ s: 30, v: 19 }],
+        main: [{ s: 14, v: 24 }, { s: 14, v: 25 }],
+        contextBefore: [{ s: 14, v: 23 }],
+        contextAfter: [{ s: 14, v: 26 }],
+      },
+      {
+        main: [{ s: 2, v: 263 }],
+        contextBefore: [{ s: 2, v: 262 }],
+        contextAfter: [{ s: 2, v: 264 }],
       },
     ],
   },
   {
-    id: 'dhikr-kathir',
-    title: "ٱذۡكُرُواْ ٱللَّهَ ذِكۡرٗا كَثِيرٗا — Rappelez-vous d'Allah abondamment",
+    id: 'qawl-sadid',
+    title: "قُولُواْ قَوۡلٗا سَدِيدٗا — Dis ce qui est meilleur, dis une parole juste",
     groups: [
       {
-        main: [{ s: 33, v: 41 }, { s: 33, v: 42 }],
-        contextAfter: [{ s: 33, v: 43 }, { s: 33, v: 44 }],
-      },
-    ],
-  },
-  {
-    id: 'bukra-asil',
-    title: "بُكۡرَةٗ وَأَصِيلٗا — Au matin et au soir",
-    groups: [
-      {
-        main: [{ s: 76, v: 25 }, { s: 76, v: 26 }],
-        contextBefore: [{ s: 76, v: 23 }, { s: 76, v: 24 }],
+        main: [{ s: 17, v: 53 }],
+        contextBefore: [{ s: 17, v: 52 }],
+        contextAfter: [{ s: 17, v: 54 }],
       },
       {
-        main: [{ s: 48, v: 9 }],
-        contextBefore: [{ s: 48, v: 8 }],
+        main: [{ s: 33, v: 70 }, { s: 33, v: 71 }],
+        contextBefore: [{ s: 33, v: 69 }],
       },
       {
-        main: [{ s: 40, v: 55 }],
-        contextBefore: [{ s: 40, v: 54 }],
-        contextAfter: [{ s: 40, v: 56 }],
-      },
-      {
-        main: [{ s: 19, v: 11 }],
-        contextBefore: [{ s: 19, v: 9 }, { s: 19, v: 10 }],
-        contextAfter: [{ s: 19, v: 12 }, { s: 19, v: 13 }],
-      },
-      {
-        main: [{ s: 38, v: 18 }],
-        contextBefore: [{ s: 38, v: 17 }],
-        contextAfter: [{ s: 38, v: 19 }, { s: 38, v: 20 }],
-      },
-    ],
-  },
-  {
-    id: 'ghuduw-asal',
-    title: "بِٱلۡغُدُوِّ وَٱلۡأٓصَالِ — Dans l'humilité du matin et du soir",
-    groups: [
-      {
-        main: [{ s: 7, v: 205 }],
-        contextAfter: [{ s: 7, v: 206 }],
-      },
-      {
-        main: [{ s: 24, v: 36 }, { s: 24, v: 37 }],
-        contextBefore: [{ s: 24, v: 35 }],
-        contextAfter: [{ s: 24, v: 38 }],
-      },
-      {
-        main: [{ s: 13, v: 15 }],
-        contextBefore: [{ s: 13, v: 13 }, { s: 13, v: 14 }],
-        contextAfter: [{ s: 13, v: 16 }],
-      },
-    ],
-  },
-  {
-    id: 'ghada-ashiy',
-    title: "يَدۡعُونَ رَبَّهُم بِٱلۡغَدَوٰةِ وَٱلۡعَشِيِّ — Reste avec ceux qui invoquent matin et soir",
-    groups: [
-      {
-        main: [{ s: 18, v: 28 }],
-        contextBefore: [{ s: 18, v: 27 }],
-        contextAfter: [{ s: 18, v: 29 }],
-      },
-      {
-        main: [{ s: 6, v: 52 }],
-        contextBefore: [{ s: 6, v: 50 }, { s: 6, v: 51 }],
-        contextAfter: [{ s: 6, v: 53 }],
+        main: [{ s: 4, v: 86 }],
+        contextBefore: [{ s: 4, v: 85 }],
       },
     ],
   },
 
-  /* ── Bloc III : Les deux bouts du jour — طرفي النهار ────────────────── */
+  /* ── Bloc III : Repousser le mal par le bien ─────────────────────────── */
 
   {
-    id: 'tarafay-nahar',
-    title: "طَرَفَيِ ٱلنَّهَارِ — La prière aux deux bouts du jour efface les fautes",
+    id: 'daf-bil-ahsan',
+    title: "ٱدۡفَعۡ بِٱلَّتِي هِيَ أَحۡسَنُ — Repousse par ce qui est meilleur",
     groups: [
       {
-        main: [{ s: 11, v: 114 }],
-        contextBefore: [{ s: 11, v: 112 }, { s: 11, v: 113 }],
-        contextAfter: [{ s: 11, v: 115 }],
-      },
-    ],
-  },
-  {
-    id: 'salawat-mawquta',
-    title: "كِتَٰبٗا مَّوۡقُوتٗا — La prière est prescrite à des heures fixes",
-    groups: [
-      {
-        main: [{ s: 4, v: 103 }],
-        contextBefore: [{ s: 4, v: 102 }],
+        main: [{ s: 41, v: 34 }, { s: 41, v: 35 }],
+        contextBefore: [{ s: 41, v: 33 }],
+        contextAfter: [{ s: 41, v: 36 }],
       },
       {
-        main: [{ s: 2, v: 238 }],
-        contextAfter: [{ s: 2, v: 239 }],
+        main: [{ s: 23, v: 96 }],
+        contextBefore: [{ s: 23, v: 95 }],
+        contextAfter: [{ s: 23, v: 97 }, { s: 23, v: 98 }],
+      },
+      {
+        main: [{ s: 13, v: 22 }],
+        contextBefore: [{ s: 13, v: 20 }, { s: 13, v: 21 }],
+        contextAfter: [{ s: 13, v: 23 }, { s: 13, v: 24 }],
       },
     ],
   },
 
-  /* ── Bloc IV : La nuit — آناء الليل ─────────────────────────────────── */
+  /* ── Bloc IV : Le pardon et l'effacement ─────────────────────────────── */
 
   {
-    id: 'tajafa-junub',
-    title: "تَتَجَافَىٰ جُنُوبُهُمۡ عَنِ ٱلۡمَضَاجِعِ — Leurs flancs s'arrachent des couches",
+    id: 'afw-safh',
+    title: "وَٱلۡعَافِينَ عَنِ ٱلنَّاسِ — Ceux qui maîtrisent leur colère et pardonnent aux gens",
     groups: [
       {
-        main: [{ s: 32, v: 15 }, { s: 32, v: 16 }, { s: 32, v: 17 }],
-        contextAfter: [{ s: 32, v: 18 }],
+        main: [{ s: 7, v: 199 }],
+        contextBefore: [{ s: 7, v: 198 }],
+        contextAfter: [{ s: 7, v: 200 }],
+      },
+      {
+        main: [{ s: 3, v: 133 }, { s: 3, v: 134 }],
+        contextAfter: [{ s: 3, v: 135 }, { s: 3, v: 136 }],
+      },
+      {
+        main: [{ s: 42, v: 37 }, { s: 42, v: 38 }],
+        contextBefore: [{ s: 42, v: 36 }],
+        contextAfter: [{ s: 42, v: 39 }, { s: 42, v: 40 }],
+      },
+      {
+        main: [{ s: 42, v: 43 }],
+        contextBefore: [{ s: 42, v: 40 }, { s: 42, v: 41 }, { s: 42, v: 42 }],
       },
     ],
   },
   {
-    id: 'yabeetun',
-    title: "يَبِيتُونَ لِرَبِّهِمۡ سُجَّدٗا وَقِيَٰمٗا — Ils passent la nuit prosternés et debout",
+    id: 'pardon-genereux',
+    title: "أَلَا تُحِبُّونَ أَن يَغۡفِرَ ٱللَّهُ لَكُمۡ — N'aimez-vous pas qu'Allah vous pardonne ?",
     groups: [
       {
-        main: [{ s: 25, v: 64 }],
-        contextBefore: [{ s: 25, v: 63 }],
-        contextAfter: [{ s: 25, v: 65 }, { s: 25, v: 66 }, { s: 25, v: 67 }],
+        main: [{ s: 24, v: 22 }],
+        contextBefore: [{ s: 24, v: 21 }],
       },
-    ],
-  },
-  {
-    id: 'qanit-layl',
-    title: "قَانِتٌ ءَانَآءَ ٱلَّيۡلِ — L'homme dévoué aux heures de la nuit",
-    groups: [
       {
-        main: [{ s: 39, v: 9 }],
-        contextAfter: [{ s: 39, v: 10 }],
+        main: [{ s: 45, v: 14 }],
+        contextBefore: [{ s: 45, v: 13 }],
+        contextAfter: [{ s: 45, v: 15 }],
+      },
+      {
+        main: [{ s: 64, v: 14 }],
+        contextAfter: [{ s: 64, v: 15 }],
+      },
+      {
+        main: [{ s: 2, v: 109 }],
+        contextBefore: [{ s: 2, v: 108 }],
       },
     ],
   },
 
-  /* ── Bloc V : Le qiyam al-layl — قيام الليل ─────────────────────────── */
+  /* ── Bloc V : L'excellence dans la conduite ──────────────────────────── */
 
   {
-    id: 'qumil-layl',
-    title: "قُمِ ٱلَّيۡلَ إِلَّا قَلِيلٗا — Lève-toi la nuit",
+    id: 'ihsan-adl',
+    title: "إِنَّ ٱللَّهَ يَأۡمُرُ بِٱلۡعَدۡلِ وَٱلۡإِحۡسَٰنِ — Allah ordonne la justice et l'excellence",
     groups: [
       {
-        main: [
-          { s: 73, v: 1 }, { s: 73, v: 2 }, { s: 73, v: 3 }, { s: 73, v: 4 },
-        ],
+        main: [{ s: 16, v: 90 }],
+        contextBefore: [{ s: 16, v: 89 }],
+        contextAfter: [{ s: 16, v: 91 }],
+      },
+      {
+        main: [{ s: 55, v: 60 }],
+        contextBefore: [{ s: 55, v: 58 }, { s: 55, v: 59 }],
+      },
+    ],
+  },
+
+  /* ── Bloc VI : Les serviteurs du Miséricordieux ───────────────────────── */
+
+  {
+    id: 'ibad-rahman',
+    title: "عِبَادُ ٱلرَّحۡمَٰنِ — Le portrait des serviteurs du Miséricordieux",
+    groups: [
+      {
+        main: [{ s: 25, v: 63 }, { s: 25, v: 64 }],
         contextAfter: [
-          { s: 73, v: 5 }, { s: 73, v: 6 }, { s: 73, v: 7 }, { s: 73, v: 8 },
+          { s: 25, v: 65 }, { s: 25, v: 66 }, { s: 25, v: 67 }, { s: 25, v: 68 },
+          { s: 25, v: 70 }, { s: 25, v: 71 }, { s: 25, v: 72 }, { s: 25, v: 73 },
+          { s: 25, v: 74 }, { s: 25, v: 75 }, { s: 25, v: 76 },
         ],
-      },
-      {
-        main: [{ s: 73, v: 20 }],
       },
     ],
   },
 
-  /* ── Bloc VI : Le sahar — بالأسحار ──────────────────────────────────── */
+  /* ── Bloc VII : L'humilité ───────────────────────────────────────────── */
 
   {
-    id: 'istighfar-sahar',
-    title: "وَبِٱلۡأَسۡحَارِ هُمۡ يَسۡتَغۡفِرُونَ — À l'heure de l'aube, ils demandent pardon",
+    id: 'tawadu',
+    title: "وَلَا تَمۡشِ فِي ٱلۡأَرۡضِ مَرَحًا — Ne marche pas avec arrogance",
     groups: [
       {
-        main: [{ s: 51, v: 17 }, { s: 51, v: 18 }],
-        contextBefore: [{ s: 51, v: 15 }, { s: 51, v: 16 }],
-        contextAfter: [{ s: 51, v: 19 }, { s: 51, v: 20 }],
+        main: [{ s: 31, v: 18 }, { s: 31, v: 19 }],
+        contextBefore: [{ s: 31, v: 17 }],
+        contextAfter: [{ s: 31, v: 20 }],
       },
       {
-        main: [{ s: 3, v: 17 }],
-        contextBefore: [{ s: 3, v: 15 }, { s: 3, v: 16 }],
+        main: [{ s: 17, v: 37 }],
+        contextBefore: [{ s: 17, v: 36 }],
+        contextAfter: [{ s: 17, v: 38 }],
+      },
+      {
+        main: [{ s: 26, v: 215 }],
+        contextBefore: [{ s: 26, v: 214 }],
+        contextAfter: [{ s: 26, v: 216 }],
+      },
+    ],
+  },
+
+  /* ── Bloc VIII : La sagesse dans l'invitation ────────────────────────── */
+
+  {
+    id: 'hikma-dawah',
+    title: "بِٱلۡحِكۡمَةِ وَٱلۡمَوۡعِظَةِ ٱلۡحَسَنَةِ — Par la sagesse et la belle exhortation",
+    groups: [
+      {
+        main: [{ s: 16, v: 125 }],
+        contextBefore: [{ s: 16, v: 124 }],
+        contextAfter: [{ s: 16, v: 126 }, { s: 16, v: 127 }],
+      },
+      {
+        main: [{ s: 20, v: 44 }],
+        contextBefore: [{ s: 20, v: 43 }],
+        contextAfter: [{ s: 20, v: 45 }, { s: 20, v: 46 }],
+      },
+    ],
+  },
+
+  /* ── Bloc IX : L'éthique des relations ───────────────────────────────── */
+
+  {
+    id: 'adab-social',
+    title: "لَا يَسۡخَرۡ قَوۡمٞ مِّن قَوۡمٍ — Que nul ne se moque de son prochain",
+    groups: [
+      {
+        main: [{ s: 49, v: 10 }, { s: 49, v: 11 }, { s: 49, v: 12 }],
+        contextBefore: [{ s: 49, v: 9 }],
+        contextAfter: [{ s: 49, v: 13 }],
+      },
+      {
+        main: [{ s: 4, v: 148 }, { s: 4, v: 149 }],
+        contextBefore: [{ s: 4, v: 147 }],
       },
     ],
   },
@@ -297,10 +309,10 @@ function getVerse(
 
 /* ─── Sub-components ─────────────────────────────────────────────────── */
 
-const ACCENT = '#F59E0B'
-const ACCENT_DIM = 'rgba(245,158,11,0.15)'
-const ACCENT_FAINT = 'rgba(245,158,11,0.06)'
-const ACCENT_BORDER = 'rgba(245,158,11,0.1)'
+const ACCENT = '#2DD4BF'
+const ACCENT_DIM = 'rgba(45,212,191,0.15)'
+const ACCENT_FAINT = 'rgba(45,212,191,0.07)'
+const ACCENT_BORDER = 'rgba(45,212,191,0.1)'
 
 function VerseBlock({
   surah,
@@ -339,7 +351,7 @@ function VerseBlock({
               fontSize: '0.68rem',
               fontFamily: 'monospace',
               color: ACCENT,
-              background: 'rgba(245,158,11,0.12)',
+              background: 'rgba(45,212,191,0.12)',
               padding: '2px 10px',
               borderRadius: '999px',
               letterSpacing: '0.06em',
@@ -361,7 +373,7 @@ function VerseBlock({
           textAlign: 'right',
           fontSize: '1.4rem',
           lineHeight: '2.4',
-          color: isMain ? '#F5E6C8' : '#B8A07A',
+          color: isMain ? '#E0F2FE' : '#94A3B8',
           marginBottom: '0.75rem',
         }}
       >
@@ -423,7 +435,7 @@ function VerseGroupCard({
           />
         ))}
         {mainVerses.length > 1 && (
-          <div style={{ padding: '0.5rem 1.25rem', borderTop: `1px solid rgba(245,158,11,0.06)` }}>
+          <div style={{ padding: '0.5rem 1.25rem', borderTop: `1px solid rgba(45,212,191,0.06)` }}>
             <PassageAudioButton verses={group.main.map(r => ({ s: r.s, v: r.v }))} />
           </div>
         )}
@@ -438,6 +450,12 @@ function VerseGroupCard({
   const contextAfterVerses = (group.contextAfter ?? [])
     .map(ref => getVerse(quran, ref.s, ref.v))
     .filter(Boolean) as { verse: Verse; surah: Surah }[]
+
+  const allRefs: AudioVerseRef[] = [
+    ...(group.contextBefore ?? []).map(r => ({ s: r.s, v: r.v })),
+    ...group.main.map(r => ({ s: r.s, v: r.v })),
+    ...(group.contextAfter ?? []).map(r => ({ s: r.s, v: r.v })),
+  ]
 
   return (
     <div
@@ -459,30 +477,26 @@ function VerseGroupCard({
         />
       ))}
 
-      {(() => {
-        const allRefs: AudioVerseRef[] = [
-          ...(group.contextBefore ?? []).map(r => ({ s: r.s, v: r.v })),
-          ...group.main.map(r => ({ s: r.s, v: r.v })),
-          ...(group.contextAfter ?? []).map(r => ({ s: r.s, v: r.v })),
-        ]
-        return (
-          <div
-            style={{
-              padding: '0.5rem 1.25rem',
-              borderTop: `1px solid rgba(245,158,11,0.06)`,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              flexWrap: 'wrap',
-            }}
-          >
-            <PassageAudioButton verses={group.main.map(r => ({ s: r.s, v: r.v }))} label="Versets" />
-            <PassageAudioButton verses={allRefs} label="Passage complet" />
-          </div>
-        )
-      })()}
+      <div
+        style={{
+          padding: '0.5rem 1.25rem',
+          borderTop: `1px solid rgba(45,212,191,0.06)`,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        {mainVerses.length > 1 && (
+          <PassageAudioButton
+            verses={group.main.map(r => ({ s: r.s, v: r.v }))}
+            label="Versets"
+          />
+        )}
+        <PassageAudioButton verses={allRefs} label="Passage complet" />
+      </div>
 
-      <details style={{ borderTop: `1px solid rgba(245,158,11,0.08)` }}>
+      <details style={{ borderTop: `1px solid rgba(45,212,191,0.08)` }}>
         <summary
           style={{
             cursor: 'pointer',
@@ -529,20 +543,20 @@ function VerseGroupCard({
 
 /* ─── Page ───────────────────────────────────────────────────────────── */
 
-export default async function LesHeuresDuCroyantPage() {
+export default async function BeauCaracterePage() {
   const quran = await fetchQuran()
 
   return (
     <>
       <style>{`
         details > summary { list-style: none; }
-        @keyframes versePlay { from { background: rgba(245,158,11,0.35); } to { background: rgba(245,158,11,0.18); } }
-        [data-verse-playing="true"] { animation: versePlay 0.5s ease-out forwards !important; border-left-color: #F59E0B !important; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] > summary { color: ${ACCENT}; }
         details[open] > summary::before { content: '▲ '; font-size: 0.6rem; }
         details:not([open]) > summary::before { content: '▼ '; font-size: 0.6rem; }
-        .nav-link:hover { color: ${ACCENT} !important; background: rgba(245,158,11,0.06) !important; }
+        .nav-link:hover { color: ${ACCENT} !important; background: rgba(45,212,191,0.06) !important; }
+        @keyframes versePlay { from { background: rgba(45,212,191,0.3); } to { background: rgba(45,212,191,0.15); } }
+        [data-verse-playing="true"] { animation: versePlay 0.5s ease-out forwards !important; border-left-color: ${ACCENT} !important; }
         @media (max-width: 1024px) {
           .sidebar { display: none !important; }
           .main-grid { grid-template-columns: 1fr !important; }
@@ -572,7 +586,7 @@ export default async function LesHeuresDuCroyantPage() {
               position: 'absolute',
               inset: 0,
               background:
-                'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.07) 0%, transparent 70%)',
+                'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45,212,191,0.07) 0%, transparent 70%)',
               pointerEvents: 'none',
             }}
           />
@@ -586,62 +600,45 @@ export default async function LesHeuresDuCroyantPage() {
             >
               ← L&apos;Islam, religion de tous les Prophètes
             </a>
-            <a
-              href="/amour-allah"
-              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(232,80,122,0.35)', color: '#E8507A', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-            >
+            <a href="/amour-allah" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(232,80,122,0.35)', color: '#E8507A', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
               ♥ L&apos;Amour d&apos;Allah
             </a>
-            <a
-              href="/sens-de-la-vie"
-              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(16,185,129,0.35)', color: '#10B981', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-            >
+            <a href="/sens-de-la-vie" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(16,185,129,0.35)', color: '#10B981', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
               ✦ Le sens de la vie
             </a>
-            <a
-              href="/isa-ibn-maryam"
-              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(96,165,250,0.35)', color: '#60A5FA', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-            >
+            <a href="/isa-ibn-maryam" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(96,165,250,0.35)', color: '#60A5FA', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
               ✶ Isa ibn Maryam
             </a>
-            <a
-              href="/parents-dans-le-coran"
-              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(192,132,252,0.35)', color: '#C084FC', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-            >
-              ◆ Les parents dans le Coran
+            <a href="/les-heures-du-croyant" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(245,158,11,0.35)', color: '#F59E0B', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
+              ☀ Les heures du croyant
             </a>
-            <a
-              href="/beau-caractere"
-              style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(45,212,191,0.35)', color: '#2DD4BF', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-            >
-              ✿ Le beau caractère →
+            <a href="/parents-dans-le-coran" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(192,132,252,0.35)', color: '#C084FC', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
+              ◆ Les parents dans le Coran
             </a>
           </div>
 
           <p
             className={amiri.className}
             dir="rtl"
-            style={{ fontSize: '1.5rem', color: ACCENT, marginBottom: '1.25rem', letterSpacing: '0.05em' }}
+            style={{ fontSize: '1.6rem', color: ACCENT, marginBottom: '1.25rem', letterSpacing: '0.05em' }}
           >
-            وَٱذۡكُرِ ٱسۡمَ رَبِّكَ بُكۡرَةٗ وَأَصِيلٗا
+            وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ
           </p>
           <h1
             className="hero-title"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.2, marginBottom: '1rem', color: '#F8FAFC' }}
           >
-            Les heures{' '}
-            <span style={{ color: ACCENT }}>du croyant</span>
+            L&apos;excellence{' '}
+            <span style={{ color: ACCENT }}>du caractère</span>
           </h1>
           <p
-            style={{ color: '#94A3B8', fontSize: '1rem', maxWidth: '40rem', margin: '0 auto', lineHeight: 1.7 }}
+            style={{ color: '#94A3B8', fontSize: '1rem', maxWidth: '42rem', margin: '0 auto', lineHeight: 1.7 }}
           >
-            De l&apos;aube au sahar — les moments que le Coran consacre au dhikr,
-            à la prière, au tasbih et à l&apos;istighfar.
+            La douceur, la bonne parole, repousser le mal par le bien, le pardon, l&apos;humilité — les beaux caractères qu&apos;Allah nous ordonne d&apos;avoir.
           </p>
 
-          <div
-            style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}
-          >
+          {/* Anchor pills */}
+          <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             {SECTIONS.map(s => (
               <a
                 key={s.id}
@@ -650,7 +647,7 @@ export default async function LesHeuresDuCroyantPage() {
                   fontSize: '0.72rem',
                   padding: '4px 12px',
                   borderRadius: '999px',
-                  border: '1px solid rgba(245,158,11,0.25)',
+                  border: '1px solid rgba(45,212,191,0.25)',
                   color: '#94A3B8',
                   textDecoration: 'none',
                   transition: 'all 0.2s',
@@ -658,16 +655,23 @@ export default async function LesHeuresDuCroyantPage() {
                 }}
                 className="nav-link"
               >
-                {s.title.split('—')[0].trim()}
+                {s.title.includes('—') ? s.title.split('—')[1].trim() : s.title}
               </a>
             ))}
           </div>
         </header>
 
+        {/* ── Grid ── */}
         <div
-          className="main-grid main-grid-stretched"
+          className="main-grid"
           style={{
-            gridTemplateColumns: SECTIONS.length > 0 ? '263px 1fr' : '1fr',
+            maxWidth: '1450px',
+            margin: '0 1.5rem',
+            padding: '0 1rem 2rem',
+            display: 'grid',
+            gridTemplateColumns: '263px 15fr',
+            gap: '0.5rem',
+            alignItems: 'start',
           }}
         >
           {/* ── Sidebar ── */}
@@ -714,8 +718,8 @@ export default async function LesHeuresDuCroyantPage() {
                       width: '2rem',
                       height: '2rem',
                       borderRadius: '50%',
-                      background: 'rgba(245,158,11,0.12)',
-                      border: '1px solid rgba(245,158,11,0.3)',
+                      background: 'rgba(45,212,191,0.12)',
+                      border: '1px solid rgba(45,212,191,0.3)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -742,7 +746,7 @@ export default async function LesHeuresDuCroyantPage() {
                   </h2>
                 </div>
 
-                <div style={{ borderLeft: `1px solid rgba(245,158,11,0.12)`, paddingLeft: '1.5rem', marginLeft: '1rem' }}>
+                <div style={{ borderLeft: `1px solid rgba(45,212,191,0.12)`, paddingLeft: '1.5rem', marginLeft: '1rem' }}>
                   {section.groups.map((group, gIdx) => (
                     <VerseGroupCard key={gIdx} group={group} quran={quran} amiriClass={amiri.className} />
                   ))}
@@ -755,7 +759,7 @@ export default async function LesHeuresDuCroyantPage() {
               style={{
                 textAlign: 'center',
                 padding: '3rem 1rem',
-                borderTop: `1px solid rgba(245,158,11,0.12)`,
+                borderTop: `1px solid rgba(45,212,191,0.12)`,
                 marginTop: '2rem',
               }}
             >
@@ -764,13 +768,13 @@ export default async function LesHeuresDuCroyantPage() {
                 dir="rtl"
                 style={{ fontSize: '1.6rem', color: ACCENT, marginBottom: '1rem', lineHeight: 2 }}
               >
-                أَلَا بِذِكۡرِ ٱللَّهِ تَطۡمَئِنُّ ٱلۡقُلُوبُ
+                إِنَّ ٱللَّهَ يَأۡمُرُ بِٱلۡعَدۡلِ وَٱلۡإِحۡسَٰنِ وَإِيتَآيِٕ ذِي ٱلۡقُرۡبَىٰ
               </p>
               <p style={{ color: '#64748B', fontSize: '0.875rem', fontStyle: 'italic' }}>
-                « Certes, c&apos;est par le rappel d&apos;Allah que les cœurs se tranquillisent. »
+                « Certes, Allah ordonne l&apos;équité, l&apos;excellence et la générosité envers les proches. »
               </p>
               <p style={{ marginTop: '0.5rem', fontSize: '0.7rem', color: ACCENT, fontFamily: 'monospace', letterSpacing: '0.06em' }}>
-                Ar-Raʿd 13:28
+                An-Naḥl 16:90
               </p>
             </div>
           </main>

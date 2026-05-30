@@ -846,6 +846,21 @@ export default async function IslamPage() {
             >
               ◆ Les parents dans le Coran →
             </a>
+            <a
+              href="/beau-caractere"
+              style={{
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                borderRadius: '999px',
+                border: '1px solid rgba(45,212,191,0.35)',
+                color: '#2DD4BF',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              ✿ Le beau caractère →
+            </a>
           </div>
         </header>
 
