@@ -615,6 +615,9 @@ export default async function BeauCaracterePage() {
             <a href="/parents-dans-le-coran" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(192,132,252,0.35)', color: '#C084FC', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
               ◆ Les parents dans le Coran
             </a>
+            <a href="/tawhid" style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(249,115,22,0.35)', color: '#F97316', textDecoration: 'none', transition: 'all 0.2s', whiteSpace: 'nowrap' }}>
+              ◉ Le Tawhid →
+            </a>
           </div>
 
           <p
