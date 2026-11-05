@@ -265,7 +265,7 @@ const SECTIONS: Section[] = [
 async function fetchQuran(): Promise<Surah[]> {
   const res = await fetch(
     'https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran_fr.json',
-    { next: { revalidate: 86400 } },
+    { next: { revalidate: 604800 } },
   )
   if (!res.ok) throw new Error('Failed to fetch Quran data')
   return res.json()
