@@ -93,6 +93,12 @@ python3 -c "import json;q=json.load(open('public/data/quran_fr.json'));s,v=2,255
 
 - `get_ayat.py` / `salam_verses.txt` : script de recherche ponctuel (versets contenant la racine « سلم ») et son résultat.
 - `docs/index.html` : page HTML statique indépendante (« Les Meilleurs d'entre Vous »), hors de l'app Next.
+- `docs/miracles-du-coran/` : « Les signes du Coran », site statique hors de l'app Next, en deux vues qui se renvoient l'une à l'autre.
+  - `lecture-verticale.html` : les 40 planches à la suite. C'est la **source du contenu** (versets, mots, explications, schémas, sources, dans le tableau `P` du script) ; elle s'édite à la main. Chaque planche a une ancre (`#slug`, tableau `SLUG`).
+  - `index.html` : la mosaïque des 40 signes, chacun en récit de quatre écrans (phénomène, verset, mot clé, aller plus loin). **Fichier généré**, ne pas l'éditer : `python3 tools/miracles-du-coran/build.py` (demande `node`).
+  - `tools/miracles-du-coran/` : `template.html` (mise en page de la mosaïque), `recits.py` (chiffre, phrase et sens du mot de chaque récit, et son slug), `titres.json` (titres tirés du phénomène). Après toute modification d'une planche ou de ces fichiers, relancer le build. Il vérifie que planches, récits, titres et ancres correspondent.
+  - Méthode des contenus : tradition sunnite comme base, chaînes des récits vérifiées, sources externes pesées selon les mêmes critères.
+- GitHub Pages publie la branche `main`, dossier `/docs` : https://mdiakhate12.github.io/islam_app/ (donc `/miracles-du-coran/` pour la mosaïque).
 - `components/`, `hooks/`, `lib/` : vides. Les dépendances `mongodb`, `mongoose`, `nodemailer` et `@emailjs/browser` ne sont pas utilisées par le site (héritées du gabarit `next_ecommerce_koris_digital`).
 
 ## Git
