@@ -132,6 +132,13 @@ a{color:var(--lapis);text-underline-offset:3px}
 .fig text.ar{font:700 14px var(--arabic);fill:var(--ink)}
 .mk{fill:var(--ink)} .mkb{fill:var(--lapis)} .mks{fill:var(--saffron)}
 .p-sent{font:400 1.2rem/1.5 var(--text);margin:18px 0 0;max-width:44ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
+.fact{border:1px solid var(--on-tile-2);border-radius:16px;padding:14px 16px}
+.fact h3{font:500 .68rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-tile-2);margin:0 0 8px}
+.fact .calc{font:600 .95rem/1.4 var(--mono);color:var(--glow);margin:0 0 8px}
+.fact p{font:400 .98rem/1.5 var(--text);margin:0}
+.fact .refs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:10px;font:500 .74rem/1.4 var(--mono)}
+.fact .refs a{color:var(--on-tile);text-underline-offset:3px}
 .p-cap{font:400 .74rem/1.5 var(--mono);color:var(--on-tile-2);margin:8px 0 0;max-width:60ch}
 .deep{background:var(--surface);color:var(--ink);border-radius:16px;padding:6px 18px}
 .deep details{border-bottom:1px solid var(--line)}
@@ -241,7 +248,9 @@ function fill(st){
     <h2 id="s-title" class="p-phen">${esc(st.phen)}</h2>
     <p class="p-big${st.big.length > 12 ? " long" : ""}">${esc(st.big)}</p>
     <div class="figcard fig">${st.svg}</div>
-    <p class="p-sent">${esc(st.sentence)}</p>`;
+    <p class="p-sent">${esc(st.sentence)}</p>${st.facts.length ? `<div class="facts">${st.facts.map(f => `<section class="fact">
+      <h3>${esc(f.h)}</h3><p class="calc">${esc(f.calc)}</p><p>${esc(f.t)}</p>
+      <p class="refs">${f.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</p></section>`).join("")}</div>` : ""}`;
   const verses = st.groups.map((g, i) => `<p class="lab">Ce que dit le Coran${k > 1 ? ` · ${i + 1} sur ${k}` : ""}</p>
     <p class="p-ref">${esc(g.label)}</p>
     <p class="p-ar ${g.size}" lang="ar">${g.ar_html}</p>

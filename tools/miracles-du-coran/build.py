@@ -45,7 +45,18 @@ MANUAL = {
   "montagnes": {"label": "An-Nabaʾ, 78:6-7", "ar": ["78:6", "78:7"],
                 "fr": "« N’avons-Nous pas fait de la terre une couche, et des montagnes des piquets ? »",
                 "hl": ["أَوْتَادًا"], "word": {"w": "أَوْتَاد", "tr": "awtād", "root": "وتد", "mean": "Le piquet de la tente : on n’en voit que la tête, l’essentiel est enfoncé dans le sol."},
-                "sentence": "Sous une montagne, une racine de roche légère plonge dans le manteau, environ six fois plus profonde que le relief n’est haut.", "big": "× 6"},
+                "sentence": "Comme un iceberg, une montagne cache sous elle une racine : la croûte s’enfonce dans le manteau sur environ six fois la hauteur de la montagne.", "big": "× 6",
+                "facts": [
+                  {"h": "Le modèle d’Airy (1855)", "calc": "racine ≈ 2,83 ÷ (3,3 − 2,83) × hauteur ≈ 6 × hauteur",
+                   "t": "Un relief ne tient que s’il est porté par en dessous : une avancée de croûte légère s’enfonce dans le manteau, plus dense. Airy le compare à un radeau de bois : la bûche qui dépasse le plus de l’eau est aussi celle qui plonge le plus profond. Avec les densités moyennes mesurées aujourd’hui, 2,83 pour la croûte et 3,3 pour le manteau, la racine fait environ six fois la hauteur du relief.",
+                   "links": [["Airy, 1855, texte intégral", "https://archive.org/details/philosophicaltra1451roya/page/101/mode/1up"],
+                             ["Christensen et Mooney, 1995, densité de la croûte", "https://doi.org/10.1029/95JB00259"]]},
+                  {"h": "L’exemple du Tibet", "calc": "35 km de croûte + 5 km de relief + 30 km de racine ≈ 70 km",
+                   "t": "Le plateau du Tibet s’élève en moyenne à près de 5 km. Sa racine doit donc descendre d’environ 30 km sous la base d’une croûte ordinaire, épaisse de 35 km : la croûte y mesure environ 70 km. La sismique et la gravimétrie par satellite le confirment : plus de 65 km sous presque tout le plateau, le double d’une croûte normale, et jusqu’à 82 km à l’ouest.",
+                   "links": [["Shin et al., Scientific Reports, 2015", "https://doi.org/10.1038/srep11681"],
+                             ["Li et al., Science Advances, 2023, altitude moyenne", "https://doi.org/10.1126/sciadv.adh3058"],
+                             ["Zhao et al., Nature, 1993", "https://doi.org/10.1038/366557a0"]]},
+                ]},
 }
 # Mots à surligner en plus des mots clés de la planche
 EXTRA_HL = {"fer": ["أَنزَلَ"]}
@@ -117,6 +128,7 @@ for title, slug, stat, sentence, mean in R:
         big = stat
     keys = [w["w"] for w in p["words"]] + (MANUAL[slug]["hl"] if slug in MANUAL else []) + EXTRA_HL.get(slug, [])
     stories[slug] = {"slug": slug, "groups": groups_of(p, keys), "title": title, "phen": PHEN[title], "ch": p["ch"], "stat": stat, "big": big, "sentence": sentence,
+                     "facts": MANUAL.get(slug, {}).get("facts", []),
                      "excerpt": {"label": label, "ar_html": ar_html, "fr": fr}, "word": word,
                      "v": p["v"], "words": p["words"], "mot": p["mot"], "sci": p["sci"], "cap": p["cap"], "svg": p["svg"], "src": p["src"]}
     order.append(slug)
