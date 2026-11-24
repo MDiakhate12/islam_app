@@ -61,9 +61,15 @@ a{color:var(--lapis);text-underline-offset:3px}
 .chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,148px),1fr));gap:12px;padding-bottom:56px}
-.tile{position:relative;overflow:hidden;min-height:236px;gap:6px;border:0;border-radius:16px;background:var(--tile);color:var(--on-tile);padding:14px 14px 13px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;cursor:pointer;transition:transform .25s ease}
-.tile::after{content:"";position:absolute;width:140%;aspect-ratio:1;right:-70%;bottom:-70%;border-radius:50%;border:1px solid var(--on-tile-2);opacity:.18;pointer-events:none}
-.tile:hover{transform:translateY(-3px)}
+.tile{position:relative;overflow:hidden;min-height:236px;gap:6px;border:0;border-radius:16px;background:var(--tile);color:var(--on-tile);padding:14px 14px 13px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;cursor:pointer;isolation:isolate;--ease:cubic-bezier(.2,.8,.2,1);transition:transform .45s var(--ease),box-shadow .45s var(--ease),filter .45s var(--ease)}
+.tile::after{content:"";position:absolute;width:140%;aspect-ratio:1;right:-70%;bottom:-70%;border-radius:50%;border:1px solid var(--on-tile-2);opacity:.18;pointer-events:none;transition:opacity .45s var(--ease),transform .7s var(--ease)}
+/* Reflet qui traverse la tuile au survol, sous le texte */
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.2) 46%,rgba(255,255,255,.07) 56%,transparent 72%);transform:translateX(-110%)}
+.tile:hover,.tile:focus-visible{transform:translateY(-4px);filter:brightness(1.08) saturate(1.06);box-shadow:0 16px 32px -16px rgba(0,0,0,.5),0 0 0 1px color-mix(in srgb,var(--glow) 50%,transparent),0 0 28px -8px color-mix(in srgb,var(--glow) 60%,transparent)}
+.tile:hover::before,.tile:focus-visible::before{transform:translateX(110%);transition:transform 1s var(--ease)}
+.tile:hover::after,.tile:focus-visible::after{opacity:.32;transform:scale(1.05)}
+.tile:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+@media (hover:none){.tile:hover{transform:none;filter:none;box-shadow:none}.tile:hover::before{transform:translateX(-110%);transition:none}.tile:hover::after{opacity:.18;transform:none}}
 .t-ch{font:500 .6rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--on-tile-2);display:flex;justify-content:space-between;gap:8px}
 .t-ch em{font-style:normal;color:var(--glow)}
 .t-ar{font:400 clamp(1.8rem,4.4vw,2.5rem)/1.9 var(--quran);text-align:center;direction:rtl;margin:4px 0 10px;padding-block:2px 6px}
@@ -158,7 +164,7 @@ a{color:var(--lapis);text-underline-offset:3px}
 .step{font:500 .7rem var(--mono);color:var(--on-tile-2);letter-spacing:.06em;text-align:center}
 .play .fig svg > *{animation:rise .6s ease both;animation-delay:calc(var(--i,0) * 70ms)}
 @keyframes rise{from{filter:opacity(0);transform:translateY(6px)}to{filter:opacity(1);transform:none}}
-@media (prefers-reduced-motion:reduce){.play .fig svg > *{animation:none}.tile{transition:none}}
+@media (prefers-reduced-motion:reduce){.play .fig svg > *{animation:none}.tile,.tile::after{transition:none}.tile::before{display:none}.tile:hover,.tile:focus-visible{transform:none}}
 .toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font:500 .8rem var(--mono);max-width:calc(100% - 32px);z-index:30}
 </style>
 <script>try{var t=localStorage.getItem("signes-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
