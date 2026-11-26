@@ -4,6 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
 <style>
+@font-face{font-family:"Madina";src:url("https://cdn.jsdelivr.net/gh/DigitalKhatt/oldmadinafont@04d33f799965b50c10d5518a9c6bcddf508bea98/fonts/oldmadina.woff2") format("woff2");font-display:swap;size-adjust:115%}
 /* Mosaïque de tuiles colorées par chapitre ; chaque tuile ouvre un récit en quatre écrans. Lapis et safran, comme la page complète. */
 :root{
   --bg:#f2f3f7; --surface:#ffffff; --ink:#121a33; --muted:#566079; --line:#d8dde9;
@@ -13,7 +14,7 @@
   --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --text:"Newsreader",Charter,"Iowan Old Style",Georgia,serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --quran:"Amiri Quran","Amiri","Noto Naskh Arabic","Geeza Pro",serif;
+  --quran:"Madina","Amiri Quran","Amiri","Noto Naskh Arabic","Geeza Pro",serif;
   --arabic:"Amiri","Noto Naskh Arabic","Geeza Pro","Traditional Arabic",serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -101,8 +102,9 @@ a{color:var(--lapis);text-underline-offset:3px}
 .p-ar.s{font-size:clamp(1.25rem,3.4vw,1.75rem);line-height:2}
 .p-ref{font:500 .82rem/1.3 var(--mono);color:var(--on-tile);margin:-8px 0 16px}
 .p-fr sup{font:500 .62rem var(--mono);font-style:normal;color:var(--glow);margin-right:3px}
+.nw{white-space:nowrap}
 .p-ar mark{background:none;color:var(--glow);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:10px}
-.ayah{font:700 .55em var(--arabic);color:var(--on-tile-2);margin-inline:.3em}
+.ayah{display:inline-flex;align-items:center;justify-content:center;min-width:1.7em;height:1.7em;padding:0 .25em;border:1px solid color-mix(in srgb,var(--glow) 70%,transparent);border-radius:999px;color:var(--glow);font:700 .45em/1 var(--arabic);margin-inline:.35em;vertical-align:.3em}
 .p-fr{font:italic 400 1.2rem/1.55 var(--text);margin:0;max-width:52ch}
 .ghost{margin-top:20px;border:1px solid var(--on-tile-2);background:none;border-radius:999px;padding:8px 16px;font:500 .78rem var(--mono);cursor:pointer}
 .full{margin-top:18px;border-top:1px solid rgba(255,255,255,.2);padding-top:14px}
@@ -138,30 +140,60 @@ a{color:var(--lapis);text-underline-offset:3px}
 .fig text.ar{font:700 14px var(--arabic);fill:var(--ink)}
 .mk{fill:var(--ink)} .mkb{fill:var(--lapis)} .mks{fill:var(--saffron)}
 .p-sent{font:400 1.2rem/1.5 var(--text);margin:18px 0 0;max-width:44ch}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:22px}
-.fact{border:1px solid var(--on-tile-2);border-radius:16px;padding:14px 16px}
-.fact h3{font:500 .68rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-tile-2);margin:0 0 8px}
-.fact .calc{font:600 .95rem/1.4 var(--mono);color:var(--glow);margin:0 0 8px}
-.fact p{font:400 .98rem/1.5 var(--text);margin:0}
-.fact .refs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:10px;font:500 .74rem/1.4 var(--mono)}
-.fact .refs a{color:var(--on-tile);text-underline-offset:3px}
 .p-cap{font:400 .74rem/1.5 var(--mono);color:var(--on-tile-2);margin:8px 0 0;max-width:60ch}
-.deep{background:var(--surface);color:var(--ink);border-radius:16px;padding:6px 18px}
-.deep details{border-bottom:1px solid var(--line)}
-.deep details:last-child{border-bottom:0}
-.deep summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font:700 1.02rem/1.2 var(--display)}
-.deep summary::-webkit-details-marker{display:none}
-.deep summary::after{content:"+";font:400 1.3rem var(--display);color:var(--muted)}
-.deep details[open] summary::after{content:"–"}
-.deep p{margin:0 0 14px;font-size:1rem}
-.deep ul{margin:0 0 14px;padding-left:1.1em;font:400 .82rem/1.6 var(--mono)}
-.deep li a{color:var(--ink);text-decoration-color:var(--line)}
-.wl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
-.wl span{border:1px solid var(--line);border-radius:10px;padding:6px 10px;font:400 .8rem var(--mono)}
-.wl b{font:700 1.15rem var(--arabic);margin-left:6px;color:var(--lapis)}
-.nav{border:1px solid var(--on-tile-2);background:none;border-radius:999px;padding:9px 18px;font:500 .8rem var(--mono);cursor:pointer;min-width:110px}
+/* Écoute du passage */
+.p-ref{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.listen{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--on-tile-2);background:none;color:var(--on-tile);border-radius:999px;padding:6px 14px 6px 10px;font:500 .74rem var(--mono);cursor:pointer}
+.listen svg{width:14px;height:14px}
+.listen:hover{background:rgba(255,255,255,.1)}
+.listen[aria-pressed="true"]{border-color:var(--glow);color:var(--glow)}
+/* Mots clés : le principal en grand, les autres en liste */
+.kws{display:grid;gap:10px;margin:26px auto 0;max-width:520px}
+.kw{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;border:1px solid color-mix(in srgb,var(--on-tile-2) 55%,transparent);border-radius:14px;padding:10px 16px}
+.kw-ar{font:700 1.9rem/1.5 var(--arabic);direction:rtl;margin:0;grid-row:span 2}
+.kw-tr{font:500 .76rem var(--mono);color:var(--on-tile-2);margin:0}
+.kw-mean{font:400 1rem/1.4 var(--text);margin:0}
+/* Pourquoi c’est étonnant : trois cartes, de ce qu’on voit à ce que dit le Coran */
+.why{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.wc{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);border:1px solid color-mix(in srgb,var(--on-tile-2) 55%,transparent);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.05)}
+.wc-img{margin:0;position:relative;min-height:150px}
+.wc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.wc-img figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 8px 5px;background:linear-gradient(transparent,rgba(0,0,0,.6));font:400 .58rem/1.3 var(--mono)}
+.wc-img figcaption a{color:#fff;text-decoration:none}
+.wc-ar{display:grid;place-items:center;padding:14px;background:#fbf7ee;color:#121a33;font:400 clamp(1.7rem,4.6vw,2.3rem)/1.9 var(--quran);direction:rtl;text-align:center}
+.wc-body{padding:14px 18px 16px}
+.wc h3{display:flex;align-items:center;gap:10px;font:500 .7rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-tile-2);margin:0 0 8px}
+.wc h3 b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--glow);color:var(--tile);font:700 .72rem var(--mono);letter-spacing:0}
+.wc .calc{font:600 .95rem/1.4 var(--mono);color:var(--glow);margin:0 0 6px}
+.wc p{font:400 1rem/1.5 var(--text);margin:0}
+.wc-refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px!important}
+.wc-refs a{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:3px 10px;font:500 .68rem/1.4 var(--mono);text-decoration:none}
+.wc-refs a{color:var(--on-tile-2)}
+.wc-refs a:hover{color:var(--on-tile)}
+@media (max-width:560px){.wc{grid-template-columns:1fr}.wc-img{min-height:170px}}
+/* Aller plus loin : mêmes cartes que « Pourquoi c’est étonnant », sources sous le texte qu’elles appuient */
+.far{display:grid;gap:14px}
+.fc{border:1px solid color-mix(in srgb,var(--on-tile-2) 55%,transparent);border-radius:16px;background:rgba(255,255,255,.05);padding:16px 20px 18px}
+.fc h3{display:flex;align-items:center;gap:10px;font:500 .7rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-tile-2);margin:0 0 12px}
+.fc h3 b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--glow);color:var(--tile)}
+.fc h3 svg{width:13px;height:13px}
+.fc p{font:400 1.02rem/1.65 var(--text);margin:0 0 .85em;max-width:64ch}
+.fc .nm{font-weight:500;color:var(--glow)}
+.fc-more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--on-tile-2);border-radius:999px;padding:5px 14px;font:500 .72rem var(--mono);color:var(--on-tile);margin:0 0 .85em}
+.fc-more summary::-webkit-details-marker{display:none}
+.fc-more summary:hover{background:rgba(255,255,255,.1)}
+.fc-more[open] summary{display:none}
+.fc .wc-refs{margin-top:4px!important}
+a.fc-link{display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none;color:var(--on-tile)}
+a.fc-link:hover{background:rgba(255,255,255,.1)}
+.fc-link span{display:grid;gap:3px}
+.fc-link b{font:700 1.05rem/1.2 var(--display)}
+.fc-link small{font:500 .7rem/1.4 var(--mono);color:var(--on-tile-2)}
+.fc-link i{font:400 1.4rem var(--display);font-style:normal}
+.nav{border:1px solid var(--on-tile-2);background:none;border-radius:999px;padding:9px 18px;font:500 .8rem var(--mono);cursor:pointer;min-width:110px;white-space:nowrap}
 .nav.main{background:var(--on-tile);color:var(--tile);border-color:var(--on-tile)}
 .step{font:500 .7rem var(--mono);color:var(--on-tile-2);letter-spacing:.06em;text-align:center}
+@media (max-width:560px){.step{display:none}.nav{min-width:0;padding:9px 13px;font-size:.72rem}}
 .play .fig svg > *{animation:rise .6s ease both;animation-delay:calc(var(--i,0) * 70ms)}
 @keyframes rise{from{filter:opacity(0);transform:translateY(6px)}to{filter:opacity(1);transform:none}}
 @media (prefers-reduced-motion:reduce){.play .fig svg > *{animation:none}.tile,.tile::after{transition:none}.tile::before{display:none}.tile:hover,.tile:focus-visible{transform:none}}
@@ -174,11 +206,11 @@ a{color:var(--lapis);text-underline-offset:3px}
 <header class="hero gut">
   <div class="wrap hero-grid">
    <div>
-    <p class="ar" lang="ar">سَنُرِيهِمْ <span>ءَايَـٰتِنَا</span> فِى ٱلْـَٔافَاقِ وَفِىٓ أَنفُسِهِمْ حَتَّىٰ يَتَبَيَّنَ لَهُمْ أَنَّهُ ٱلْحَقُّ ۗ أَوَلَمْ يَكْفِ بِرَبِّكَ أَنَّهُۥ عَلَىٰ كُلِّ شَىْءٍ شَهِيدٌ</p>
+    <p class="ar" lang="ar">سَنُرِيهِمۡ <span>ءَايَٰتِنَا</span> فِي ٱلۡأٓفَاقِ وَفِيٓ أَنفُسِهِمۡ حَتَّىٰ يَتَبَيَّنَ لَهُمۡ أَنَّهُ ٱلۡحَقُّۗ أَوَلَمۡ يَكۡفِ بِرَبِّكَ أَنَّهُۥ عَلَىٰ كُلِّ شَيۡءٖ شَهِيدٌ</p>
     <p class="tr">« Nous leur montrerons Nos signes dans l’univers et en eux-mêmes, jusqu’à ce qu’il leur devienne évident que ceci (le Coran) est la vérité. Ne suffit-il pas que ton Seigneur soit témoin de toute chose ? » Fuṣṣilat, 41:53</p>
     <h1>Les signes du Coran</h1>
     <p class="lede">Quarante et un signes, à découvrir d’un coup d’œil. Touchez une tuile.</p>
-    <nav class="views" aria-label="Affichage"><span aria-current="page">Mosaïque</span><a href="lecture-verticale.html">Lecture verticale</a></nav><button class="theme" id="theme" type="button">Mode sombre</button>
+    <nav class="views" aria-label="Affichage"><span aria-current="page">Mosaïque</span><a href="lecture-verticale.html">Lecture verticale</a></nav><button class="theme" id="rand" type="button">Un signe au hasard</button><button class="theme" id="theme" type="button">Mode sombre</button>
    </div>
     <svg class="star" viewBox="0 0 300 300" role="img" aria-label="Étoile à huit branches, motif de l’art islamique, avec le nombre de signes">
       <rect x="62" y="62" width="176" height="176" class="r1"/>
@@ -224,7 +256,8 @@ a{color:var(--lapis);text-underline-offset:3px}
 <script>
 const DATA = /*__DATA__*/null;
 const $ = s => document.querySelector(s);
-const esc = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+// Espace insécable avant : ; ? ! » et après «, pour qu’aucun signe ne commence une ligne
+const esc = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/ ([:;?!»])/g, "\u00a0$1").replace(/« /g, "«\u00a0");
 const ind = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 const CHN = Object.fromEntries(DATA.chapters.map(c => [c.id, c.name]));
 const SHORT = {ciel:"Ciel", terre:"Terre", air:"Air", eau:"Eau", vivant:"Vivant", histoire:"Histoire"};
@@ -248,32 +281,61 @@ function highlight(txt, words){
   for (const w of words) h = h.split(esc(w)).join(`<mark>${esc(w)}</mark>`);
   return h;
 }
+/* Écoute : récitation d’al-Ḥuṣarī, verset par verset, depuis le miroir audio qu’utilise Quran.com */
+const RECIT = "https://mirrors.quranicaudio.com/everyayah/Husary_128kbps/";
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>';
+const ICON_STOP = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1" fill="currentColor"/></svg>';
+const audio = { el: new Audio(), queue: [], btn: null };
+audio.el.preload = "none";
+function stopListen(){ audio.el.pause(); audio.queue = []; const b = audio.btn; audio.btn = null; if (b) { b.setAttribute("aria-pressed", "false"); b.innerHTML = ICON_PLAY + "<span>Écouter</span>"; } }
+function nextAyah(){ if (!audio.queue.length) return stopListen(); const [s, a] = audio.queue.shift().split(":"); audio.el.src = RECIT + s.padStart(3, "0") + a.padStart(3, "0") + ".mp3"; audio.el.play().catch(stopListen); }
+audio.el.addEventListener("ended", nextAyah);
+audio.el.addEventListener("error", stopListen);
+document.addEventListener("click", e => { const b = e.target.closest(".listen"); if (!b) return;
+  if (audio.btn === b) return stopListen();
+  stopListen(); audio.btn = b; audio.queue = b.dataset.ayahs.split(","); b.setAttribute("aria-pressed", "true"); b.innerHTML = ICON_STOP + "<span>Arrêter</span>"; nextAyah(); });
+
+/* Sources : le Coran et les savants d’un côté, la science et l’histoire de l’autre */
+const RELIG = /(^|\.)(quran\.com|tafsir\.app|sunnah\.com|dorar\.net|islamweb\.net|shamela\.ws)$/;
+const host = u => { try { return new URL(u).hostname; } catch (e) { return ""; } };
+const refs = list => list.length ? `<p class="wc-refs">${list.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</p>` : "";
+const ICON_BOOK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4.3C6.5 3.3 4.5 3 2.4 3.2v8.7c2.1-.2 4.1.1 5.6 1.1 1.5-1 3.5-1.3 5.6-1.1V3.2C11.5 3 9.5 3.3 8 4.3zm0 0v8.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+const ICON_LENS = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.2 10.2l3.6 3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+// Les premiers paragraphes, puis « Lire la suite » pour le reste
+const textBlock = (ps, keep) => ps.slice(0, keep).map(x => `<p>${x}</p>`).join("")
+  + (ps.length > keep ? `<details class="fc-more"><summary>Lire la suite</summary>${ps.slice(keep).map(x => `<p>${x}</p>`).join("")}</details>` : "");
+const roots = r => r && r !== "—" ? `<div class="root" aria-label="Racine">${[...r].map(l => `<span lang="ar">${esc(l)}</span>`).join("")}</div>` : "";
+
 function fill(st){
   const k = st.groups.length;
   const phen = `<p class="lab">${esc(CHN[st.ch])}</p>
     <h2 id="s-title" class="p-phen">${esc(st.phen)}</h2>
     <p class="p-big${st.big.length > 12 ? " long" : ""}">${esc(st.big)}</p>
     <div class="figcard fig">${st.svg}</div>
-    <p class="p-sent">${esc(st.sentence)}</p>${st.facts.length ? `<div class="facts">${st.facts.map(f => `<section class="fact">
-      <h3>${esc(f.h)}</h3><p class="calc">${esc(f.calc)}</p><p>${esc(f.t)}</p>
-      <p class="refs">${f.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</p></section>`).join("")}</div>` : ""}`;
+    <p class="p-cap">${esc(st.cap)}</p>
+    <p class="p-sent">${esc(st.sentence)}</p>`;
   const verses = st.groups.map((g, i) => `<p class="lab">Ce que dit le Coran${k > 1 ? ` · ${i + 1} sur ${k}` : ""}</p>
-    <p class="p-ref">${esc(g.label)}</p>
+    <p class="p-ref"><span>${esc(g.label)}</span><button class="listen" type="button" aria-pressed="false" data-ayahs="${g.ayahs.join(",")}" title="Récitation de Maḥmūd Khalīl al-Ḥuṣarī">${ICON_PLAY}<span>Écouter</span></button></p>
     <p class="p-ar ${g.size}" lang="ar">${g.ar_html}</p>
     <p class="p-fr">${g.fr_html}</p>`);
-  const word = `<p class="lab">Le mot clé</p>
-    <p class="p-word" lang="ar">${esc(st.word.w)}</p><p class="p-tr">${esc(st.word.tr)}</p>
-    <div class="root" aria-label="Racine">${[...st.word.root].map(l => `<span lang="ar">${esc(l)}</span>`).join("")}</div>
-    <p class="p-mean">${esc(st.word.mean)}</p>`;
-  const deep = `<p class="lab">Aller plus loin</p><div class="deep">
-    <details open><summary>Le texte et les savants · « ${esc(st.title)} »</summary><p>${esc(st.mot)}</p></details>
-    <details><summary>La science et l’histoire</summary><p>${esc(st.sci)}</p></details>
-    <details open><summary>Les mots arabes</summary><div class="wl">${st.words.map(w => `<span><b lang="ar">${esc(w.w)}</b> ${esc(w.tr)} · ${esc(w.s)}</span>`).join("")}</div></details>
-    <details><summary>Sources, ${st.src.length}</summary><ul>${st.src.map(([l, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a></li>`).join("")}</ul></details>
-    <details open><summary>La planche complète</summary><p>${esc(st.cap)}</p><p><a href="lecture-verticale.html#${st.slug}">Ouvrir cette planche dans la lecture verticale</a></p></details>
-    <details><summary>Notre méthode</summary><p>Tafsīr, hadith et transmetteurs dans les livres classiques sunnites ; chaque récit vérifié par sa chaîne ; sources externes pesées selon les mêmes critères.</p></details></div>`;
-  const panels = [phen, ...verses, word, deep];
-  STEPS = ["le phénomène", ...st.groups.map((g, i) => k > 1 ? `verset ${i + 1} sur ${k}` : "le verset"), "le mot", "aller plus loin"];
+  const [w0, ...others] = st.keywords;
+  const word = `<p class="lab">${others.length ? "Les mots clés" : "Le mot clé"}</p>
+    <p class="p-word" lang="ar">${esc(w0.w)}</p><p class="p-tr">${esc(w0.tr)}</p>
+    ${roots(w0.root)}
+    <p class="p-mean">${esc(w0.mean)}</p>${others.length ? `<div class="kws">${others.map(w => `<div class="kw">
+      <p class="kw-ar" lang="ar">${esc(w.w)}</p><p class="kw-tr">${esc(w.tr)}${w.root && w.root !== "—" ? ` · <span lang="ar">${esc(w.root)}</span>` : ""}</p><p class="kw-mean">${esc(w.mean)}</p></div>`).join("")}</div>` : ""}`;
+  const why = st.why.length ? `<p class="lab">Pourquoi c’est étonnant</p><ol class="why">${st.why.map((c, i) => `<li class="wc">
+      ${c.img ? `<figure class="wc-img"><img src="${esc(c.img.src)}" alt="${esc(c.img.alt)}" loading="lazy" decoding="async"><figcaption><a href="${esc(c.img.href)}" target="_blank" rel="noopener">${esc(c.img.credit)}</a></figcaption></figure>`
+              : `<div class="wc-ar" lang="ar">${esc(c.ar)}</div>`}
+      <div class="wc-body"><h3><b>${i + 1}</b>${esc(c.h)}</h3>${c.calc ? `<p class="calc">${esc(c.calc)}</p>` : ""}<p>${esc(c.t)}</p>
+      ${c.links.length ? `<p class="wc-refs">${c.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</p>` : ""}</div></li>`).join("")}</ol>` : "";
+  const rel = st.src.filter(s => RELIG.test(host(s[1]))), ext = st.src.filter(s => !RELIG.test(host(s[1])));
+  const deep = `<p class="lab">Aller plus loin</p><div class="far">
+    <section class="fc"><h3><b>${ICON_BOOK}</b>Ce qu’en disent les savants</h3>${textBlock(st.mot_p, 2)}${refs(rel)}</section>
+    <section class="fc"><h3><b>${ICON_LENS}</b>La science et l’histoire en détail</h3>${textBlock(st.sci_p, 1)}${refs(ext)}</section>
+    <a class="fc fc-link" href="lecture-verticale.html#${st.slug}"><span><b>Voir la planche complète</b><small>Dans la lecture verticale : le schéma, les versets et toutes les sources</small></span><i aria-hidden="true">›</i></a></div>`;
+  const panels = [phen, ...verses, word, ...(why ? [why] : []), deep];
+  STEPS = ["le phénomène", ...st.groups.map((g, i) => k > 1 ? `verset ${i + 1} sur ${k}` : "le verset"), others.length ? "les mots clés" : "le mot clé", ...(why ? ["pourquoi c’est étonnant"] : []), "aller plus loin"];
   N = panels.length;
   $("#track").innerHTML = panels.map((h, i) => `<section class="panel"><div class="inner"${i === 0 ? ' id="p1"' : i === N - 1 ? ' id="plast"' : ""}>${h}</div></section>`).join("");
   $("#bars").innerHTML = "<span></span>".repeat(N); $("#bars").style.setProperty("--n", N);
@@ -286,15 +348,18 @@ function update(){
   idx = Math.max(0, Math.min(N - 1, Math.round(tr.scrollLeft / w)));
   [...$("#bars").children].forEach((b, i) => b.classList.toggle("on", i <= idx));
   $("#step").textContent = `${idx+1} sur ${N} · ${STEPS[idx]}`;
-  $("#prev").style.visibility = idx === 0 ? "hidden" : "visible";
-  $("#next").textContent = idx === N - 1 ? "Signe suivant" : "Suivant";
+  // Premier écran : le bouton mène au signe précédent, comme le dernier mène au suivant
+  $("#prev").textContent = idx === 0 ? "‹ Signe précédent" : "‹ Précédent";
+  // Le bouton annonce l’écran suivant, pour donner envie d’y aller
+  const nx = STEPS[idx + 1] || "";
+  $("#next").textContent = idx === N - 1 ? "Signe suivant ›" : nx.charAt(0).toUpperCase() + nx.slice(1) + " ›";
   if (idx === 0) $("#p1").classList.add("play");
 }
 function go(i){ const tr = $("#track"); tr.scrollTo({left: i * tr.clientWidth, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); }
 function open(slug, from){
   const st = DATA.stories[slug]; if (!st) return;
   current = slug; opener = from || null;
-  fill(st);
+  stopListen(); fill(st);
   const s = $("#story"); s.style.setProperty("--tile", `var(--c-${st.ch})`); s.hidden = false;
   document.body.style.overflow = "hidden";
   $("#p1").classList.remove("play"); void $("#p1").offsetWidth;
@@ -307,7 +372,7 @@ function open(slug, from){
 }
 function close(){
   if (!current) return;
-  current = null; $("#story").hidden = true; document.body.style.overflow = "";
+  stopListen(); current = null; $("#story").hidden = true; document.body.style.overflow = "";
   if (location.hash) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { location.hash = ""; } }
   if (opener) opener.focus();
 }
@@ -315,7 +380,8 @@ function close(){
 $("#chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; filter = b.dataset.ch; chips(); tiles(); });
 $("#grid").addEventListener("click", e => { const t = e.target.closest(".tile"); if (!t) return; open(t.dataset.slug, t); });
 $("#close").onclick = close;
-$("#prev").onclick = () => go(idx - 1);
+$("#rand").onclick = e => { const q = seq().filter(s => s !== current); open(q[Math.floor(Math.random() * q.length)], e.currentTarget); };
+$("#prev").onclick = () => idx === 0 ? open(neighbours().prev) : go(idx - 1);
 $("#next").onclick = () => idx === N - 1 ? open(neighbours().next) : go(idx + 1);
 $("#psign").onclick = () => open(neighbours().prev);
 $("#nsign").onclick = () => open(neighbours().next);

@@ -13,6 +13,8 @@ OUT = os.path.join(ROOT, "docs", "miracles-du-coran", "index.html")
 sys.dont_write_bytecode = True
 sys.path.insert(0, HERE)
 from recits import R
+from pourquoi import WHY
+from ordre import ORDRE
 
 page_v = open(VERT, encoding="utf-8").read()
 script = re.findall(r"<script>(.*?)</script>", page_v, flags=re.S)[-1]
@@ -31,60 +33,65 @@ assert sorted(titles) == sorted(r[0] for r in R), "recits.py ne couvre pas exact
 assert sorted(titles) == sorted(PHEN), "titres.json ne couvre pas exactement les planches"
 for t, slug, *_ in R:
     assert SLUG_V.get(t) == slug, f"adresse différente dans lecture-verticale.html pour « {t} »"
+assert set(WHY) <= {r[1] for r in R}, "pourquoi.py nomme un signe inconnu"
+assert sorted(ORDRE) == sorted(r[1] for r in R), "ordre.py doit nommer chaque signe une fois"
 
 # Les trois récits écrits à la main lors du premier prototype
 MANUAL = {
-  "byzantins": {"label": "Ar-Rūm, 30:2-4, extrait", "ar": ["30:2", "30:3", ("30:4", "فِى بِضْعِ", " ۗ")],
+  "byzantins": {"label": "Ar-Rūm, 30:2-4, extrait", "ar": ["30:2", "30:3", ("30:4", "فِي بِضۡعِ", "ۗ")],
                 "fr": "« Les Romains ont été vaincus, dans la terre la plus proche ; et après leur défaite, ils vaincront, dans quelques années. »",
                 "hl": ["بِضْعِ"], "word": {"w": "بِضْع", "tr": "biḍʿ", "root": "بضع", "mean": "En arabe, un nombre de trois à neuf. L’annonce se donne donc un délai précis."},
-                "sentence": "Révélée à La Mecque, avant l’Hégire, l’annonce précède les victoires d’Héraclius : elles tombent dans le délai.", "big": "622"},
-  "fer": {"label": "Al-Ḥadīd, 57:25, extrait", "ar": [("57:25", "وَأَنزَلْنَا ٱلْحَدِيدَ", " وَلِيَعْلَمَ")],
+                "sentence": "En 614, les Perses prennent Jérusalem et l’Empire byzantin s’effondre. À La Mecque, le Coran annonce sa revanche « dans quelques années ». Huit ans plus tard, Héraclius contre-attaque.", "big": "622"},
+  "fer": {"label": "Al-Ḥadīd, 57:25, extrait", "ar": [("57:25", "وَأَنزَلۡنَا ٱلۡحَدِيدَ", " وَلِيَعۡلَمَ")],
           "fr": "« Et Nous avons fait descendre le fer, qui renferme une force redoutable et des bienfaits pour les gens. »",
-          "hl": ["أَنزَلْنَا", "ٱلْحَدِيدَ"], "word": {"w": "أَنزَلْنَا", "tr": "anzalnā", "root": "نزل", "mean": "Faire descendre, faire venir d’en haut. Le Coran emploie le même verbe pour la pluie, le Livre, les bestiaux et le vêtement."},
+          "hl": ["أَنزَلْنَا", "ٱلْحَدِيدَ"], "word": {"w": "أَنزَلْنَا", "tr": "anzalnā", "root": "نزل", "mean": "Faire descendre, faire venir d’en haut. Le verset le dit du fer, en toutes lettres."},
           "sentence": "Le fer de la Terre a été forgé dans les étoiles. Et le premier fer que l’homme a travaillé est tombé du ciel, en météorites.", "big": "32 %"},
   "montagnes": {"label": "An-Nabaʾ, 78:6-7", "ar": ["78:6", "78:7"],
                 "fr": "« N’avons-Nous pas fait de la terre une couche, et des montagnes des piquets ? »",
                 "hl": ["أَوْتَادًا"], "word": {"w": "أَوْتَاد", "tr": "awtād", "root": "وتد", "mean": "Le piquet de la tente : on n’en voit que la tête, l’essentiel est enfoncé dans le sol."},
-                "sentence": "Comme un iceberg, une montagne cache sous elle une racine : la croûte s’enfonce dans le manteau sur environ six fois la hauteur de la montagne.", "big": "× 6",
-                "facts": [
-                  {"h": "Le modèle d’Airy (1855)", "calc": "racine ≈ 2,83 ÷ (3,3 − 2,83) × hauteur ≈ 6 × hauteur",
-                   "t": "Un relief ne tient que s’il est porté par en dessous : une avancée de croûte légère s’enfonce dans le manteau, plus dense. Airy le compare à un radeau de bois : la bûche qui dépasse le plus de l’eau est aussi celle qui plonge le plus profond. Avec les densités moyennes mesurées aujourd’hui, 2,83 pour la croûte et 3,3 pour le manteau, la racine fait environ six fois la hauteur du relief.",
-                   "links": [["Airy, 1855, texte intégral", "https://archive.org/details/philosophicaltra1451roya/page/101/mode/1up"],
-                             ["Christensen et Mooney, 1995, densité de la croûte", "https://doi.org/10.1029/95JB00259"]]},
-                  {"h": "L’exemple du Tibet", "calc": "35 km de croûte + 5 km de relief + 30 km de racine ≈ 70 km",
-                   "t": "Le plateau du Tibet s’élève en moyenne à près de 5 km. Sa racine doit donc descendre d’environ 30 km sous la base d’une croûte ordinaire, épaisse de 35 km : la croûte y mesure environ 70 km. La sismique et la gravimétrie par satellite le confirment : plus de 65 km sous presque tout le plateau, le double d’une croûte normale, et jusqu’à 82 km à l’ouest.",
-                   "links": [["Shin et al., Scientific Reports, 2015", "https://doi.org/10.1038/srep11681"],
-                             ["Li et al., Science Advances, 2023, altitude moyenne", "https://doi.org/10.1126/sciadv.adh3058"],
-                             ["Zhao et al., Nature, 1993", "https://doi.org/10.1038/366557a0"]]},
-                ]},
+                "sentence": "Le Tibet s’élève à 5 km. Sous lui, la croûte terrestre est épaisse d’environ 70 km, le double d’une croûte ordinaire. D’une montagne, on ne voit que la tête.", "big": "× 6"},
 }
 # Mots à surligner en plus des mots clés de la planche
-EXTRA_HL = {"fer": ["أَنزَلَ"]}
+EXTRA_HL = {"lumiere": ["سِرَاجًا", "مُّنِيرًا"], "vie-eau": ["مَآءٍ"],
+            "cycle-eau": ["بِقَدَرٍ", "فَأَسْكَنَّاهُ"], "thamud": ["تَنْحِتُونَ", "بُيُوتًا", "جَابُوا", "ٱلصَّخْرَ"]}
 
 def groups_of(p, keys):
     """Chaque verset ou passage cité, en entier, avec les mots clés surlignés."""
     out = []
     for ref, sura, fr in p["v"]:
         s, a, b = verses(ref)
-        ar = " ".join(mark(AR[f"{s}:{n}"], keys)[0] + f'<span class="ayah">{ind(n)}</span>' for n in range(a, b + 1))
+        ar = " ".join(with_ayah(mark(AR[f"{s}:{n}"], keys)[0], n) for n in range(a, b + 1))
         size = sum(len(AR[f"{s}:{n}"]) for n in range(a, b + 1))
-        frh = " ".join(f"<sup>{a + i}</sup>{html.escape(x)}" for i, x in enumerate(fr)) if isinstance(fr, list) else html.escape(fr)
-        out.append({"label": f"{sura}, {ref}", "ar_html": ar, "fr_html": frh, "size": "" if size < 140 else ("m" if size < 320 else "s")})
+        frh = " ".join(f"<sup>{a + i}</sup>{nb(html.escape(x))}" for i, x in enumerate(fr)) if isinstance(fr, list) else nb(html.escape(fr))
+        out.append({"label": f"{sura}, {ref}", "ar_html": ar, "fr_html": frh, "size": "" if size < 140 else ("m" if size < 320 else "s"),
+                    "ayahs": [f"{s}:{n}" for n in range(a, b + 1)]})
     return out
 
 # Extraits de plusieurs versets quand un seul couperait la phrase
 EXV = {"cortex-prefrontal": [15, 16], "sexe-pere": [45, 46]}
 
 def norm(t):
+    t = re.sub("\u0649[\u064B-\u0652]*\u0670", "\u0627", t)  # ىٰ se lit ā : دَحَىٰهَآ (Médine) = دَحَاهَا
     t = re.sub("[ً-ٰٟۖ-ۭـ]", "", t)
-    return re.sub("[ٱأإآ]", "ا", t).replace("ا", "").replace("ى", "").replace("ة", "ه")
+    # ى et ي confondus : le texte de Médine écrit souvent ي là où d’autres éditions écrivent ى
+    return re.sub("[ٱأإآ]", "ا", t).replace("ا", "").replace("ى", "ي").replace("ة", "ه")
+
+# Mots courants qu’une clé courte attrape à tort : فَلَمَّا (أَفَلَ), ٱلسَّبِيلِ (سَبَإ), لَّعَلِّيٓ (ٱلْأَعْلَىٰ)
+STOP = {"فلم", "لسبيل", "لعلي"}
 
 def mark(text, keys):
     keys = [norm(k) for k in keys if len(norm(k)) >= 2]
-    toks = [f"<mark>{html.escape(t)}</mark>" if any(k in norm(t) for k in keys) else html.escape(t) for t in text.split(" ")]
+    toks = [f"<mark>{html.escape(t)}</mark>" if norm(t) not in STOP and any(k in norm(t) for k in keys) else html.escape(t) for t in text.split(" ")]
     return " ".join(toks), any(k in norm(text) for k in keys)
 
+def nb(t): return re.sub(" ([:;?!»])", "\u00a0\\1", t).replace("« ", "«\u00a0")
+
 def ind(n): return str(n).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
+
+def with_ayah(h, n):
+    """Le numéro du verset reste collé au dernier mot, sans passer seul à la ligne."""
+    head, _, last = h.rpartition(" ")
+    return (head + " " if head else "") + f'<span class="nw">{last}<span class="ayah">{ind(n)}</span></span>'
 
 def verses(ref):
     s, r = ref.split(":")
@@ -95,6 +102,43 @@ def fr_join(fr, a, ns):
     if isinstance(fr, str): return fr
     t = " ".join(fr[n - a].strip().lstrip("«").rstrip("»").strip() for n in ns)
     return f"« {'… ' if t[:1].islower() else ''}{t}{'' if t[-1:] in '.!?' else ' …'} »"
+
+# « Aller plus loin » : textes découpés en paragraphes courts, noms des savants et des ouvrages en valeur
+ABBR = {"av", "apr", "env", "cf", "p", "pp", "vol", "éd", "al", "b", "n°"}
+SAVANTS = ["Ṭabarī", "Qurṭubī", "Ibn ʿĀshūr", "Ibn Kathīr", "Ibn ʿAbbās", "Ibn Zayd", "Ibn Fāris", "Ibn Qutayba", "Ibn ʿAṭiyya",
+           "Ibn Manẓūr", "Qatāda", "Mujāhid", "al-Rāghib", "Al-Rāghib", "al-Rāzī", "Rāzī", "Bukhārī", "Muslim", "Tirmidhī",
+           "al-Ḥasan al-Baṣrī", "al-Baṣrī", "Al-Zajjāj", "al-Zajjāj", "al-Azharī", "al-Jawharī", "al-Minhāl", "Saʿīd b. Jubayr",
+           "Baghawī", "Zamakhsharī", "Lisān al-ʿArab", "Maqāyīs",
+           "Muḥammad b. Ḥumayd al-Rāzī", "Ibn Ḥajar", "Abū Ḥātim", "al-Ḥasan", "Al-Ḥasan", "Sufyān al-Thawrī", "ʿAlī"]
+NAMES = re.compile(r"(?<![\wʿʾ])(" + "|".join(sorted(map(re.escape, SAVANTS), key=len, reverse=True)) + r")(?![\wʿʾ])")
+
+def sentences(t):
+    """Phrases, sans couper après une abréviation (av. J.-C., b. Jubayr, et al.)."""
+    out, cur = [], ""
+    for part in re.split(r"(?<=[.!?])(\s+)(?=[«A-ZÀ-ÖØ-ÞĀ-ſḀ-ỿʿʾ(])", t):
+        cur += part
+        if not part.strip(): continue
+        last = re.findall(r"([\w.\-ʿʾ°]+)\.$", cur.strip())
+        if last and (len(last[0].split(".")[-1]) <= 2 or last[0] in ABBR or last[0].endswith("J.-C")): continue
+        out.append(cur.strip()); cur = ""
+    if cur.strip(): out.append(cur.strip())
+    return out
+
+def paras(t, target=240):
+    """Paragraphes d’environ deux phrases ; un nouveau quand un autre savant prend la parole ou que le paragraphe deviendrait trop long."""
+    ps, cur = [], ""
+    for s in sentences(t):
+        if cur and len(cur) >= 120 and (NAMES.match(s) or len(cur) + len(s) > 360): ps.append(cur); cur = ""
+        cur = f"{cur} {s}".strip()
+        if len(cur) >= target: ps.append(cur); cur = ""
+    if cur:
+        if ps and len(cur) < 90: ps[-1] += " " + cur
+        else: ps.append(cur)
+    return ps
+
+def paras_html(t, names=False):
+    out = [nb(html.escape(x)) for x in paras(t)]
+    return [NAMES.sub(r'<b class="nm">\1</b>', x) for x in out] if names else out
 
 stories, order = {}, []
 for title, slug, stat, sentence, mean in R:
@@ -107,7 +151,7 @@ for title, slug, stat, sentence, mean in R:
                 assert a >= 0 and b > a, (key, start); parts.append((key, full[a:b].strip()))
             else:
                 parts.append((item, AR[item]))
-        ar_html = " ".join(mark(t, m["hl"])[0] + f'<span class="ayah">{ind(k.split(":")[1])}</span>' for k, t in parts)
+        ar_html = " ".join(with_ayah(mark(t, m["hl"])[0], k.split(":")[1]) for k, t in parts)
         label, fr, word, sentence, big = m["label"], m["fr"], m["word"], m["sentence"], m["big"]
     else:
         w0 = p["words"][0]; keys = [w["w"] for w in p["words"]]; pick = None
@@ -120,24 +164,44 @@ for title, slug, stat, sentence, mean in R:
             g = p["v"][0]; s, a, b = verses(g[0]); pick = (g, s, a, b, a)
         g, s, a, b, n = pick
         ns = EXV.get(slug, [n])
-        ar_html = " ".join(mark(AR[f"{s}:{k}"], keys)[0] + f'<span class="ayah">{ind(k)}</span>' for k in ns)
+        ar_html = " ".join(with_ayah(mark(AR[f"{s}:{k}"], keys)[0], k) for k in ns)
         ref = f"{ns[0]}-{ns[-1]}" if len(ns) > 1 else f"{ns[0]}"
         label = f"{g[1]}, {s}:{ref}" + (", extrait" if (b - a + 1) > len(ns) else "")
         fr = fr_join(g[2], a, ns)
         word = {"w": w0["w"], "tr": w0["tr"], "root": w0["root"], "mean": mean}
         big = stat
     keys = [w["w"] for w in p["words"]] + (MANUAL[slug]["hl"] if slug in MANUAL else []) + EXTRA_HL.get(slug, [])
+    # Tous les mots clés de la planche : le principal d’abord, avec son explication, puis les autres avec leur sens court
+    same = lambda x, y: norm(x) in norm(y) or norm(y) in norm(x)
+    keywords = [word] + [{"w": w["w"], "tr": w["tr"], "root": w["root"], "mean": w["s"]} for w in p["words"] if not same(w["w"], word["w"])]
+    why = WHY.get(slug, [])
+    for c in why:
+        assert ("img" in c) != ("ar" in c), (slug, c["h"])
+        if "ar" in c: assert c["ar"] in AR[c["key"]], (slug, c["key"], "extrait absent du verset")
     stories[slug] = {"slug": slug, "groups": groups_of(p, keys), "title": title, "phen": PHEN[title], "ch": p["ch"], "stat": stat, "big": big, "sentence": sentence,
-                     "facts": MANUAL.get(slug, {}).get("facts", []),
-                     "excerpt": {"label": label, "ar_html": ar_html, "fr": fr}, "word": word,
-                     "v": p["v"], "words": p["words"], "mot": p["mot"], "sci": p["sci"], "cap": p["cap"], "svg": p["svg"], "src": p["src"]}
+                     "why": why, "excerpt": {"label": label, "ar_html": ar_html, "fr": fr}, "word": word, "keywords": keywords,
+                     "v": p["v"], "mot_p": paras_html(p["mot"], names=True), "sci_p": paras_html(p["sci"]), "cap": p["cap"], "svg": p["svg"], "src": p["src"]}
+    assert " ".join(paras(p["mot"])) == " ".join(p["mot"].split()) and " ".join(paras(p["sci"])) == " ".join(p["sci"].split()), (slug, "découpage infidèle")
     order.append(slug)
+
+def verse_form(w, p):
+    """Le mot tel que l’écrit le texte de Médine dans le verset, s’il y figure tel quel."""
+    for ref, _, _ in p["v"]:
+        s, a, b = verses(ref)
+        for n in range(a, b + 1):
+            for tok in AR[f"{s}:{n}"].split(" "):
+                tok = re.sub("[\u06D6-\u06DC]+$", "", tok)  # signes de pause
+                if norm(tok) == norm(w): return tok
+                if tok[:2] in ("فَ", "وَ") and norm(tok[2:]) == norm(w): return tok[2:]  # sans la conjonction
+    return w
 
 tiles = []
 for p in PLATES:
     slug = SLUG_V[p["title"]]
     tiles.append({"ch": p["ch"], "title": p["title"], "phen": PHEN[p["title"]], "slug": slug, "stat": stories[slug]["stat"],
-                  "ref": " ; ".join(g[0] for g in p["v"]), "word": "ٱلْحَدِيدَ" if slug == "fer" else p["words"][0]["w"]})
+                  "ref": " ; ".join(g[0] for g in p["v"]), "word": verse_form("ٱلْحَدِيدَ" if slug == "fer" else p["words"][0]["w"], p)})
+
+tiles.sort(key=lambda x: ORDRE.index(x["slug"]))
 
 used = set()
 for st in stories.values():
