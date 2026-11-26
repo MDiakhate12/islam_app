@@ -171,6 +171,15 @@ a{color:var(--lapis);text-underline-offset:3px}
 .wc-refs a{color:var(--on-tile-2)}
 .wc-refs a:hover{color:var(--on-tile)}
 .wc.solo{grid-template-columns:1fr}
+.frise{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin:4px 0 14px}
+.fr-pt{display:grid;gap:2px;text-align:center;min-width:64px;max-width:34%}
+.fr-line{min-width:70px}
+.fr-pt b{font:800 1.25rem/1.05 var(--display);color:var(--glow);white-space:nowrap}
+.fr-pt small{font:500 .66rem/1.3 var(--mono);color:var(--on-tile-2);overflow-wrap:anywhere}
+.fr-line{position:relative;height:2px;background:linear-gradient(90deg,var(--glow),color-mix(in srgb,var(--glow) 35%,transparent));border-radius:2px}
+.fr-line::before,.fr-line::after{content:"";position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:var(--glow)}
+.fr-line::before{left:-2px}.fr-line::after{right:-2px}
+.fr-line em{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);white-space:nowrap;font:600 .82rem var(--mono);font-style:normal;color:var(--on-tile)}
 @media (max-width:560px){.wc{grid-template-columns:1fr}.wc-img{min-height:170px}}
 /* Aller plus loin : mêmes cartes que « Pourquoi c’est étonnant », sources sous le texte qu’elles appuient */
 .far{display:grid;gap:14px}
@@ -305,6 +314,11 @@ const ICON_LENS = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy
 // Les premiers paragraphes, puis « Lire la suite » pour le reste
 const textBlock = (ps, keep) => ps.slice(0, keep).map(x => `<p>${x}</p>`).join("")
   + (ps.length > keep ? `<details class="fc-more"><summary>Lire la suite</summary>${ps.slice(keep).map(x => `<p>${x}</p>`).join("")}</details>` : "");
+// Frise de l’écart : deux dates, deux acteurs, et l’écart entre eux
+const frise = g => `<div class="frise" role="img" aria-label="${esc(g.a[0] + ", " + g.a[1] + " ; " + g.b[0] + ", " + g.b[1] + " : " + g.d)}">
+  <span class="fr-pt"><b>${esc(g.a[0])}</b><small>${esc(g.a[1])}</small></span>
+  <span class="fr-line"><em>${esc(g.d)}</em></span>
+  <span class="fr-pt"><b>${esc(g.b[0])}</b><small>${esc(g.b[1])}</small></span></div>`;
 const roots = r => r && r !== "—" ? `<div class="root" aria-label="Racine">${[...r].map(l => `<span lang="ar">${esc(l)}</span>`).join("")}</div>` : "";
 
 function fill(st){
@@ -328,7 +342,7 @@ function fill(st){
   const why = st.why.length ? `<p class="lab">Pourquoi c’est étonnant</p><ol class="why">${st.why.map((c, i) => `<li class="wc${c.img || c.ar ? "" : " solo"}">
       ${c.img ? `<figure class="wc-img"><img src="${esc(c.img.src)}" alt="${esc(c.img.alt)}" loading="lazy" decoding="async"${c.img.pos ? ` style="object-position:${esc(c.img.pos)}"` : ""}><figcaption><a href="${esc(c.img.href)}" target="_blank" rel="noopener">${esc(c.img.credit)}</a></figcaption></figure>`
               : c.ar ? `<div class="wc-ar" lang="ar">${esc(c.ar)}</div>` : ""}
-      <div class="wc-body"><h3><b>${i + 1}</b>${esc(c.h)}</h3>${c.calc ? `<p class="calc">${esc(c.calc)}</p>` : ""}<p>${esc(c.t)}</p>
+      <div class="wc-body"><h3><b>${i + 1}</b>${esc(c.h)}</h3>${c.gap ? frise(c.gap) : ""}${c.calc ? `<p class="calc">${esc(c.calc)}</p>` : ""}<p>${esc(c.t)}</p>
       ${c.links.length ? `<p class="wc-refs">${c.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join("")}</p>` : ""}</div></li>`).join("")}</ol>` : "";
   const rel = st.src.filter(s => RELIG.test(host(s[1]))), ext = st.src.filter(s => !RELIG.test(host(s[1])));
   const deep = `<p class="lab">Aller plus loin</p><div class="far">

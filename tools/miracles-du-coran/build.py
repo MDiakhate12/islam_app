@@ -13,7 +13,7 @@ OUT = os.path.join(ROOT, "docs", "miracles-du-coran", "index.html")
 sys.dont_write_bytecode = True
 sys.path.insert(0, HERE)
 from recits import R
-from pourquoi import WHY
+from pourquoi import WHY, ECART
 from ordre import ORDRE
 
 page_v = open(VERT, encoding="utf-8").read()
@@ -34,6 +34,7 @@ assert sorted(titles) == sorted(PHEN), "titres.json ne couvre pas exactement les
 for t, slug, *_ in R:
     assert SLUG_V.get(t) == slug, f"adresse différente dans lecture-verticale.html pour « {t} »"
 assert set(WHY) <= {r[1] for r in R}, "pourquoi.py nomme un signe inconnu"
+assert set(ECART) <= set(WHY), "ECART nomme un signe sans écran Pourquoi"
 assert sorted(ORDRE) == sorted(r[1] for r in R), "ordre.py doit nommer chaque signe une fois"
 
 # Les trois récits écrits à la main lors du premier prototype
@@ -199,7 +200,7 @@ for title, slug, stat, sentence, mean in R:
     # Tous les mots clés de la planche : le principal d’abord, avec son explication, puis les autres avec leur sens court
     same = lambda x, y: norm(x) in norm(y) or norm(y) in norm(x)
     keywords = [word] + [{"w": w["w"], "tr": w["tr"], "root": w["root"], "mean": w["s"]} for w in p["words"] if not same(w["w"], word["w"])]
-    why = [resolve(c, p) for c in WHY.get(slug, [])]
+    why = [resolve(c, p) for c in WHY.get(slug, []) + ([ECART[slug]] if slug in ECART else [])]
     for c in why:
         assert not ("img" in c and "ar" in c), (slug, c["h"], "image ou verset, pas les deux")
         if "ar" in c: assert c["ar"] in AR[c["key"]], (slug, c["key"], "extrait absent du verset")
