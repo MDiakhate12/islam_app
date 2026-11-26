@@ -84,7 +84,7 @@ def mark(text, keys):
     toks = [f"<mark>{html.escape(t)}</mark>" if norm(t) not in STOP and any(k in norm(t) for k in keys) else html.escape(t) for t in text.split(" ")]
     return " ".join(toks), any(k in norm(text) for k in keys)
 
-def nb(t): return re.sub(" ([:;?!»])", "\u00a0\\1", t).replace("« ", "«\u00a0")
+def nb(t): return re.sub(r"(\d) (?=\d{3}\b|%|km\b|m\b|g\b|h\b|°)", "\\1\u00a0", re.sub(" ([:;?!»])", "\u00a0\\1", t).replace("« ", "«\u00a0"))
 
 def ind(n): return str(n).translate(str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩"))
 
@@ -140,6 +140,31 @@ def paras_html(t, names=False):
     out = [nb(html.escape(x)) for x in paras(t)]
     return [NAMES.sub(r'<b class="nm">\1</b>', x) for x in out] if names else out
 
+RELIG = re.compile(r"(^|\.)(quran\.com|tafsir\.app|sunnah\.com|dorar\.net|islamweb\.net|shamela\.ws|maajim\.com)$")
+def host(u): return re.sub(r"^https?://([^/]+).*$", r"\1", u)
+
+def excerpt(key, words):
+    """L’extrait du verset key, au caractère près dans le texte de Médine, retrouvé à partir de ses mots."""
+    toks = AR[key].split(" "); want = [norm(w) for w in words.split()]
+    clean = [re.sub("[\u06D6-\u06DC]+$", "", x) for x in toks]
+    for i in range(len(toks) - len(want) + 1):
+        if [norm(x) for x in clean[i:i + len(want)]] == want:
+            return " ".join(toks[i:i + len(want) - 1] + [clean[i + len(want) - 1]])
+    raise AssertionError(f"extrait introuvable dans {key} : {words}")
+
+def resolve(c, p):
+    """Carte prête à afficher : extrait coranique retrouvé, sources « rel » ou « ext » reprises de la planche."""
+    c = dict(c)
+    if "quote" in c:
+        key, words = c.pop("quote"); c["ar"], c["key"] = excerpt(key, words), key
+    links = c.get("links", [])
+    if links in ("rel", "ext"):
+        links = [s for s in p["src"] if bool(RELIG.search(host(s[1]))) == (links == "rel")][:2 if links == "rel" else 3]
+        # « Verset » seul ne dit rien dans une carte : on y ajoute la référence lue dans l’adresse
+        links = [[f"{l} {m.group(1)}:{m.group(2)}" if l in ("Verset", "Versets") and (m := re.search(r"quran\.com/(\d+)/([\d-]+)$", u)) else l, u] for l, u in links]
+    c["links"] = links
+    return c
+
 stories, order = {}, []
 for title, slug, stat, sentence, mean in R:
     p = P[title]
@@ -174,9 +199,9 @@ for title, slug, stat, sentence, mean in R:
     # Tous les mots clés de la planche : le principal d’abord, avec son explication, puis les autres avec leur sens court
     same = lambda x, y: norm(x) in norm(y) or norm(y) in norm(x)
     keywords = [word] + [{"w": w["w"], "tr": w["tr"], "root": w["root"], "mean": w["s"]} for w in p["words"] if not same(w["w"], word["w"])]
-    why = WHY.get(slug, [])
+    why = [resolve(c, p) for c in WHY.get(slug, [])]
     for c in why:
-        assert ("img" in c) != ("ar" in c), (slug, c["h"])
+        assert not ("img" in c and "ar" in c), (slug, c["h"], "image ou verset, pas les deux")
         if "ar" in c: assert c["ar"] in AR[c["key"]], (slug, c["key"], "extrait absent du verset")
     stories[slug] = {"slug": slug, "groups": groups_of(p, keys), "title": title, "phen": PHEN[title], "ch": p["ch"], "stat": stat, "big": big, "sentence": sentence,
                      "why": why, "excerpt": {"label": label, "ar_html": ar_html, "fr": fr}, "word": word, "keywords": keywords,

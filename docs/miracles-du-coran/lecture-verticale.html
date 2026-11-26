@@ -621,11 +621,11 @@ const P = [
 
 /* ---------- Rendu ---------- */
 const AD = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
-/* Écoute : récitation d’al-Ḥuṣarī, verset par verset, depuis le miroir audio qu’utilise Quran.com */
-const RECIT = "https://mirrors.quranicaudio.com/everyayah/Husary_128kbps/";
+/* Écoute : récitation de Mishary Rashid al-ʿAfāsy, verset par verset, depuis le miroir audio qu’utilise Quran.com */
+const RECIT = "https://mirrors.quranicaudio.com/everyayah/Alafasy_128kbps/";
 const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>';
 const ICON_STOP = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1" fill="currentColor"/></svg>';
-const listenBtn = (su, ns) => '<button class="listen" type="button" aria-pressed="false" data-ayahs="'+ns.map(n => su+":"+n).join(",")+'" title="Récitation de Maḥmūd Khalīl al-Ḥuṣarī">'+ICON_PLAY+'<span>Écouter</span></button>';
+const listenBtn = (su, ns) => '<button class="listen" type="button" aria-pressed="false" data-ayahs="'+ns.map(n => su+":"+n).join(",")+'" title="Récitation de Mishary Rashid al-ʿAfāsy">'+ICON_PLAY+'<span>Écouter</span></button>';
 const audio = { el: new Audio(), queue: [], btn: null };
 audio.el.preload = "none";
 function stopListen(){ audio.el.pause(); audio.queue = []; const b = audio.btn; audio.btn = null; if (b) { b.setAttribute("aria-pressed","false"); b.innerHTML = ICON_PLAY + "<span>Écouter</span>"; } }
