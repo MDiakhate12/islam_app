@@ -18,7 +18,7 @@
   --text:"Newsreader",Charter,"Iowan Old Style",Georgia,serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --quran:"Madina","Amiri Quran","Amiri","Noto Naskh Arabic","Geeza Pro",serif;
-  --arabic:"Amiri","Noto Naskh Arabic","Geeza Pro","Traditional Arabic",serif;
+  --arabic:"Madina","Amiri","Noto Naskh Arabic","Geeza Pro","Traditional Arabic",serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#080d1f; --surface:#0f1631; --ink:#e7ebf8; --muted:#98a3c2; --line:#222c52;
@@ -95,13 +95,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .listen svg{width:14px;height:14px}
 .listen[aria-pressed="true"]{border-color:var(--saffron);color:var(--saffron)}
 .verse{font:1.5rem/2.2 var(--quran);margin:0;color:var(--ink)}
-.ayah{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;padding:0 .25em;border:1px solid var(--saffron);border-radius:999px;color:var(--saffron);font:700 .58em/1 var(--arabic);margin-inline:.35em;vertical-align:.2em}
+.ayah{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;padding:0 .25em;border:1px solid var(--saffron);border-radius:999px;color:var(--saffron);font:400 .58em/1 var(--arabic);margin-inline:.35em;vertical-align:.2em}
 .trans{font-style:italic;color:var(--muted);margin:0}
 .trans sup{font:500 .62rem var(--mono);font-style:normal;color:var(--saffron);margin-right:3px}
 .words{display:flex;flex-wrap:wrap;gap:8px}
 .word{display:flex;align-items:center;gap:10px;border:1px solid var(--line);padding:6px 10px 6px 6px;min-width:0}
 .root{display:flex;gap:2px;direction:rtl}
-.root span{font:700 1.05rem/1 var(--arabic);width:26px;height:28px;display:grid;place-items:center;background:var(--lapis);color:var(--surface)}
+.root span{font:400 1.05rem/1 var(--arabic);width:26px;height:28px;padding-bottom:.3em;display:grid;place-items:center;background:var(--lapis);color:var(--surface)}
 .word .w{font-size:1.25rem;color:var(--lapis)}
 .word small{display:block;font:400 .72rem/1.35 var(--mono);color:var(--muted)}
 .word small i{font-style:normal;color:var(--ink)}
@@ -128,7 +128,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .fig .p{fill:var(--plate)} .fig .d{fill:var(--deep)} .fig .w{fill:var(--surface)} .fig .i{fill:var(--ink)}
 .fig text{fill:var(--muted);font:500 9px var(--mono)}
 .fig text.t{fill:var(--ink)} .fig text.tl{fill:var(--ondeep)}
-.fig text.ar{font:700 14px var(--arabic);fill:var(--ink)}
+.fig text.ar{font:400 14px var(--arabic);fill:var(--ink)}
 .mk{fill:var(--ink)} .mkb{fill:var(--lapis)} .mks{fill:var(--saffron)}
 
 /* Bibliothèque */
