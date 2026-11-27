@@ -148,12 +148,23 @@ a{color:var(--lapis);text-underline-offset:3px}
 .listen:hover{background:rgba(255,255,255,.1)}
 .listen[aria-pressed="true"]{border-color:var(--glow);color:var(--glow)}
 /* Mots clés : le principal en grand, les autres en liste */
-.kws{display:grid;gap:10px;margin:26px auto 0;max-width:520px}
-.kw{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;border:1px solid color-mix(in srgb,var(--on-tile-2) 55%,transparent);border-radius:14px;padding:10px 16px}
-.kw-ar{font:400 1.9rem/1.5 var(--arabic);direction:rtl;margin:0;grid-row:span 2}
-.kw-tr{font:500 .76rem var(--mono);color:var(--on-tile-2);margin:0}
-.kw-tr [lang=ar]{font:400 1rem var(--arabic)}
-.kw-mean{font:400 1rem/1.4 var(--text);margin:0}
+.kws{display:grid;gap:12px;margin:30px auto 0;max-width:560px}
+.kw{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;align-items:center;border:1px solid color-mix(in srgb,var(--on-tile-2) 75%,transparent);border-radius:16px;padding:10px 20px;background:rgba(255,255,255,.07)}
+.kw-ar{font:400 clamp(2.7rem,10vw,3.6rem)/1.75 var(--arabic);direction:rtl;margin:0;grid-row:span 2;text-align:center}
+.kw-tr{font:500 .9rem var(--mono);color:var(--on-tile-2);margin:0}
+.kw-tr [lang=ar]{font:400 1.2rem var(--arabic)}
+.kw-mean{font:400 1.15rem/1.45 var(--text);margin:0}
+/* Même racine : mots de la famille cités dans d’autres versets */
+.fam{margin:26px auto 0;max-width:560px}
+.fam-h{font:500 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--on-tile-2);margin:0 0 10px}
+.fam-h i{font-style:normal;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--glow)}
+.fam ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.fam li{display:grid;grid-template-columns:minmax(5rem,auto) 1fr;gap:2px 16px;align-items:center;border:1px dashed color-mix(in srgb,var(--on-tile-2) 75%,transparent);border-radius:16px;padding:6px 20px}
+.fam-ar{font:400 clamp(2.2rem,8vw,2.8rem)/1.75 var(--arabic);direction:rtl;grid-row:span 2;text-align:center}
+.fam-tr{font:500 .85rem var(--mono);color:var(--on-tile-2)}
+.fam-tr a{color:inherit;text-underline-offset:3px}
+.fam-mean{font:400 1.1rem/1.4 var(--text)}
+@media (min-width:600px){.fam li{grid-template-columns:minmax(7.5rem,auto) 1fr;gap:2px 20px}}
 /* Pourquoi c’est étonnant : trois cartes, de ce qu’on voit à ce que dit le Coran */
 .why{list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .wc{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);border:1px solid color-mix(in srgb,var(--on-tile-2) 55%,transparent);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.05)}
@@ -172,7 +183,8 @@ a{color:var(--lapis);text-underline-offset:3px}
 .wc-refs a{color:var(--on-tile-2)}
 .wc-refs a:hover{color:var(--on-tile)}
 .wc.solo{grid-template-columns:1fr}
-.frise{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin:4px 0 14px}
+.frise{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+.frise > .fr-line{flex:1 1 auto}
 .fr-pt{display:grid;gap:2px;text-align:center;min-width:64px;max-width:34%}
 .fr-line{min-width:70px}
 .fr-pt b{font:800 1.25rem/1.05 var(--display);color:var(--glow);white-space:nowrap}
@@ -180,6 +192,13 @@ a{color:var(--lapis);text-underline-offset:3px}
 .fr-line{position:relative;height:2px;background:linear-gradient(90deg,var(--glow),color-mix(in srgb,var(--glow) 35%,transparent));border-radius:2px}
 .fr-line::before,.fr-line::after{content:"";position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:var(--glow)}
 .fr-line::before{left:-2px}.fr-line::after{right:-2px}
+.fr-step{flex:0 0 10px;height:2px;background:var(--glow);opacity:.55;border-radius:2px}
+.frise.multi{gap:5px}
+.frise.multi .fr-pt{max-width:none;min-width:min-content;flex:0 1 auto}
+.frise.multi .fr-pt b{font-size:clamp(.95rem,3.6vw,1.25rem)}
+.frise.multi .fr-pt small{font-size:clamp(.58rem,2.2vw,.66rem);overflow-wrap:normal}
+.frise.multi .fr-line{min-width:4.9rem}
+.frise.multi .fr-line em{font-size:clamp(.7rem,2.6vw,.82rem)}
 .fr-line em{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);white-space:nowrap;font:600 .82rem var(--mono);font-style:normal;color:var(--on-tile)}
 @media (max-width:560px){.wc{grid-template-columns:1fr}.wc-img{min-height:170px}}
 /* Aller plus loin : mêmes cartes que « Pourquoi c’est étonnant », sources sous le texte qu’elles appuient */
@@ -316,10 +335,12 @@ const ICON_LENS = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy
 const textBlock = (ps, keep) => ps.slice(0, keep).map(x => `<p>${x}</p>`).join("")
   + (ps.length > keep ? `<details class="fc-more"><summary>Lire la suite</summary>${ps.slice(keep).map(x => `<p>${x}</p>`).join("")}</details>` : "");
 // Frise de l’écart : deux dates, deux acteurs, et l’écart entre eux
-const frise = g => `<div class="frise" role="img" aria-label="${esc(g.a[0] + ", " + g.a[1] + " ; " + g.b[0] + ", " + g.b[1] + " : " + g.d)}">
+// Plusieurs découvertes : un point par date, reliés par un trait court
+const frise = g => { const pts = [g.b, ...(g.more || [])];
+  return `<div class="frise${pts.length > 1 ? " multi" : ""}" role="img" aria-label="${esc(g.a[0] + ", " + g.a[1] + " ; " + pts.map(p => p[0] + ", " + p[1]).join(" ; ") + " : " + g.d)}">
   <span class="fr-pt"><b>${esc(g.a[0])}</b><small>${esc(g.a[1])}</small></span>
   <span class="fr-line"><em>${esc(g.d)}</em></span>
-  <span class="fr-pt"><b>${esc(g.b[0])}</b><small>${esc(g.b[1])}</small></span></div>`;
+  ${pts.map((p, i) => `${i ? `<span class="fr-step"></span>` : ""}<span class="fr-pt"><b>${esc(p[0])}</b><small>${esc(p[1])}</small></span>`).join("")}</div>`; };
 const roots = r => r && r !== "—" ? `<div class="root" aria-label="Racine">${[...r].map(l => `<span lang="ar">${esc(l)}</span>`).join("")}</div>` : "";
 
 function fill(st){
@@ -339,7 +360,9 @@ function fill(st){
     <p class="p-word" lang="ar">${esc(w0.w)}</p><p class="p-tr">${esc(w0.tr)}</p>
     ${roots(w0.root)}
     <p class="p-mean">${esc(w0.mean)}</p>${others.length ? `<div class="kws">${others.map(w => `<div class="kw">
-      <p class="kw-ar" lang="ar">${esc(w.w)}</p><p class="kw-tr">${esc(w.tr)}${w.root && w.root !== "—" ? ` · <span lang="ar">${esc(w.root)}</span>` : ""}</p><p class="kw-mean">${esc(w.mean)}</p></div>`).join("")}</div>` : ""}`;
+      <p class="kw-ar" lang="ar">${esc(w.w)}</p><p class="kw-tr">${esc(w.tr)}${w.root && w.root !== "—" ? ` · <span lang="ar">${esc(w.root)}</span>` : ""}</p><p class="kw-mean">${esc(w.mean)}</p></div>`).join("")}</div>` : ""}
+    ${st.keywords.filter(w => w.fam.length).map(w => `<div class="fam"><p class="fam-h">Même racine que <i>${esc(w.tr)}</i></p><ul>${w.fam.map(x => `<li>
+      <span class="fam-ar" lang="ar">${esc(x.w)}</span><span class="fam-tr">${esc(x.tr)} · <a href="https://quran.com/${x.v.replace(":", "/")}" target="_blank" rel="noopener">${esc(x.v)}</a></span><span class="fam-mean">${esc(x.s)}</span></li>`).join("")}</ul></div>`).join("")}`;
   const why = st.why.length ? `<p class="lab">Pourquoi c’est étonnant</p><ol class="why">${st.why.map((c, i) => `<li class="wc${c.img || c.ar ? "" : " solo"}">
       ${c.img ? `<figure class="wc-img"><img src="${esc(c.img.src)}" alt="${esc(c.img.alt)}" loading="lazy" decoding="async"${c.img.pos ? ` style="object-position:${esc(c.img.pos)}"` : ""}><figcaption><a href="${esc(c.img.href)}" target="_blank" rel="noopener">${esc(c.img.credit)}</a></figcaption></figure>`
               : c.ar ? `<div class="wc-ar" lang="ar">${esc(c.ar)}</div>` : ""}

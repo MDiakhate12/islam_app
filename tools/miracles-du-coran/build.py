@@ -110,7 +110,7 @@ SAVANTS = ["Ṭabarī", "Qurṭubī", "Ibn ʿĀshūr", "Ibn Kathīr", "Ibn ʿAbb
            "Ibn Manẓūr", "Qatāda", "Mujāhid", "al-Rāghib", "Al-Rāghib", "al-Rāzī", "Rāzī", "Bukhārī", "Muslim", "Tirmidhī",
            "al-Ḥasan al-Baṣrī", "al-Baṣrī", "Al-Zajjāj", "al-Zajjāj", "al-Azharī", "al-Jawharī", "al-Minhāl", "Saʿīd b. Jubayr",
            "Baghawī", "Zamakhsharī", "Lisān al-ʿArab", "Maqāyīs",
-           "Muḥammad b. Ḥumayd al-Rāzī", "Ibn Ḥajar", "Abū Ḥātim", "al-Ḥasan", "Al-Ḥasan", "Sufyān al-Thawrī", "ʿAlī"]
+           "Muḥammad b. Ḥumayd al-Rāzī", "Ibn Ḥajar", "Abū Ḥātim", "Abū ʿUbayda", "al-Ḥasan", "Al-Ḥasan", "Sufyān al-Thawrī", "ʿAlī"]
 NAMES = re.compile(r"(?<![\wʿʾ])(" + "|".join(sorted(map(re.escape, SAVANTS), key=len, reverse=True)) + r")(?![\wʿʾ])")
 
 def sentences(t):
@@ -200,6 +200,11 @@ for title, slug, stat, sentence, mean in R:
     # Tous les mots clés de la planche : le principal d’abord, avec son explication, puis les autres avec leur sens court
     same = lambda x, y: norm(x) in norm(y) or norm(y) in norm(x)
     keywords = [word] + [{"w": w["w"], "tr": w["tr"], "root": w["root"], "mean": w["s"]} for w in p["words"] if not same(w["w"], word["w"])]
+    # Mots de la même racine, cités dans d’autres versets : recopiés du texte de Médine au caractère près
+    for k in keywords:
+        k["fam"] = next((w.get("fam", []) for w in p["words"] if same(w["w"], k["w"])), [])
+        for x in k["fam"]:
+            assert x["w"] in AR.get(x["v"], ""), (slug, x["v"], x["w"], "mot de la famille absent du verset")
     why = [resolve(c, p) for c in WHY.get(slug, []) + ([ECART[slug]] if slug in ECART else [])]
     for c in why:
         assert not ("img" in c and "ar" in c), (slug, c["h"], "image ou verset, pas les deux")
